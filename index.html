@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAECHELLA 2027 — BABYMONSTER at Coachella</title>
+  <meta name="description" content="BAECHELLA 2027: Discover BABYMONSTER ahead of Coachella April 11 & 18, 2027. Watch 10 curated stages, meet all 7 members, follow their official SNS, and build your downloadable Coachella setlist prediction." />
+
+  <!-- Google Fonts: Instrument Serif (Editorial Display), Inter (UI Copy), JetBrains Mono (Dates, Counters & Badges) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            obsidian: '#080A10',
+            cardbg: '#111521',
+            borderline: '#22283A',
+            desertgold: '#F5A623',
+            desertcrimson: '#E11D48',
+            warmcream: '#F8F5F0',
+            spotify: '#1DB954',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body id="top" class="bg-[#080A10] text-[#F8F5F0] font-sans antialiased overflow-x-hidden selection:bg-[#F5A623]/30 selection:text-[#F8F5F0]">
+
+  <!-- =====================================================================
+       STICKY COMPACT TOP NAVIGATION BAR
+  ====================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#080A10]/85 backdrop-blur-md border-b border-[#22283A]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
+      <!-- Brand Mark -->
+      <a href="#top" class="inline-flex items-center gap-2.5 shrink-0 group focus:outline-none">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#F5A623] shadow-[0_0_12px_rgba(245,166,35,0.9)]"></span>
+        <span class="font-mono text-xs sm:text-sm font-bold tracking-[0.14em] text-[#F8F5F0] group-hover:text-[#F5A623] transition-colors">
+          B<span class="text-[#F5A623]">AE</span>CHELLA '27
+        </span>
+      </a>
+
+      <!-- Quick Jump Links (Stages, Group, SNS, Setlist) -->
+      <nav aria-label="Primary Navigation" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto">
+        <a href="#stages" class="rounded-full px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#F8F5F0] hover:bg-[#111521] border border-transparent hover:border-[#22283A] transition-all shrink-0">
+          Stages
+        </a>
+        <a href="#about-group" class="rounded-full px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#F8F5F0] hover:bg-[#111521] border border-transparent hover:border-[#22283A] transition-all shrink-0">
+          Group
+        </a>
+        <a href="#sns" class="rounded-full px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#F8F5F0] hover:bg-[#111521] border border-transparent hover:border-[#22283A] transition-all shrink-0">
+          SNS
+        </a>
+        <a href="#setlist" class="rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-[#080A10] bg-gradient-to-r from-[#F5A623] to-[#E11D48] hover:brightness-110 transition-all shrink-0 shadow-[0_0_18px_rgba(245,166,35,0.22)]">
+          Setlist
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         1. HERO SECTION (Matches Page 1 Top of Sketch)
+    ==================================================================== -->
+    <section aria-label="Hero" class="relative overflow-hidden border-b border-[#22283A]">
+      <!-- Subtle Desert Sunset Radial Glows -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div class="absolute -top-28 -left-24 w-80 h-80 sm:w-[480px] sm:h-[480px] rounded-full bg-[#E11D48]/15 blur-[130px]"></div>
+        <div class="absolute top-6 -right-24 w-80 h-80 sm:w-[460px] sm:h-[460px] rounded-full bg-[#F5A623]/15 blur-[130px]"></div>
+      </div>
+
+      <!-- Ambient Desert Night Starfield Canvas (Responsive) -->
+      <canvas id="heroStarfield" class="absolute inset-0 w-full h-full pointer-events-none opacity-80" aria-hidden="true"></canvas>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-14 sm:pt-16 sm:pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+          <!-- Left Column: Title, Subtitle & 4 Stacked Clickable Pill Buttons -->
+          <div class="lg:col-span-7">
+            <!-- Eyebrow Badge -->
+            <div class="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 bg-[#111521]/90 border border-[#22283A] font-mono text-[11px] sm:text-xs uppercase tracking-[0.14em] text-[#F5A623] mb-5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#E11D48] shadow-[0_0_8px_#E11D48]"></span>
+              <span>BABYMONSTER &bull; Empire Polo Club, Indio, CA</span>
+            </div>
+
+            <!-- Display Title: BAECHELLA 2027 with gold-to-crimson AE -->
+            <h1 class="font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.94] tracking-tight text-[#F8F5F0]">
+              <span>B</span><span class="italic bg-gradient-to-br from-[#F5A623] via-amber-400 to-[#E11D48] bg-clip-text text-transparent pr-0.5">AE</span><span>CHELLA</span>
+              <span class="italic text-[#F8F5F0]/90 ml-1">2027</span>
+            </h1>
+
+            <!-- Subtitle Directly Underneath -->
+            <p class="mt-4 text-xl sm:text-2xl font-medium text-[#F8F5F0]/90 tracking-tight">
+              April 11 &amp; 18, Be There!
+            </p>
+
+            <!-- 4 Stacked Vertical Clickable Pill Navigation Buttons (Exact Sketch Order) -->
+            <div class="mt-7 flex flex-col items-stretch sm:items-start gap-3 max-w-md">
+              <a
+                href="#stages"
+                class="group inline-flex items-center justify-between gap-4 sm:min-w-[300px] rounded-full px-6 py-3.5 bg-[#111521]/90 border border-[#22283A] text-sm sm:text-base font-medium text-[#F8F5F0] hover:border-[#F5A623] hover:bg-[#F5A623]/10 hover:shadow-[0_0_24px_rgba(245,166,35,0.2)] transition-all"
+              >
+                <span>BABYMONSTER's Stages</span>
+                <span class="font-mono text-xs text-[#F5A623] group-hover:translate-y-0.5 transition-transform">&darr;</span>
+              </a>
+
+              <a
+                href="#about-group"
+                class="group inline-flex items-center justify-between gap-4 sm:min-w-[300px] rounded-full px-6 py-3.5 bg-[#111521]/90 border border-[#22283A] text-sm sm:text-base font-medium text-[#F8F5F0] hover:border-[#F5A623] hover:bg-[#F5A623]/10 hover:shadow-[0_0_24px_rgba(245,166,35,0.2)] transition-all"
+              >
+                <span>About The Group</span>
+                <span class="font-mono text-xs text-[#F5A623] group-hover:translate-y-0.5 transition-transform">&darr;</span>
+              </a>
+
+              <a
+                href="#sns"
+                class="group inline-flex items-center justify-between gap-4 sm:min-w-[300px] rounded-full px-6 py-3.5 bg-[#111521]/90 border border-[#22283A] text-sm sm:text-base font-medium text-[#F8F5F0] hover:border-[#E11D48] hover:bg-[#E11D48]/10 hover:shadow-[0_0_24px_rgba(225,29,72,0.2)] transition-all"
+              >
+                <span>Their SNS</span>
+                <span class="font-mono text-xs text-[#E11D48] group-hover:translate-y-0.5 transition-transform">&darr;</span>
+              </a>
+
+              <a
+                href="#setlist"
+                class="group inline-flex items-center justify-between gap-4 sm:min-w-[300px] rounded-full px-6 py-3.5 bg-gradient-to-r from-[#F5A623]/15 to-[#E11D48]/15 border border-[#F5A623]/50 text-sm sm:text-base font-semibold text-[#F8F5F0] hover:border-[#F5A623] hover:from-[#F5A623]/25 hover:to-[#E11D48]/25 hover:shadow-[0_0_28px_rgba(245,166,35,0.25)] transition-all"
+              >
+                <span>Create Your Baechella Set List</span>
+                <span class="font-mono text-xs text-[#F5A623] group-hover:translate-y-0.5 transition-transform">&darr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Compact Live Countdown Pill & Weekend Toggle -->
+          <div class="lg:col-span-5 lg:pt-8">
+            <div class="rounded-3xl bg-[#111521]/90 backdrop-blur-md border border-[#22283A] p-5 sm:p-6 shadow-2xl">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <div class="inline-flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-[#E11D48] animate-pulse"></span>
+                  <span class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-300">
+                    Live Countdown
+                  </span>
+                </div>
+
+                <!-- Weekend 1 / Weekend 2 Toggle -->
+                <div class="inline-flex rounded-full p-1 bg-[#080A10] border border-[#22283A]" role="tablist" aria-label="Coachella Weekend Selector">
+                  <button
+                    id="wk1ToggleBtn"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#F8F5F0] text-[#080A10] transition-all"
+                  >
+                    Wk 1 &middot; Apr 11
+                  </button>
+                  <button
+                    id="wk2ToggleBtn"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-[#F8F5F0] transition-all"
+                  >
+                    Wk 2 &middot; Apr 18
+                  </button>
+                </div>
+              </div>
+
+              <!-- Live Timer Units -->
+              <div class="grid grid-cols-4 gap-2.5" aria-live="polite">
+                <div class="rounded-2xl bg-[#080A10] border border-[#22283A] py-3.5 px-2 text-center">
+                  <div id="cdDays" class="font-mono text-2xl sm:text-3xl font-bold text-[#F8F5F0] tabular-nums">--</div>
+                  <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-slate-400">Days</div>
+                </div>
+                <div class="rounded-2xl bg-[#080A10] border border-[#22283A] py-3.5 px-2 text-center">
+                  <div id="cdHours" class="font-mono text-2xl sm:text-3xl font-bold text-[#F8F5F0] tabular-nums">--</div>
+                  <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-slate-400">Hrs</div>
+                </div>
+                <div class="rounded-2xl bg-[#080A10] border border-[#22283A] py-3.5 px-2 text-center">
+                  <div id="cdMins" class="font-mono text-2xl sm:text-3xl font-bold text-[#F5A623] tabular-nums">--</div>
+                  <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-slate-400">Mins</div>
+                </div>
+                <div class="rounded-2xl bg-[#080A10] border border-[#22283A] py-3.5 px-2 text-center">
+                  <div id="cdSecs" class="font-mono text-2xl sm:text-3xl font-bold text-[#E11D48] tabular-nums">--</div>
+                  <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-slate-400">Secs</div>
+                </div>
+              </div>
+
+              <!-- Indio PDT & Automatic User Local Timezone Readout -->
+              <div class="mt-4 pt-3.5 border-t border-[#22283A] space-y-1.5 text-xs font-mono">
+                <div class="flex items-center justify-between gap-2 text-slate-400">
+                  <span class="shrink-0">Indio, CA</span>
+                  <span id="indioTimeReadout" class="text-[#F8F5F0] text-right">Sun, Apr 11, 2027 &middot; 8:00 PM PDT</span>
+                </div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[#F5A623] shrink-0">Your Time</span>
+                  <span id="localTimeReadout" class="text-amber-200 text-right truncate">Detecting timezone...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. SECTION 1: BABYMONSTER'S STAGES (id="stages")
+    ==================================================================== -->
+    <section id="stages" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-b border-[#22283A] scroll-mt-16">
+      <!-- Header & Counter Badge -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F5A623] mb-2">
+            01 &bull; Essential Watchlist
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-4xl sm:text-5xl text-[#F8F5F0] tracking-tight">
+              BABYMONSTER's Stages
+            </h2>
+            <span id="stagesCountBadge" class="rounded-full px-3 py-1 bg-[#111521] border border-[#22283A] font-mono text-xs text-[#F5A623]">
+              10 Stages
+            </span>
+          </div>
+          <p class="mt-2.5 text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+            Tap any video to watch inline directly through YouTube (using zero hosting bandwidth), and jump straight to the official Music Video or Spotify track for every song performed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Lightweight Category Filter Pills -->
+      <div id="stageFilterPills" class="flex flex-wrap items-center gap-2 mb-9" role="group" aria-label="Filter stages by category">
+        <button type="button" data-filter="all" class="stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-semibold border transition-all bg-[#F8F5F0] text-[#080A10] border-[#F8F5F0]">
+          All
+        </button>
+        <button type="button" data-filter="award-festival" class="stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-medium border transition-all bg-[#111521] text-slate-300 border-[#22283A] hover:text-[#F8F5F0] hover:border-[#F5A623]/60">
+          Award &amp; Festival
+        </button>
+        <button type="button" data-filter="live-vocal" class="stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-medium border transition-all bg-[#111521] text-slate-300 border-[#22283A] hover:text-[#F8F5F0] hover:border-[#F5A623]/60">
+          Live Band &amp; Vocal
+        </button>
+        <button type="button" data-filter="performance" class="stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-medium border transition-all bg-[#111521] text-slate-300 border-[#22283A] hover:text-[#F8F5F0] hover:border-[#F5A623]/60">
+          Performance
+        </button>
+      </div>
+
+      <!-- 10 Curated Two-Column Stage Rows -->
+      <div id="stagesContainer" class="space-y-8 sm:space-y-10">
+        <!-- Rendered dynamically from STAGES array -->
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. SECTION 2: ABOUT THE GROUP (id="about-group")
+    ==================================================================== -->
+    <section id="about-group" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-b border-[#22283A] scroll-mt-16">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F5A623] mb-2">
+        02 &bull; Seven Voices, Zero Weak Links
+      </p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-[#F8F5F0] tracking-tight mb-6">
+        About The Group
+      </h2>
+
+      <!-- Group Intro Box (Matches Sketch: "BABYMONSTER is a seven-member...") -->
+      <div class="rounded-3xl bg-[#111521] border border-[#22283A] p-5 sm:p-7 mb-8 relative overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute -right-12 -top-12 w-48 h-48 rounded-full bg-[#F5A623]/10 blur-3xl"></div>
+        <p class="relative z-10 text-base sm:text-lg text-[#F8F5F0]/90 leading-relaxed">
+          <strong class="text-[#F5A623] font-semibold">BABYMONSTER is a seven-member</strong> global girl group formed by YG Entertainment, uniting standout talent from South Korea, Japan, and Thailand. Celebrated worldwide for their unfiltered hand-mic live vocals, explosive live-band concert energy, razor-sharp hip-hop rap relays, and stadium-scale stage command, they are set to make history on the desert stage at <strong class="text-[#F8F5F0]">Coachella 2027</strong> on April 11 &amp; 18.
+        </p>
+        <div class="relative z-10 mt-4 pt-4 border-t border-[#22283A] flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-slate-400">
+          <span><strong class="text-[#F8F5F0]">Label:</strong> YG Entertainment</span>
+          <span>&bull;</span>
+          <span><strong class="text-[#F8F5F0]">Lineup:</strong> Korea &middot; Japan &middot; Thailand</span>
+          <span>&bull;</span>
+          <span><strong class="text-[#F5A623]">Tip:</strong> Tap any portrait to enlarge</span>
+        </div>
+      </div>
+
+      <!-- Vertical List of All 7 Members (Rounded Square Photo Left + Name/Age/Bio Right) -->
+      <div id="membersContainer" class="space-y-4 sm:space-y-5">
+        <!-- Rendered dynamically from MEMBERS array -->
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. SECTION 3: THEIR GROUP'S ACCOUNTS (id="sns")
+    ==================================================================== -->
+    <section id="sns" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-b border-[#22283A] scroll-mt-16">
+      <div class="mb-8">
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#E11D48] mb-2">
+          03 &bull; Follow &amp; Stream
+        </p>
+        <h2 class="font-serif text-4xl sm:text-5xl text-[#F8F5F0] tracking-tight">
+          Their Group's Accounts
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-400">
+          All Official BABYMONSTER SNS &amp; Streaming Platforms
+        </p>
+      </div>
+
+      <!-- Responsive Grid of 8 Sleek Rounded Icon Cards -->
+      <div id="snsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+        <!-- Rendered dynamically from SNS_ACCOUNTS array -->
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. SECTION 4: CREATE YOUR BAECHELLA SET LIST (id="setlist")
+    ==================================================================== -->
+    <section id="setlist" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 scroll-mt-16">
+      <div class="mb-7">
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F5A623] mb-2">
+          04 &bull; Interactive Prediction Poster
+        </p>
+        <h2 class="font-serif text-4xl sm:text-5xl text-[#F8F5F0] tracking-tight">
+          Create Your Baechella Set List
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-400 max-w-2xl">
+          Choose a 10-song or 15-song Coachella setlist prediction, reorder your opener-to-encore sequence, and export a crisp desert-night PNG poster ready to share.
+        </p>
+
+        <!-- Segmented Pill Toggle Directly Under Title: "10 songs | 15 songs" -->
+        <div class="mt-5 inline-flex items-center rounded-full p-1 bg-[#111521] border border-[#22283A]" role="tablist" aria-label="Setlist length toggle">
+          <button
+            id="mode10Btn"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-[#F8F5F0] text-[#080A10] transition-all"
+          >
+            10 songs
+          </button>
+          <button
+            id="mode15Btn"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            class="px-5 py-2 rounded-full text-xs sm:text-sm font-medium text-slate-400 hover:text-[#F8F5F0] transition-all"
+          >
+            15 songs
+          </button>
+        </div>
+      </div>
+
+      <!-- Two-Part Interactive Builder (Stacked Mobile, Side-by-Side Desktop) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-8 items-start">
+
+        <!-- Left Part: Song Picker Panel -->
+        <div class="lg:col-span-6 space-y-5">
+          <div class="rounded-3xl bg-[#111521] border border-[#22283A] p-5 sm:p-6 space-y-5">
+            <!-- Top Actions: Search + Auto-Fill & Clear -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="relative flex-1">
+                <input
+                  id="songSearchInput"
+                  type="text"
+                  placeholder="Search BABYMONSTER songs..."
+                  class="w-full rounded-xl bg-[#080A10] border border-[#22283A] px-3.5 py-2.5 text-sm text-[#F8F5F0] placeholder-slate-500 focus:outline-none focus:border-[#F5A623] transition-colors"
+                />
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <button
+                  id="autoFillBtn"
+                  type="button"
+                  class="rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-[#F5A623]/15 border border-[#F5A623]/40 text-[#F5A623] hover:bg-[#F5A623]/25 transition-all"
+                >
+                  Auto-Fill
+                </button>
+                <button
+                  id="clearSetlistBtn"
+                  type="button"
+                  class="rounded-xl px-3.5 py-2.5 text-xs font-medium bg-[#080A10] border border-[#22283A] text-slate-300 hover:text-[#E11D48] hover:border-[#E11D48]/50 transition-all"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <!-- 20-Song Clickable Track Chips -->
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                  Tap Tracks to Add / Remove
+                </span>
+                <span id="pickerCountHint" class="font-mono text-xs text-[#F5A623] font-semibold">
+                  0 / 10 selected
+                </span>
+              </div>
+              <div id="songChipsContainer" class="flex flex-wrap gap-2">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Custom Track / Solo Cover Input -->
+            <div class="pt-4 border-t border-[#22283A]">
+              <label for="customSongInput" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-2">
+                + Add custom track / solo cover
+              </label>
+              <div class="flex gap-2">
+                <input
+                  id="customSongInput"
+                  type="text"
+                  maxlength="42"
+                  placeholder="e.g., Ahyeon Solo / Dangerously"
+                  class="flex-1 min-w-0 rounded-xl bg-[#080A10] border border-[#22283A] px-3.5 py-2.5 text-sm text-[#F8F5F0] placeholder-slate-500 focus:outline-none focus:border-[#F5A623] transition-colors"
+                />
+                <button
+                  id="addCustomSongBtn"
+                  type="button"
+                  class="shrink-0 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold bg-[#F8F5F0] text-[#080A10] hover:bg-[#F5A623] transition-colors"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+
+            <!-- Optional Curated By Handle Input -->
+            <div class="pt-4 border-t border-[#22283A]">
+              <label for="curatorHandleInput" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-2">
+                Curated by (Optional handle on poster)
+              </label>
+              <input
+                id="curatorHandleInput"
+                type="text"
+                maxlength="28"
+                placeholder="@monstiez"
+                class="w-full rounded-xl bg-[#080A10] border border-[#22283A] px-3.5 py-2.5 text-sm text-[#F8F5F0] placeholder-slate-500 focus:outline-none focus:border-[#F5A623] transition-colors"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Part: Live Poster Preview Box + Prominent DOWNLOAD Button -->
+        <div class="lg:col-span-6 lg:sticky lg:top-20">
+          <!-- Big Framed Poster Preview Box (Matches Sketch) -->
+          <div class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-[#131726] via-[#0B0E17] to-[#190D16] border border-[#22283A] shadow-2xl relative overflow-hidden">
+            <!-- Subtle Desert Glow Corners inside Poster -->
+            <div aria-hidden="true" class="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#F5A623]/15 blur-3xl"></div>
+            <div aria-hidden="true" class="pointer-events-none absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#E11D48]/15 blur-3xl"></div>
+
+            <!-- Inner Editorial Frame -->
+            <div class="relative z-10 rounded-2xl border border-[#22283A]/90 bg-[#080A10]/60 backdrop-blur-sm p-4 sm:p-6">
+              <!-- Poster Header -->
+              <div class="text-center pb-4 border-b border-[#22283A]">
+                <h3 class="font-serif text-3xl sm:text-4xl tracking-wide text-[#F8F5F0] leading-none">
+                  B<span class="italic text-[#F5A623]">AE</span>CHELLA SET LIST
+                </h3>
+                <p class="mt-1 font-serif italic text-lg text-[#F5A623]">
+                  (Prediction)
+                </p>
+                <p class="mt-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                  APRIL 11 &amp; 18, 2027 &bull; INDIO, CA
+                </p>
+                <div class="mt-3 inline-flex items-center gap-2 rounded-full px-3 py-1 bg-[#111521] border border-[#22283A] font-mono text-[11px] text-[#F5A623] font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#E11D48]"></span>
+                  <span id="posterCountBadge">0 / 10 SONGS</span>
+                </div>
+              </div>
+
+              <!-- Numbered Poster Slots (01 to 10 or 01 to 15) -->
+              <div id="posterSlotsList" class="mt-4 space-y-1.5">
+                <!-- Rendered dynamically -->
+              </div>
+
+              <!-- Poster Footer Line -->
+              <div class="mt-4 pt-3 border-t border-[#22283A] flex items-center justify-between gap-2 font-mono text-[10px] sm:text-[11px] text-slate-400">
+                <span id="posterCuratorFooter" class="text-amber-200/90 truncate">CURATED BY MONSTIEZ</span>
+                <span class="shrink-0 text-slate-500">#BAECHELLA2027</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Directly Underneath Poster: Prominent DOWNLOAD Button + Secondary Copy Text -->
+          <div class="mt-4 flex flex-col sm:flex-row gap-3">
+            <button
+              id="downloadPosterBtn"
+              type="button"
+              class="flex-1 inline-flex items-center justify-center gap-2.5 rounded-2xl px-6 py-4 text-sm sm:text-base font-bold tracking-[0.12em] uppercase bg-gradient-to-r from-[#F5A623] to-[#E11D48] text-[#080A10] hover:brightness-110 active:scale-[0.99] transition-all shadow-[0_12px_30px_-10px_rgba(245,166,35,0.45)]"
+            >
+              <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span>DOWNLOAD</span>
+            </button>
+
+            <button
+              id="copySetlistTextBtn"
+              type="button"
+              class="sm:w-44 inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm font-semibold bg-[#111521] border border-[#22283A] text-[#F8F5F0] hover:border-[#F5A623]/70 hover:bg-[#111521]/80 transition-all"
+            >
+              <svg class="w-4 h-4 shrink-0 text-[#F5A623]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+              </svg>
+              <span>Copy Text</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER (Attribution & Back to Top)
+  ====================================================================== -->
+  <footer class="border-t border-[#22283A] bg-[#06080D]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="space-y-2 max-w-2xl">
+        <p class="font-serif text-2xl text-[#F8F5F0]">
+          B<span class="italic text-[#F5A623]">AE</span>CHELLA <span class="italic text-slate-300">2027</span>
+        </p>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Fan-made Coachella 2027 discovery &amp; promotion microsite for BABYMONSTER. Not affiliated with YG Entertainment or Coachella/Goldenvoice. Videos stream directly via YouTube.
+        </p>
+        <p class="font-mono text-[11px] text-slate-500 leading-relaxed">
+          Photo Credits: Ruka, Pharita, Asa, Ahyeon &amp; Rora by <span class="text-slate-300">Asalover2004</span>; Chiquita by <span class="text-slate-300">Ultron90 / Farouk Azim</span> via Wikimedia Commons (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#F5A623]">CC BY-SA 4.0</a>). Rami teaser still courtesy of <span class="text-slate-300">YG Entertainment / YouTube</span>.
+        </p>
+      </div>
+
+      <a
+        href="#top"
+        class="shrink-0 inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium bg-[#111521] border border-[#22283A] text-[#F5A623] hover:border-[#F5A623] hover:bg-[#F5A623]/10 transition-all"
+      >
+        <span>Back to Top</span>
+        <span aria-hidden="true">&uarr;</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       FULLSCREEN MEMBER PHOTO LIGHTBOX MODAL
+  ====================================================================== -->
+  <div
+    id="memberLightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightboxTitle"
+  >
+    <div class="relative w-full max-w-md rounded-3xl bg-[#111521] border border-[#22283A] overflow-hidden shadow-2xl">
+      <button
+        id="closeLightboxBtn"
+        type="button"
+        aria-label="Close photo preview"
+        class="absolute top-3.5 right-3.5 z-10 w-10 h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 text-[#F8F5F0] hover:bg-[#F5A623] hover:text-[#080A10] flex items-center justify-center transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div id="lightboxPhotoSlot" class="w-full aspect-[4/5] max-h-[60vh] bg-[#080A10] overflow-hidden flex items-center justify-center">
+        <!-- Populated on member click -->
+      </div>
+
+      <div class="p-5 sm:p-6 border-t border-[#22283A]">
+        <h3 id="lightboxTitle" class="font-serif text-3xl text-[#F8F5F0] leading-tight">Member</h3>
+        <div id="lightboxPills" class="mt-2 flex flex-wrap gap-1.5"></div>
+        <p id="lightboxBio" class="mt-3 text-sm text-slate-300 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       TOAST NOTIFICATION CONTAINER (No alert() or confirm() used)
+  ====================================================================== -->
+  <div
+    id="toastHost"
+    class="fixed bottom-5 right-5 z-50 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-sm"
+    aria-live="polite"
+  ></div>
+
+  <!-- =====================================================================
+       EDITABLE DATA CONFIG & APPLICATION LOGIC
+  ====================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* =================================================================
+         1. EVENT DATES CONFIG (Edit times once official set times drop)
+      ================================================================== */
+      const EVENT_CONFIG = {
+        wk1: {
+          iso: '2027-04-11T20:00:00-07:00', // April 11, 2027, 8:00 PM PDT
+          indioLabel: 'Sun, Apr 11, 2027 · 8:00 PM PDT',
+        },
+        wk2: {
+          iso: '2027-04-18T20:00:00-07:00', // April 18, 2027, 8:00 PM PDT
+          indioLabel: 'Sun, Apr 18, 2027 · 8:00 PM PDT',
+        },
+      };
+
+      /* =================================================================
+         2. STAGES CONFIG (10 Curated BABYMONSTER Stages)
+            HOW TO EDIT:
+            - Paste any 11-character YouTube ID OR full YouTube URL into
+              `youtubeId` (e.g., "Zp-Jhuhq0bQ" or "https://youtu.be/...")
+              to immediately activate the inline YouTube player!
+            - Leave `youtubeId: ""` to show a styled desert-stage poster
+              that opens `youtubeFallbackUrl` in a new tab.
+      ================================================================== */
+      const STAGES = [
+        {
+          id: 'stage-mama-2026',
+          categories: ['award-festival', 'live-vocal'],
+          badge: 'AWARD STAGE',
+          title: "MAMA 2026 Stage ('A MUSIC INTERSTELLAR')",
+          // PASTE YOUR EXACT MAMA 2026 YOUTUBE ID BELOW TO ENABLE INLINE PLAYBACK:
+          youtubeId: '',
+          youtubeFallbackUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+MAMA+2026+stage',
+          description: 'Show-stopping 2026 MAMA Awards production blending spine-tingling live belts on DESERVE with explosive choreography and festival bass drops on CHOOM (MAMA Ver.).',
+          songs: [
+            {
+              title: 'DESERVE',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+DESERVE+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20DESERVE',
+            },
+            {
+              title: 'CHOOM (MAMA Ver.)',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+CHOOM+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20CHOOM',
+            },
+          ],
+        },
+        {
+          id: 'stage-sheesh',
+          categories: ['live-vocal', 'performance'],
+          badge: 'LIVE ANTHEM',
+          title: "'SHEESH' Official MV & Band Stage Showcase",
+          youtubeId: '2wA_b6YHjqQ',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=2wA_b6YHjqQ',
+          description: 'Gothic piano opens into thunderous hip-hop drums and fearless live vocal belts—the signature hand-mic anthem that electrified audiences worldwide.',
+          songs: [
+            {
+              title: 'SHEESH',
+              mvUrl: 'https://www.youtube.com/watch?v=2wA_b6YHjqQ',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20SHEESH',
+            },
+          ],
+        },
+        {
+          id: 'stage-drip',
+          categories: ['award-festival', 'performance'],
+          badge: 'FESTIVAL BANGER',
+          title: "'DRIP' Official Performance & Festival Anthem",
+          youtubeId: 'Zp-Jhuhq0bQ',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=Zp-Jhuhq0bQ',
+          description: 'Built for open-air Coachella speakers—relentless basslines, high-octane choreography, and an iconic triple high-note climax that ignites every crowd.',
+          songs: [
+            {
+              title: 'DRIP',
+              mvUrl: 'https://www.youtube.com/watch?v=Zp-Jhuhq0bQ',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20DRIP',
+            },
+          ],
+        },
+        {
+          id: 'stage-we-go-up',
+          categories: ['award-festival', 'live-vocal'],
+          badge: 'LIVE STAGE ERA',
+          title: "'WE GO UP' Live Stage Era",
+          // PASTE YOUR EXACT 'WE GO UP' YOUTUBE ID BELOW TO ENABLE INLINE PLAYBACK:
+          youtubeId: '',
+          youtubeFallbackUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+WE+GO+UP+live+stage',
+          description: 'Explosive horn hits, rapid-fire rap relays, and nonstop crowd-jumping momentum previewing how BABYMONSTER commands a main festival stage.',
+          songs: [
+            {
+              title: 'WE GO UP',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+WE+GO+UP+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20WE%20GO%20UP',
+            },
+            {
+              title: 'HOT SAUCE',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+HOT+SAUCE+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20HOT%20SAUCE',
+            },
+          ],
+        },
+        {
+          id: 'stage-clik-clak',
+          categories: ['performance'],
+          badge: 'HIP-HOP CYPHER',
+          title: "'CLIK CLAK' Hip-Hop Stage",
+          youtubeId: 'o0oW3lPoOXM',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=o0oW3lPoOXM',
+          description: 'All seven members take the mic for minimalist 808 rap verses, showcasing pure YG hip-hop swagger and razor-sharp rhythmic precision.',
+          songs: [
+            {
+              title: 'CLIK CLAK',
+              mvUrl: 'https://www.youtube.com/watch?v=o0oW3lPoOXM',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20CLIK%20CLAK',
+            },
+          ],
+        },
+        {
+          id: 'stage-forever',
+          categories: ['performance', 'live-vocal'],
+          badge: 'SUNSET POP',
+          title: "'FOREVER' Summer Pop Stage",
+          youtubeId: 'eJCHKjt0MPw',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=eJCHKjt0MPw',
+          description: 'Euphoric golden-hour synths, soaring choruses, and a fiery rap breakdown made for desert palm trees at sunset.',
+          songs: [
+            {
+              title: 'FOREVER',
+              mvUrl: 'https://www.youtube.com/watch?v=eJCHKjt0MPw',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20FOREVER',
+            },
+          ],
+        },
+        {
+          id: 'stage-batter-up',
+          categories: ['performance', 'award-festival'],
+          badge: 'DEBUT ANTHEM',
+          title: "'BATTER UP' Debut Stage Anthem",
+          youtubeId: 'olDWm2veCrM',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=olDWm2veCrM',
+          description: 'Stadium-shaking siren drops, heavy drums, and a massive crowd chant outro engineered to rattle the Empire Polo Club.',
+          songs: [
+            {
+              title: 'BATTER UP',
+              mvUrl: 'https://www.youtube.com/watch?v=olDWm2veCrM',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20BATTER%20UP',
+            },
+          ],
+        },
+        {
+          id: 'stage-sitm',
+          categories: ['live-vocal'],
+          badge: 'VOCAL SHOWCASE',
+          title: "'Stuck In The Middle' Vocal Showcase",
+          youtubeId: 'GsV1i0QHi-o',
+          youtubeFallbackUrl: 'https://www.youtube.com/watch?v=GsV1i0QHi-o',
+          description: 'Stripped-back emotional ballad highlighting crystalline vocal colors, lush seven-part harmonies, and breathtaking live control.',
+          songs: [
+            {
+              title: 'Stuck In The Middle',
+              mvUrl: 'https://www.youtube.com/watch?v=GsV1i0QHi-o',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20Stuck%20In%20The%20Middle',
+            },
+          ],
+        },
+        {
+          id: 'stage-world-tour',
+          categories: ['award-festival', 'live-vocal'],
+          badge: 'WORLD TOUR',
+          title: 'HELLO MONSTERS & CHOOM World Tour Highlights',
+          // PASTE YOUR EXACT CONCERT STAGE YOUTUBE ID BELOW TO ENABLE INLINE PLAYBACK:
+          youtubeId: '',
+          youtubeFallbackUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+live+concert+stage',
+          description: 'Backed by a roaring live band across packed global arenas, proving BABYMONSTER thrives on raw concert energy and unstoppable crowd interaction.',
+          songs: [
+            {
+              title: 'SUGAR HONEY ICE TEA',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+SUGAR+HONEY+ICE+TEA+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20SUGAR%20HONEY%20ICE%20TEA',
+            },
+            {
+              title: 'I LIKE IT',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+I+LIKE+IT+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20I%20LIKE%20IT',
+            },
+          ],
+        },
+        {
+          id: 'stage-encore-medley',
+          categories: ['live-vocal'],
+          badge: 'ENCORE MEDLEY',
+          title: 'Vocal & Fan Anthem Encore Medley',
+          // PASTE YOUR EXACT ENCORE MEDLEY YOUTUBE ID BELOW TO ENABLE INLINE PLAYBACK:
+          youtubeId: '',
+          youtubeFallbackUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+DREAM+LOVE+MAYBE+live',
+          description: 'Heartfelt acoustic sing-alongs and soaring emotional climaxes uniting all seven voices with fans under the festival night sky.',
+          songs: [
+            {
+              title: 'LOVE, MAYBE',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+LOVE+MAYBE+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20LOVE%20MAYBE',
+            },
+            {
+              title: 'DREAM',
+              mvUrl: 'https://www.youtube.com/results?search_query=BABYMONSTER+DREAM+MV',
+              spotifyUrl: 'https://open.spotify.com/search/BABYMONSTER%20DREAM',
+            },
+          ],
+        },
+      ];
+
+      /* =================================================================
+         3. MEMBERS CONFIG (All 7 Members + Verified Image URLs)
+      ================================================================== */
+      const MEMBERS = [
+        {
+          name: 'Ruka',
+          age: 24,
+          country: 'Japan',
+          roles: 'Main Dancer, Main Rapper',
+          initials: 'RK',
+          gradient: 'from-[#F5A623]/40 via-orange-600/25 to-[#E11D48]/40',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Orchard_Ignition_Event_X_Babymonster_-_Ruka_30082026.jpg?width=600',
+          bio: 'Commanding hip-hop main dancer and low-tone main rapper radiating effortless old-school swag. Her crisp groove and stage presence anchor BABYMONSTER’s heaviest festival drops.',
+        },
+        {
+          name: 'Pharita',
+          age: 21,
+          country: 'Thailand',
+          roles: 'Vocalist',
+          initials: 'PH',
+          gradient: 'from-rose-500/40 via-[#F5A623]/25 to-[#E11D48]/35',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Orchard_Ignition_Event_X_Babymonster_-_Pharita_30082026.jpg?width=600',
+          bio: 'Crystalline, airy vocalist celebrated for poised live control and fluent English crowd connection. Her luminous upper register glides over open-air desert mixes at sunset.',
+        },
+        {
+          name: 'Asa',
+          age: 20,
+          country: 'Japan',
+          roles: 'Main Rapper, Producer',
+          initials: 'AS',
+          gradient: 'from-[#F5A623]/40 via-[#E11D48]/25 to-purple-700/40',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Orchard_Ignition_Event_X_Babymonster_-_Asa_30082026.jpg?width=600',
+          bio: 'Lightning-fast main rapper and creative producer who flips entire arenas into overdrive with double-time precision, fierce rhythmic bounce, and unforgettable live ad-libs.',
+        },
+        {
+          name: 'Ahyeon',
+          age: 19,
+          country: 'South Korea',
+          roles: 'All-Rounder, Center, Vocalist, Rapper',
+          initials: 'AH',
+          gradient: 'from-[#E11D48]/45 via-rose-500/25 to-[#F5A623]/40',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Orchard_Ignition_Event_X_Babymonster_-_Ahyeon_30082026.jpg?width=600',
+          bio: 'Explosive center and fearless all-rounder famed for viral triple high notes, fiery rap switches, and electric main-stage charisma—turning Coachella Weekend 1 into an iconic birthday stage.',
+        },
+        {
+          name: 'Rami',
+          age: 19,
+          country: 'South Korea',
+          roles: 'Main Vocalist',
+          initials: 'RM',
+          gradient: 'from-indigo-500/40 via-[#F5A623]/25 to-[#E11D48]/35',
+          photoUrl: 'https://i.ytimg.com/vi/axHx51mBwbc/maxresdefault.jpg',
+          bio: 'Soulful main vocalist with deep resonance, jazz-inflected vocal runs, and powerhouse acoustic command that brings goosebump-inducing emotion to ballads and anthems alike.',
+        },
+        {
+          name: 'Rora',
+          age: 18,
+          country: 'South Korea',
+          roles: 'Lead Vocalist',
+          initials: 'RR',
+          gradient: 'from-violet-500/40 via-fuchsia-600/25 to-[#F5A623]/35',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Orchard_Ignition_Event_X_Babymonster_-_Rora_30082026.jpg?width=600',
+          bio: 'Rich, velvety lead vocalist whose expressive phrasing grounds the group’s seven-part harmonies and elevates dramatic showstoppers like DESERVE under the desert stars.',
+        },
+        {
+          name: 'Chiquita',
+          age: 17,
+          country: 'Thailand',
+          roles: 'Maknae, Vocalist, Dancer',
+          initials: 'CQ',
+          gradient: 'from-amber-300/40 via-[#E11D48]/25 to-orange-600/40',
+          photoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chiquita_at_KLIA_20-06-2025.jpg?width=600',
+          bio: 'Magnetic maknae radiating bold attitude, groovy live tone, and natural stadium star power. Built for giant festival screens and hands-in-the-air sing-alongs.',
+        },
+      ];
+
+      /* =================================================================
+         4. OFFICIAL SNS & STREAMING ACCOUNTS CONFIG
+      ================================================================== */
+      const SNS_ACCOUNTS = [
+        {
+          name: 'X (Twitter)',
+          handle: '@YGBABYMONSTER_',
+          url: 'https://x.com/YGBABYMONSTER_',
+          accentHover: 'hover:border-white/50',
+          iconColor: 'text-[#F8F5F0]',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+        },
+        {
+          name: 'YouTube',
+          handle: '@BABYMONSTER',
+          url: 'https://www.youtube.com/@BABYMONSTER',
+          accentHover: 'hover:border-[#E11D48]/70',
+          iconColor: 'text-[#FF0000]',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+        },
+        {
+          name: 'Instagram',
+          handle: '@babymonster_ygofficial',
+          url: 'https://www.instagram.com/babymonster_ygofficial',
+          accentHover: 'hover:border-pink-500/70',
+          iconColor: 'text-pink-400',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>',
+        },
+        {
+          name: 'TikTok',
+          handle: '@babymonster_yg_tiktok',
+          url: 'https://www.tiktok.com/@babymonster_yg_tiktok',
+          accentHover: 'hover:border-cyan-400/70',
+          iconColor: 'text-cyan-300',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>',
+        },
+        {
+          name: 'Spotify',
+          handle: 'BABYMONSTER',
+          url: 'https://open.spotify.com/artist/1SIocsqdEefUTE6XKGUiVS',
+          accentHover: 'hover:border-[#1DB954]/80',
+          iconColor: 'text-[#1DB954]',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.508 17.302a.75.75 0 0 1-1.032.248c-2.825-1.726-6.382-2.116-10.57-1.16a.75.75 0 1 1-.334-1.462c4.582-1.047 8.514-.596 11.688 1.342a.75.75 0 0 1 .248 1.032zm1.47-3.27a.937.937 0 0 1-1.289.31c-3.234-1.988-8.165-2.564-11.99-1.403a.938.938 0 0 1-.545-1.795c4.369-1.326 9.802-.683 13.514 1.599a.937.937 0 0 1 .31 1.289zm.126-3.405C15.226 8.324 8.826 8.112 5.125 9.236a1.125 1.125 0 1 1-.654-2.153c4.248-1.29 11.314-1.04 15.778 1.61a1.125 1.125 0 0 1-1.145 1.934z"/></svg>',
+        },
+        {
+          name: 'Apple Music',
+          handle: 'BABYMONSTER',
+          url: 'https://music.apple.com/search?term=BABYMONSTER',
+          accentHover: 'hover:border-rose-400/70',
+          iconColor: 'text-rose-400',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.401-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 0 0 1.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 0 1 1.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 0 0 .02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 0 0-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066l-5.736 1.158c-.11.022-.215.058-.308.117-.117.074-.176.182-.177.32-.003.11-.002.222-.002.334v7.934c0 .435-.05.862-.245 1.258-.296.602-.78.972-1.425 1.148-.342.094-.692.148-1.046.164-.96.043-1.787-.61-1.947-1.563a1.885 1.885 0 0 1 1.064-2.008c.322-.155.668-.243 1.014-.316.365-.077.732-.147 1.096-.228.31-.07.503-.252.536-.573.012-.116.017-.233.017-.35V7.96c0-.327.064-.638.282-.898.174-.208.404-.327.665-.382l7.018-1.416c.225-.046.453-.092.683-.116.433-.046.783.17.89.588.03.118.042.242.043.364.002 1.337.001 2.676.001 4.014z"/></svg>',
+        },
+        {
+          name: 'Weverse',
+          handle: 'BABYMONSTER',
+          url: 'https://weverse.io/babymonster',
+          accentHover: 'hover:border-emerald-400/70',
+          iconColor: 'text-emerald-300',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 6.5 7.2 17.5 12 8.8l4.8 8.7 3.7-11" /></svg>',
+        },
+        {
+          name: 'Facebook',
+          handle: 'BABYMONSTER',
+          url: 'https://www.facebook.com/BABYMONSTER.ygofficial',
+          accentHover: 'hover:border-blue-500/70',
+          iconColor: 'text-blue-400',
+          svg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+        },
+      ];
+
+      /* =================================================================
+         5. SETLIST BUILDER CATALOG (20 BABYMONSTER Songs)
+      ================================================================== */
+      const SETLIST_CATALOG = [
+        'DRIP',
+        'SHEESH',
+        'WE GO UP',
+        'CHOOM',
+        'DESERVE',
+        'HOT SAUCE',
+        'SUGAR HONEY ICE TEA',
+        'I LIKE IT',
+        'BATTER UP',
+        'FOREVER',
+        'CLIK CLAK',
+        'LIKE THAT',
+        'LOVE, MAYBE',
+        'Stuck In The Middle',
+        'DREAM',
+        'REALLY LIKE YOU',
+        'BILLIONAIRE',
+        'LOVE IN MY HEART',
+        'Woke Up In Tokyo',
+        'BATTER UP (Remix)',
+      ];
+
+      const DEFAULT_AUTOFILL = [
+        'SHEESH',
+        'WE GO UP',
+        'DRIP',
+        'CLIK CLAK',
+        'HOT SAUCE',
+        'DESERVE',
+        'SUGAR HONEY ICE TEA',
+        'FOREVER',
+        'CHOOM',
+        'BATTER UP',
+        'LIKE THAT',
+        'BILLIONAIRE',
+        'LOVE, MAYBE',
+        'LOVE IN MY HEART',
+        'DREAM',
+      ];
+
+      /* =================================================================
+         APPLICATION STATE
+      ================================================================== */
+      const state = {
+        countdownWk: 'wk1',
+        stageFilter: 'all',
+        activeStagePlayerId: null,
+        setlistMax: 10, // 10 or 15
+        setlistTracks: DEFAULT_AUTOFILL.slice(0, 6), // Start with 6 curated tracks so poster looks inviting immediately
+        songSearchQuery: '',
+        curatorHandle: '',
+      };
+
+      /* =================================================================
+         SHARED UTILITIES
+      ================================================================== */
+      function showToast(message, isError = false) {
+        const host = document.getElementById('toastHost');
+        if (!host) return;
+        const el = document.createElement('div');
+        el.className = `pointer-events-auto rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium bg-[#111521]/95 backdrop-blur-md border shadow-2xl transition-all duration-300 translate-y-2 opacity-0 ${
+          isError ? 'border-[#E11D48]/60 text-rose-100' : 'border-[#F5A623]/60 text-[#F8F5F0]'
+        }`;
+        el.textContent = message;
+        host.appendChild(el);
+
+        requestAnimationFrame(() => {
+          el.classList.remove('translate-y-2', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          el.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(() => {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }, 300);
+        }, 2800);
+      }
+
+      // Extract clean 11-character YouTube ID from either raw ID or full URL
+      function extractYouTubeId(input) {
+        if (!input || typeof input !== 'string') return '';
+        const s = input.trim();
+        if (!s) return '';
+        if (/^[a-zA-Z0-9_-]{11}$/.test(s)) return s;
+        const m = s.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        return m ? m[1] : '';
+      }
+
+      // Clipboard helper using execCommand for iframe compatibility
+      function copyTextReliable(text) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          return ok;
+        } catch (err) {
+          return false;
+        }
+      }
+
+      // Safe rounded rectangle Canvas path helper for broad browser support
+      function drawRoundedRect(ctx, x, y, w, h, r) {
+        const radius = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.arcTo(x + w, y, x + w, y + h, radius);
+        ctx.arcTo(x + w, y + h, x, y + h, radius);
+        ctx.arcTo(x, y + h, x, y, radius);
+        ctx.arcTo(x, y, x + w, y, radius);
+        ctx.closePath();
+      }
+
+      /* =================================================================
+         HERO AMBIENT STARFIELD CANVAS (RESPONSIVE)
+      ================================================================== */
+      function initHeroStarfield() {
+        const canvas = document.getElementById('heroStarfield');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        function renderStars() {
+          const parent = canvas.parentElement;
+          if (!parent) return;
+          const rect = parent.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.clearRect(0, 0, rect.width, rect.height);
+
+          const count = Math.min(100, Math.max(40, Math.floor((rect.width * rect.height) / 9000)));
+          for (let i = 0; i < count; i++) {
+            const x = Math.random() * rect.width;
+            const y = Math.random() * rect.height;
+            const r = Math.random() * 1.45 + 0.35;
+            const alpha = Math.random() * 0.65 + 0.18;
+            const tint = Math.random() < 0.25 ? '245, 166, 35' : (Math.random() < 0.15 ? '225, 29, 72' : '248, 245, 240');
+
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${tint}, ${alpha})`;
+            ctx.fill();
+
+            if (r > 1.35) {
+              ctx.beginPath();
+              ctx.arc(x, y, r * 3.2, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${tint}, ${alpha * 0.14})`;
+              ctx.fill();
+            }
+          }
+        }
+
+        renderStars();
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(renderStars, 150);
+        });
+      }
+
+      /* =================================================================
+         HERO DUAL-WEEKEND LIVE COUNTDOWN + LOCAL TIMEZONE CONVERTER
+      ================================================================== */
+      function updateCountdownClock() {
+        try {
+          const cfg = EVENT_CONFIG[state.countdownWk];
+          const targetMs = new Date(cfg.iso).getTime();
+          const diff = Math.max(0, targetMs - Date.now());
+
+          const days = Math.floor(diff / 86400000);
+          const hours = Math.floor((diff / 3600000) % 24);
+          const mins = Math.floor((diff / 60000) % 60);
+          const secs = Math.floor((diff / 1000) % 60);
+
+          document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
+          document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+          document.getElementById('cdMins').textContent = String(mins).padStart(2, '0');
+          document.getElementById('cdSecs').textContent = String(secs).padStart(2, '0');
+        } catch (err) {
+          document.getElementById('cdDays').textContent = '--';
+        }
+      }
+
+      function updateCountdownLabels() {
+        const cfg = EVENT_CONFIG[state.countdownWk];
+        document.getElementById('indioTimeReadout').textContent = cfg.indioLabel;
+
+        try {
+          const d = new Date(cfg.iso);
+          const fmt = new Intl.DateTimeFormat(undefined, {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            timeZoneName: 'short',
+          });
+          document.getElementById('localTimeReadout').textContent = fmt.format(d);
+        } catch (err) {
+          document.getElementById('localTimeReadout').textContent = cfg.indioLabel;
+        }
+      }
+
+      function initCountdown() {
+        const wk1Btn = document.getElementById('wk1ToggleBtn');
+        const wk2Btn = document.getElementById('wk2ToggleBtn');
+
+        function setWeekend(wk) {
+          state.countdownWk = wk;
+          const isWk1 = wk === 'wk1';
+          wk1Btn.setAttribute('aria-selected', String(isWk1));
+          wk2Btn.setAttribute('aria-selected', String(!isWk1));
+          wk1Btn.className = isWk1
+            ? 'px-3 py-1.5 rounded-full text-xs font-semibold bg-[#F8F5F0] text-[#080A10] transition-all'
+            : 'px-3 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-[#F8F5F0] transition-all';
+          wk2Btn.className = !isWk1
+            ? 'px-3 py-1.5 rounded-full text-xs font-semibold bg-[#F8F5F0] text-[#080A10] transition-all'
+            : 'px-3 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-[#F8F5F0] transition-all';
+          updateCountdownLabels();
+          updateCountdownClock();
+        }
+
+        wk1Btn.addEventListener('click', () => setWeekend('wk1'));
+        wk2Btn.addEventListener('click', () => setWeekend('wk2'));
+
+        updateCountdownLabels();
+        updateCountdownClock();
+        setInterval(updateCountdownClock, 1000);
+      }
+
+      /* =================================================================
+         SECTION 1: BABYMONSTER'S STAGES (YOUTUBE FACADE + SONGS IN VIDEO)
+      ================================================================== */
+      const PLAY_ICON_SVG = '<svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>';
+      const SPOTIFY_ICON_SVG = '<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.508 17.302a.75.75 0 0 1-1.032.248c-2.825-1.726-6.382-2.116-10.57-1.16a.75.75 0 1 1-.334-1.462c4.582-1.047 8.514-.596 11.688 1.342a.75.75 0 0 1 .248 1.032zm1.47-3.27a.937.937 0 0 1-1.289.31c-3.234-1.988-8.165-2.564-11.99-1.403a.938.938 0 0 1-.545-1.795c4.369-1.326 9.802-.683 13.514 1.599a.937.937 0 0 1 .31 1.289zm.126-3.405C15.226 8.324 8.826 8.112 5.125 9.236a1.125 1.125 0 1 1-.654-2.153c4.248-1.29 11.314-1.04 15.778 1.61a1.125 1.125 0 0 1-1.145 1.934z"/></svg>';
+
+      function renderStageVideoFacade(slotEl, stage, indexNumber) {
+        const ytId = extractYouTubeId(stage.youtubeId);
+
+        if (ytId) {
+          // Verified YouTube ID -> Fast Thumbnail Facade that swaps to inline iframe on click
+          slotEl.innerHTML = `
+            <button
+              type="button"
+              aria-label="Play ${stage.title} inline via YouTube"
+              class="group relative w-full h-full block text-left focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#F5A623]"
+            >
+              <img
+                src="https://i.ytimg.com/vi/${ytId}/hqdefault.jpg"
+                alt="${stage.title} thumbnail"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/640x360/111521/F5A623?text=BABYMONSTER+STAGE';"
+                class="w-full h-full object-cover scale-[1.01] transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#080A10]/85 via-black/25 to-black/20"></div>
+
+              <!-- Top-Left Index & Category Badge -->
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-sm border border-white/15 font-mono text-[11px] font-semibold text-[#F5A623]">
+                  #${indexNumber}
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-[#F5A623] text-[#080A10] font-mono text-[10px] uppercase tracking-wider font-bold shadow">
+                  ${stage.badge}
+                </span>
+              </div>
+
+              <!-- Crisp Centered Play Button -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-md border border-white/35 text-[#F8F5F0] flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#F5A623] group-hover:text-[#080A10] group-hover:border-[#F5A623]">
+                  <svg class="w-7 h-7 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5.14v14l11-7-11-7z" />
+                  </svg>
+                </span>
+              </div>
+
+              <!-- Bottom-Right Inline Indicator -->
+              <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-sm border border-white/15 font-mono text-[10px] text-slate-200">
+                Tap to watch inline
+              </span>
+            </button>
+          `;
+
+          const btn = slotEl.querySelector('button');
+          if (btn) {
+            btn.addEventListener('click', () => playStageInline(stage, indexNumber));
+          }
+        } else {
+          // Newer 2025/2026 Stage Poster Card -> Opens YouTube directly in new tab
+          const songPills = stage.songs
+            .map(s => `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/[0.07] border border-white/15 text-amber-200">${s.title}</span>`)
+            .join('');
+
+          slotEl.innerHTML = `
+            <a
+              href="${stage.youtubeFallbackUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch ${stage.title} on YouTube"
+              class="group relative w-full h-full bg-gradient-to-br from-[#1A1324] via-[#0E121E] to-[#1D0E16] p-5 sm:p-6 flex flex-col justify-between overflow-hidden focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#F5A623]"
+            >
+              <div aria-hidden="true" class="pointer-events-none absolute -top-12 -right-12 w-44 h-44 rounded-full bg-[#F5A623]/20 blur-3xl"></div>
+              <div aria-hidden="true" class="pointer-events-none absolute -bottom-12 -left-10 w-44 h-44 rounded-full bg-[#E11D48]/20 blur-3xl"></div>
+
+              <!-- Top Badges -->
+              <div class="relative z-10 flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-full bg-black/55 border border-white/15 font-mono text-[11px] font-semibold text-[#F5A623]">
+                    #${indexNumber}
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full bg-gradient-to-r from-[#F5A623] to-[#E11D48] text-[#080A10] font-mono text-[10px] uppercase tracking-wider font-bold">
+                    ${stage.badge}
+                  </span>
+                </div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
+                  YOUTUBE STAGE
+                </span>
+              </div>
+
+              <!-- Center Play Emblem + Stage Title -->
+              <div class="relative z-10 my-auto flex items-center gap-4 py-2">
+                <span class="w-14 h-14 shrink-0 rounded-full bg-black/55 border border-white/30 text-[#F8F5F0] flex items-center justify-center shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E11D48] group-hover:border-[#E11D48]">
+                  <svg class="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5.14v14l11-7-11-7z" />
+                  </svg>
+                </span>
+                <div class="min-w-0">
+                  <p class="font-serif italic text-xl sm:text-2xl text-[#F8F5F0] leading-tight line-clamp-2 group-hover:text-[#F5A623] transition-colors">
+                    ${stage.title}
+                  </p>
+                  <div class="mt-2 flex flex-wrap gap-1.5">
+                    ${songPills}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Action Hint -->
+              <div class="relative z-10 flex items-center justify-between gap-2">
+                <span class="font-mono text-[10px] text-slate-400">
+                  Official YouTube Performance
+                </span>
+                <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 bg-[#F8F5F0] text-[#080A10] font-mono text-[10px] font-bold group-hover:bg-[#F5A623] transition-colors">
+                  Watch on YouTube &#8599;
+                </span>
+              </div>
+            </a>
+          `;
+        }
+      }
+
+      function playStageInline(stage, indexNumber) {
+        try {
+          // Reset any previously playing stage back to its facade thumbnail
+          if (state.activeStagePlayerId && state.activeStagePlayerId !== stage.id) {
+            const prevStage = STAGES.find(s => s.id === state.activeStagePlayerId);
+            const prevSlot = document.getElementById(`player-slot-${state.activeStagePlayerId}`);
+            if (prevStage && prevSlot) {
+              const prevNum = String(STAGES.indexOf(prevStage) + 1).padStart(2, '0');
+              renderStageVideoFacade(prevSlot, prevStage, prevNum);
+            }
+          }
+
+          const ytId = extractYouTubeId(stage.youtubeId);
+          const slotEl = document.getElementById(`player-slot-${stage.id}`);
+          if (!ytId || !slotEl) return;
+
+          slotEl.innerHTML = `
+            <iframe
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0"
+              title="${stage.title}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          `;
+
+          state.activeStagePlayerId = stage.id;
+        } catch (err) {
+          window.open(stage.youtubeFallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+      }
+
+      function renderStages() {
+        const container = document.getElementById('stagesContainer');
+        const badge = document.getElementById('stagesCountBadge');
+        if (!container) return;
+
+        state.activeStagePlayerId = null;
+
+        const filtered = state.stageFilter === 'all'
+          ? STAGES
+          : STAGES.filter(s => s.categories.includes(state.stageFilter));
+
+        if (badge) {
+          badge.textContent = `${filtered.length} ${filtered.length === 1 ? 'Stage' : 'Stages'}`;
+        }
+
+        container.innerHTML = '';
+
+        filtered.forEach(stage => {
+          const globalIdx = String(STAGES.indexOf(stage) + 1).padStart(2, '0');
+          const ytId = extractYouTubeId(stage.youtubeId);
+          const openUrl = ytId ? `https://www.youtube.com/watch?v=${ytId}` : stage.youtubeFallbackUrl;
+
+          const row = document.createElement('article');
+          row.className = 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch';
+
+          // LEFT COLUMN (~58% = 7/12): Watchable Video + Stage Title + Description
+          const leftCard = document.createElement('div');
+          leftCard.className = 'lg:col-span-7 rounded-3xl bg-[#111521] border border-[#22283A] overflow-hidden flex flex-col justify-between shadow-xl';
+
+          const videoSlot = document.createElement('div');
+          videoSlot.id = `player-slot-${stage.id}`;
+          videoSlot.className = 'relative w-full aspect-video bg-black overflow-hidden';
+          renderStageVideoFacade(videoSlot, stage, globalIdx);
+
+          const descBox = document.createElement('div');
+          descBox.className = 'p-5 border-t border-[#22283A] flex-1 flex flex-col justify-between gap-3';
+          descBox.innerHTML = `
+            <div>
+              <h3 class="font-serif text-2xl sm:text-3xl text-[#F8F5F0] leading-snug">
+                ${stage.title}
+              </h3>
+              <p class="mt-2 text-sm text-slate-300/90 leading-relaxed">
+                ${stage.description}
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#22283A]/70 flex items-center justify-between gap-2">
+              <span class="font-mono text-[11px] text-slate-500">
+                ${ytId ? 'Inline YouTube Player' : 'External YouTube Stage'}
+              </span>
+              <a
+                href="${openUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 font-mono text-xs text-slate-300 hover:text-[#F5A623] transition-colors py-1"
+              >
+                <span>Open on YouTube &#8599;</span>
+              </a>
+            </div>
+          `;
+
+          leftCard.appendChild(videoSlot);
+          leftCard.appendChild(descBox);
+
+          // RIGHT COLUMN (~42% = 5/12): "Songs in the video" + Song Cards with MV & Spotify Buttons
+          const rightCol = document.createElement('div');
+          rightCol.className = 'lg:col-span-5 rounded-3xl bg-[#111521]/75 border border-[#22283A] p-4 sm:p-5 flex flex-col justify-between gap-4';
+
+          const songsHeader = document.createElement('div');
+          songsHeader.className = 'flex items-center justify-between pb-3 border-b border-[#22283A]';
+          songsHeader.innerHTML = `
+            <h4 class="font-serif italic text-2xl text-[#F8F5F0] leading-none">
+              Songs in the video
+            </h4>
+            <span class="font-mono text-[11px] text-[#F5A623]">
+              ${stage.songs.length} ${stage.songs.length === 1 ? 'track' : 'tracks'}
+            </span>
+          `;
+
+          const songsStack = document.createElement('div');
+          songsStack.className = 'space-y-3 flex-1 flex flex-col justify-center';
+
+          stage.songs.forEach(song => {
+            const songCard = document.createElement('div');
+            songCard.className = 'rounded-2xl bg-[#080A10] border border-[#22283A] p-3.5 sm:p-4 flex flex-col sm:flex-row lg:flex-col xl:flex-row sm:items-center lg:items-stretch xl:items-center justify-between gap-3 hover:border-[#F5A623]/40 transition-colors';
+
+            songCard.innerHTML = `
+              <div class="min-w-0">
+                <p class="font-serif text-xl sm:text-2xl text-[#F8F5F0] leading-tight truncate">
+                  ${song.title}
+                </p>
+                <p class="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-slate-500">
+                  Direct Links
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <a
+                  href="${song.mvUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-[#E11D48]/15 border border-[#E11D48]/50 text-rose-100 hover:bg-[#E11D48] hover:text-white transition-all"
+                >
+                  ${PLAY_ICON_SVG}
+                  <span>Music Video</span>
+                </a>
+                <a
+                  href="${song.spotifyUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-[#1DB954]/15 border border-[#1DB954]/50 text-emerald-100 hover:bg-[#1DB954] hover:text-[#080A10] transition-all"
+                >
+                  ${SPOTIFY_ICON_SVG}
+                  <span>Spotify</span>
+                </a>
+              </div>
+            `;
+
+            songsStack.appendChild(songCard);
+          });
+
+          rightCol.appendChild(songsHeader);
+          rightCol.appendChild(songsStack);
+
+          row.appendChild(leftCard);
+          row.appendChild(rightCol);
+          container.appendChild(row);
+        });
+      }
+
+      function initStageFilters() {
+        const btns = document.querySelectorAll('.stage-filter-btn');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            state.stageFilter = btn.dataset.filter;
+            btns.forEach(b => {
+              const active = b.dataset.filter === state.stageFilter;
+              b.className = active
+                ? 'stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-semibold border transition-all bg-[#F8F5F0] text-[#080A10] border-[#F8F5F0]'
+                : 'stage-filter-btn rounded-full px-4 py-2 text-xs sm:text-sm font-medium border transition-all bg-[#111521] text-slate-300 border-[#22283A] hover:text-[#F8F5F0] hover:border-[#F5A623]/60';
+            });
+            renderStages();
+          });
+        });
+      }
+
+      /* =================================================================
+         SECTION 2: ABOUT THE GROUP (ALL 7 MEMBERS + LIGHTBOX MODAL)
+      ================================================================== */
+      function buildMemberMonogram(member, large) {
+        return `
+          <div class="w-full h-full bg-gradient-to-br ${member.gradient} flex flex-col items-center justify-center p-3 text-center">
+            <span class="font-serif italic ${large ? 'text-7xl' : 'text-3xl sm:text-4xl'} text-[#F8F5F0] leading-none">
+              ${member.initials}
+            </span>
+            <span class="mt-1.5 font-mono ${large ? 'text-xs' : 'text-[10px]'} uppercase tracking-widest text-amber-200/85">
+              ${member.name}
+            </span>
+          </div>
+        `;
+      }
+
+      const lightboxEl = document.getElementById('memberLightbox');
+      const lightboxPhotoSlot = document.getElementById('lightboxPhotoSlot');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxPills = document.getElementById('lightboxPills');
+      const lightboxBio = document.getElementById('lightboxBio');
+
+      function openMemberLightbox(member) {
+        lightboxPhotoSlot.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = member.photoUrl;
+        img.alt = `${member.name} portrait`;
+        img.referrerPolicy = 'no-referrer';
+        img.className = 'w-full h-full object-cover object-[center_20%]';
+        img.onerror = () => {
+          lightboxPhotoSlot.innerHTML = buildMemberMonogram(member, true);
+        };
+        lightboxPhotoSlot.appendChild(img);
+
+        lightboxTitle.textContent = `${member.name} (Age- ${member.age})`;
+        lightboxPills.innerHTML = `
+          <span class="rounded-full px-2.5 py-0.5 text-[11px] font-mono bg-[#F5A623]/15 border border-[#F5A623]/35 text-[#F5A623]">${member.country}</span>
+          <span class="rounded-full px-2.5 py-0.5 text-[11px] font-mono bg-white/[0.05] border border-[#22283A] text-slate-300">${member.roles}</span>
+        `;
+        lightboxBio.textContent = member.bio;
+
+        lightboxEl.classList.remove('hidden');
+        lightboxEl.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMemberLightbox() {
+        lightboxEl.classList.add('hidden');
+        lightboxEl.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      function initLightbox() {
+        document.getElementById('closeLightboxBtn').addEventListener('click', closeMemberLightbox);
+        lightboxEl.addEventListener('click', (e) => {
+          if (e.target === lightboxEl) closeMemberLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !lightboxEl.classList.contains('hidden')) {
+            closeMemberLightbox();
+          }
+        });
+      }
+
+      function renderMembers() {
+        const container = document.getElementById('membersContainer');
+        if (!container) return;
+        container.innerHTML = '';
+
+        MEMBERS.forEach(member => {
+          const card = document.createElement('article');
+          card.className = 'flex items-start gap-4 sm:gap-6 rounded-3xl bg-[#111521] border border-[#22283A] p-4 sm:p-5 hover:border-[#F5A623]/40 transition-all';
+
+          // Left: Clickable Rounded Square Photo Frame
+          const photoBtn = document.createElement('button');
+          photoBtn.type = 'button';
+          photoBtn.setAttribute('aria-label', `Enlarge ${member.name}'s photo`);
+          photoBtn.className = 'group relative w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-2xl overflow-hidden bg-[#080A10] border border-[#22283A] focus:outline-none focus:ring-2 focus:ring-[#F5A623] shadow-lg';
+
+          const img = document.createElement('img');
+          img.src = member.photoUrl;
+          img.alt = `${member.name} of BABYMONSTER`;
+          img.loading = 'lazy';
+          img.referrerPolicy = 'no-referrer';
+          img.className = 'w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105';
+          img.onerror = () => {
+            photoBtn.innerHTML = buildMemberMonogram(member, false);
+          };
+
+          const zoomIcon = document.createElement('span');
+          zoomIcon.setAttribute('aria-hidden', 'true');
+          zoomIcon.className = 'absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-black/70 border border-white/25 text-[#F8F5F0] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity';
+          zoomIcon.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg>';
+
+          photoBtn.appendChild(img);
+          photoBtn.appendChild(zoomIcon);
+          photoBtn.addEventListener('click', () => openMemberLightbox(member));
+
+          // Right: Name (Age- XX) + Pills + Bio
+          const info = document.createElement('div');
+          info.className = 'min-w-0 flex-1 pt-0.5';
+          info.innerHTML = `
+            <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+              <h3 class="font-serif text-2xl sm:text-3xl text-[#F8F5F0] leading-tight">
+                ${member.name}
+                <span class="font-mono text-xs sm:text-sm text-[#F5A623] font-semibold ml-1">(Age- ${member.age})</span>
+              </h3>
+              <span class="rounded-full px-2.5 py-0.5 text-[11px] font-mono bg-[#F5A623]/12 border border-[#F5A623]/30 text-amber-200">
+                ${member.country}
+              </span>
+              <span class="rounded-full px-2.5 py-0.5 text-[11px] font-mono bg-[#080A10] border border-[#22283A] text-slate-300">
+                ${member.roles}
+              </span>
+            </div>
+            <p class="mt-2.5 text-sm sm:text-[15px] text-slate-300/90 leading-relaxed">
+              ${member.bio}
+            </p>
+          `;
+
+          card.appendChild(photoBtn);
+          card.appendChild(info);
+          container.appendChild(card);
+        });
+      }
+
+      /* =================================================================
+         SECTION 3: THEIR GROUP'S ACCOUNTS (OFFICIAL SNS GRID)
+      ================================================================== */
+      function renderSnsAccounts() {
+        const grid = document.getElementById('snsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        SNS_ACCOUNTS.forEach(acc => {
+          const card = document.createElement('a');
+          card.href = acc.url;
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          card.className = `group flex items-center gap-3.5 rounded-2xl bg-[#111521] border border-[#22283A] p-4 transition-all duration-300 ${acc.accentHover} hover:bg-[#151A2A] hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#F5A623]`;
+
+          card.innerHTML = `
+            <span class="w-11 h-11 rounded-xl bg-[#080A10] border border-[#22283A] flex items-center justify-center shrink-0 ${acc.iconColor} group-hover:scale-105 transition-transform">
+              ${acc.svg}
+            </span>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-sm font-semibold text-[#F8F5F0] truncate">${acc.name}</span>
+                <span class="font-mono text-xs text-slate-500 group-hover:text-[#F5A623] transition-colors">&#8599;</span>
+              </div>
+              <p class="mt-0.5 font-mono text-xs text-slate-400 truncate">${acc.handle}</p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      /* =================================================================
+         SECTION 4: CREATE YOUR BAECHELLA SET LIST (10 / 15 SONGS + PNG)
+      ================================================================== */
+      function toggleCatalogSong(songTitle) {
+        const existingIdx = state.setlistTracks.indexOf(songTitle);
+        if (existingIdx !== -1) {
+          state.setlistTracks.splice(existingIdx, 1);
+        } else {
+          if (state.setlistTracks.length >= state.setlistMax) {
+            showToast(`Setlist full (${state.setlistMax} songs max). Switch to 15 songs or remove a track.`, true);
+            return;
+          }
+          state.setlistTracks.push(songTitle);
+        }
+        renderSetlistUI();
+      }
+
+      function moveTrack(idx, delta) {
+        const nextIdx = idx + delta;
+        if (nextIdx < 0 || nextIdx >= state.setlistTracks.length) return;
+        const copy = [...state.setlistTracks];
+        const tmp = copy[idx];
+        copy[idx] = copy[nextIdx];
+        copy[nextIdx] = tmp;
+        state.setlistTracks = copy;
+        renderSetlistUI();
+      }
+
+      function removeTrack(idx) {
+        state.setlistTracks.splice(idx, 1);
+        renderSetlistUI();
+      }
+
+      function renderSetlistUI() {
+        const chipsContainer = document.getElementById('songChipsContainer');
+        const pickerCountHint = document.getElementById('pickerCountHint');
+        const posterCountBadge = document.getElementById('posterCountBadge');
+        const posterSlotsList = document.getElementById('posterSlotsList');
+        const posterCuratorFooter = document.getElementById('posterCuratorFooter');
+
+        // 1. Update counters & curator line
+        pickerCountHint.textContent = `${state.setlistTracks.length} / ${state.setlistMax} selected`;
+        posterCountBadge.textContent = `${state.setlistTracks.length} / ${state.setlistMax} SONGS`;
+
+        const handleClean = state.curatorHandle.trim();
+        posterCuratorFooter.textContent = handleClean
+          ? `CURATED BY ${handleClean.startsWith('@') ? handleClean.toUpperCase() : '@' + handleClean.toUpperCase()}`
+          : 'CURATED BY MONSTIEZ';
+
+        // 2. Render Song Picker Chips (filtered by search query)
+        const query = state.songSearchQuery.trim().toLowerCase();
+        const filteredCatalog = query
+          ? SETLIST_CATALOG.filter(s => s.toLowerCase().includes(query))
+          : SETLIST_CATALOG;
+
+        chipsContainer.innerHTML = '';
+        if (filteredCatalog.length === 0) {
+          chipsContainer.innerHTML = '<p class="text-xs font-mono text-slate-500 py-1">No matching catalog songs — add it as a custom track below!</p>';
+        } else {
+          filteredCatalog.forEach(song => {
+            const selected = state.setlistTracks.includes(song);
+            const chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = `px-3 py-2 rounded-xl text-xs font-medium border transition-all ${
+              selected
+                ? 'bg-[#F5A623]/20 text-[#F8F5F0] border-[#F5A623] font-semibold'
+                : 'bg-[#080A10] text-slate-300 border-[#22283A] hover:border-slate-500 hover:text-[#F8F5F0]'
+            }`;
+            chip.textContent = `${selected ? '✓ ' : '+ '}${song}`;
+            chip.addEventListener('click', () => toggleCatalogSong(song));
+            chipsContainer.appendChild(chip);
+          });
+        }
+
+        // 3. Render Structured Numbered Poster Slots (01..10 or 01..15)
+        posterSlotsList.innerHTML = '';
+        for (let i = 0; i < state.setlistMax; i++) {
+          const song = state.setlistTracks[i];
+          const numStr = String(i + 1).padStart(2, '0');
+          const row = document.createElement('div');
+
+          if (song) {
+            const isOpener = i === 0;
+            const isEncore = i === state.setlistTracks.length - 1 && state.setlistTracks.length > 1;
+            const tagHtml = isOpener
+              ? '<span class="hidden sm:inline-block px-1.5 py-0.5 rounded bg-[#F5A623]/15 text-[#F5A623] font-mono text-[9px] uppercase tracking-wider shrink-0">Opener</span>'
+              : (isEncore
+                ? '<span class="hidden sm:inline-block px-1.5 py-0.5 rounded bg-[#E11D48]/20 text-rose-300 font-mono text-[9px] uppercase tracking-wider shrink-0">Encore</span>'
+                : '');
+
+            row.className = 'flex items-center justify-between gap-2 rounded-xl bg-[#111521]/90 border border-[#22283A] px-3 py-2';
+            row.innerHTML = `
+              <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                <span class="font-mono text-xs font-semibold text-[#F5A623] w-5 shrink-0">${numStr}</span>
+                <span class="font-serif text-lg sm:text-xl text-[#F8F5F0] leading-tight truncate">${song}</span>
+                ${tagHtml}
+              </div>
+              <div class="flex items-center gap-1 shrink-0">
+                <button
+                  type="button"
+                  data-up="${i}"
+                  aria-label="Move ${song} up"
+                  ${i === 0 ? 'disabled' : ''}
+                  class="w-7 h-7 rounded-lg bg-[#080A10] border border-[#22283A] hover:border-[#F5A623] disabled:opacity-25 disabled:pointer-events-none text-xs text-slate-200 flex items-center justify-center transition-colors"
+                >&uarr;</button>
+                <button
+                  type="button"
+                  data-down="${i}"
+                  aria-label="Move ${song} down"
+                  ${i === state.setlistTracks.length - 1 ? 'disabled' : ''}
+                  class="w-7 h-7 rounded-lg bg-[#080A10] border border-[#22283A] hover:border-[#F5A623] disabled:opacity-25 disabled:pointer-events-none text-xs text-slate-200 flex items-center justify-center transition-colors"
+                >&darr;</button>
+                <button
+                  type="button"
+                  data-del="${i}"
+                  aria-label="Remove ${song}"
+                  class="w-7 h-7 rounded-lg bg-[#080A10] border border-[#22283A] hover:border-[#E11D48] hover:text-rose-300 text-xs text-slate-400 flex items-center justify-center transition-colors"
+                >&times;</button>
+              </div>
+            `;
+          } else {
+            row.className = 'flex items-center gap-2.5 rounded-xl border border-dashed border-[#22283A]/85 px-3 py-2 opacity-65';
+            row.innerHTML = `
+              <span class="font-mono text-xs text-slate-500 w-5 shrink-0">${numStr}</span>
+              <span class="font-mono text-xs text-slate-500 italic">Open slot &mdash; select a track</span>
+            `;
+          }
+
+          posterSlotsList.appendChild(row);
+        }
+
+        // Bind reorder & delete handlers
+        posterSlotsList.querySelectorAll('[data-up]').forEach(btn => {
+          btn.addEventListener('click', () => moveTrack(Number(btn.dataset.up), -1));
+        });
+        posterSlotsList.querySelectorAll('[data-down]').forEach(btn => {
+          btn.addEventListener('click', () => moveTrack(Number(btn.dataset.down), 1));
+        });
+        posterSlotsList.querySelectorAll('[data-del]').forEach(btn => {
+          btn.addEventListener('click', () => removeTrack(Number(btn.dataset.del)));
+        });
+      }
+
+      /* =================================================================
+         HIGH-RES HTML5 CANVAS POSTER PNG GENERATOR (1080x1350 or 1080x1500)
+      ================================================================== */
+      async function downloadSetlistPosterPng() {
+        if (state.setlistTracks.length === 0) {
+          showToast('Pick at least 1 song before downloading your poster.', true);
+          return;
+        }
+
+        try {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+
+          const is15 = state.setlistMax === 15;
+          const W = 1080;
+          const H = is15 ? 1500 : 1350;
+
+          const canvas = document.createElement('canvas');
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas unavailable');
+
+          // 1. Obsidian Desert-Night Gradient Base
+          const bgGrad = ctx.createLinearGradient(0, 0, W * 0.4, H);
+          bgGrad.addColorStop(0, '#101524');
+          bgGrad.addColorStop(0.5, '#080A10');
+          bgGrad.addColorStop(1, '#190C15');
+          ctx.fillStyle = bgGrad;
+          ctx.fillRect(0, 0, W, H);
+
+          // 2. Desert Gold & Crimson Radial Glows
+          const goldGlow = ctx.createRadialGradient(W * 0.84, H * 0.12, 15, W * 0.84, H * 0.12, 560);
+          goldGlow.addColorStop(0, 'rgba(245, 166, 35, 0.28)');
+          goldGlow.addColorStop(0.55, 'rgba(245, 166, 35, 0.05)');
+          goldGlow.addColorStop(1, 'rgba(8, 10, 16, 0)');
+          ctx.fillStyle = goldGlow;
+          ctx.fillRect(0, 0, W, H);
+
+          const crimsonGlow = ctx.createRadialGradient(W * 0.16, H * 0.88, 15, W * 0.16, H * 0.88, 580);
+          crimsonGlow.addColorStop(0, 'rgba(225, 29, 72, 0.25)');
+          crimsonGlow.addColorStop(0.55, 'rgba(225, 29, 72, 0.05)');
+          crimsonGlow.addColorStop(1, 'rgba(8, 10, 16, 0)');
+          ctx.fillStyle = crimsonGlow;
+          ctx.fillRect(0, 0, W, H);
+
+          // 3. Ambient Stars
+          const stars = [
+            [130, 115, 2.5, '248,245,240', 0.65], [925, 130, 3.0, '245,166,35', 0.85],
+            [830, 210, 2.0, '248,245,240', 0.5], [210, 225, 2.2, '225,29,72', 0.65],
+            [960, 350, 1.8, '248,245,240', 0.45], [105, 520, 2.2, '245,166,35', 0.55],
+            [970, H - 480, 2.5, '248,245,240', 0.5], [125, H - 290, 2.8, '245,166,35', 0.7],
+            [905, H - 210, 2.2, '225,29,72', 0.6], [235, H - 150, 2.0, '248,245,240', 0.55],
+          ];
+          stars.forEach(([x, y, r, rgb, a]) => {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${rgb}, ${a})`;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, r * 3.4, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${rgb}, ${a * 0.14})`;
+            ctx.fill();
+          });
+
+          // 4. Outer & Inner Editorial Frames
+          ctx.strokeStyle = 'rgba(248, 245, 240, 0.16)';
+          ctx.lineWidth = 2;
+          drawRoundedRect(ctx, 48, 48, W - 96, H - 96, 32);
+          ctx.stroke();
+
+          ctx.strokeStyle = 'rgba(245, 166, 35, 0.25)';
+          ctx.lineWidth = 1;
+          drawRoundedRect(ctx, 64, 64, W - 128, H - 128, 24);
+          ctx.stroke();
+
+          // 5. Header Typography
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#F5A623';
+          ctx.font = '600 22px "JetBrains Mono", monospace';
+          ctx.fillText('BABYMONSTER  •  COACHELLA 2027', W / 2, 136);
+
+          ctx.fillStyle = '#F8F5F0';
+          ctx.font = '400 84px "Instrument Serif", Georgia, serif';
+          ctx.fillText('BAECHELLA SET LIST', W / 2, 224);
+
+          ctx.fillStyle = '#F5A623';
+          ctx.font = 'italic 40px "Instrument Serif", Georgia, serif';
+          ctx.fillText('(Prediction)', W / 2, 274);
+
+          // Date Pill
+          const dateText = `APRIL 11 & 18, 2027  •  INDIO, CA  •  ${state.setlistTracks.length} SONGS`;
+          ctx.font = '600 20px "JetBrains Mono", monospace';
+          const pillW = Math.min(W - 200, ctx.measureText(dateText).width + 76);
+          const pillX = (W - pillW) / 2;
+          const pillY = 304;
+          ctx.fillStyle = 'rgba(17, 21, 33, 0.85)';
+          ctx.strokeStyle = 'rgba(245, 166, 35, 0.35)';
+          ctx.lineWidth = 1.5;
+          drawRoundedRect(ctx, pillX, pillY, pillW, 48, 24);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = '#F8F5F0';
+          ctx.fillText(dateText, W / 2, pillY + 31);
+
+          // 6. Numbered Setlist Rows (Supports 10 or 15 cleanly)
+          const listTop = 398;
+          const listBottom = H - 160;
+          const availH = listBottom - listTop;
+          const totalSlots = state.setlistTracks.length;
+          const rowStep = Math.min(is15 ? 64 : 78, availH / Math.max(totalSlots, 1));
+          const startY = listTop + (availH - rowStep * totalSlots) / 2 + rowStep * 0.62;
+          const songFontSize = is15 ? 38 : 44;
+
+          const leftX = 122;
+          const rightX = W - 122;
+
+          state.setlistTracks.forEach((song, idx) => {
+            const y = startY + idx * rowStep;
+
+            // Index
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#F5A623';
+            ctx.font = '600 24px "JetBrains Mono", monospace';
+            ctx.fillText(String(idx + 1).padStart(2, '0'), leftX, y);
+
+            // Track Title (truncate gracefully if very long)
+            ctx.fillStyle = '#F8F5F0';
+            ctx.font = `400 ${songFontSize}px "Instrument Serif", "Inter", sans-serif`;
+            const maxTitleW = rightX - (leftX + 64) - 135;
+            let titleToDraw = song;
+            while (ctx.measureText(titleToDraw).width > maxTitleW && titleToDraw.length > 3) {
+              titleToDraw = titleToDraw.slice(0, -2) + '…';
+            }
+            ctx.fillText(titleToDraw, leftX + 64, y + 3);
+
+            // Opener / Encore label
+            if (idx === 0 || (idx === totalSlots - 1 && totalSlots > 1)) {
+              ctx.textAlign = 'right';
+              ctx.fillStyle = idx === 0 ? '#F5A623' : '#FB7185';
+              ctx.font = '600 18px "JetBrains Mono", monospace';
+              ctx.fillText(idx === 0 ? 'OPENER' : 'ENCORE', rightX, y - 2);
+            }
+
+            // Divider
+            if (idx < totalSlots - 1) {
+              ctx.strokeStyle = 'rgba(248, 245, 240, 0.09)';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(leftX, y + rowStep * 0.34);
+              ctx.lineTo(rightX, y + rowStep * 0.34);
+              ctx.stroke();
+            }
+          });
+
+          // 7. Footer Line & Credits
+          ctx.strokeStyle = 'rgba(248, 245, 240, 0.14)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(110, H - 132);
+          ctx.lineTo(W - 110, H - 132);
+          ctx.stroke();
+
+          const handleClean = state.curatorHandle.trim();
+          const creditText = handleClean
+            ? `CURATED BY ${handleClean.startsWith('@') ? handleClean.toUpperCase() : '@' + handleClean.toUpperCase()}`
+            : 'CURATED BY MONSTIEZ';
+
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#F5A623';
+          ctx.font = '500 22px "JetBrains Mono", monospace';
+          ctx.fillText(creditText, 110, H - 86);
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#94A3B8';
+          ctx.font = '500 22px "JetBrains Mono", monospace';
+          ctx.fillText('#BAECHELLA2027  #BABYMONSTER', W - 110, H - 86);
+
+          // 8. Download PNG
+          const url = canvas.toDataURL('image/png');
+          const a = document.createElement('a');
+          a.download = 'baechella-2027-setlist.png';
+          a.href = url;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+
+          showToast(`Downloaded ${W}×${H} PNG poster!`);
+        } catch (err) {
+          showToast('Could not generate poster PNG. Please try again.', true);
+        }
+      }
+
+      function initSetlistBuilder() {
+        const mode10Btn = document.getElementById('mode10Btn');
+        const mode15Btn = document.getElementById('mode15Btn');
+        const searchInput = document.getElementById('songSearchInput');
+        const customInput = document.getElementById('customSongInput');
+        const addCustomBtn = document.getElementById('addCustomSongBtn');
+        const handleInput = document.getElementById('curatorHandleInput');
+        const autoFillBtn = document.getElementById('autoFillBtn');
+        const clearBtn = document.getElementById('clearSetlistBtn');
+        const downloadBtn = document.getElementById('downloadPosterBtn');
+        const copyBtn = document.getElementById('copySetlistTextBtn');
+
+        function setMode(maxSongs) {
+          state.setlistMax = maxSongs;
+          const is10 = maxSongs === 10;
+
+          mode10Btn.setAttribute('aria-selected', String(is10));
+          mode15Btn.setAttribute('aria-selected', String(!is10));
+          mode10Btn.className = is10
+            ? 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-[#F8F5F0] text-[#080A10] transition-all'
+            : 'px-5 py-2 rounded-full text-xs sm:text-sm font-medium text-slate-400 hover:text-[#F8F5F0] transition-all';
+          mode15Btn.className = !is10
+            ? 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-[#F8F5F0] text-[#080A10] transition-all'
+            : 'px-5 py-2 rounded-full text-xs sm:text-sm font-medium text-slate-400 hover:text-[#F8F5F0] transition-all';
+
+          if (state.setlistTracks.length > maxSongs) {
+            state.setlistTracks = state.setlistTracks.slice(0, maxSongs);
+            showToast(`Trimmed to your first ${maxSongs} tracks.`);
+          }
+          renderSetlistUI();
+        }
+
+        mode10Btn.addEventListener('click', () => setMode(10));
+        mode15Btn.addEventListener('click', () => setMode(15));
+
+        searchInput.addEventListener('input', (e) => {
+          state.songSearchQuery = e.target.value;
+          renderSetlistUI();
+        });
+
+        function handleAddCustomSong() {
+          const val = customInput.value.trim();
+          if (!val) {
+            showToast('Type a song title or solo cover name first.', true);
+            return;
+          }
+          if (state.setlistTracks.length >= state.setlistMax) {
+            showToast(`Setlist full (${state.setlistMax} songs max). Switch to 15 songs or remove one.`, true);
+            return;
+          }
+          if (state.setlistTracks.includes(val)) {
+            showToast(`"${val}" is already in your setlist.`, true);
+            return;
+          }
+          state.setlistTracks.push(val);
+          customInput.value = '';
+          renderSetlistUI();
+          showToast(`Added "${val}" to your prediction!`);
+        }
+
+        addCustomBtn.addEventListener('click', handleAddCustomSong);
+        customInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleAddCustomSong();
+          }
+        });
+
+        handleInput.addEventListener('input', (e) => {
+          state.curatorHandle = e.target.value;
+          renderSetlistUI();
+        });
+
+        autoFillBtn.addEventListener('click', () => {
+          state.setlistTracks = DEFAULT_AUTOFILL.slice(0, state.setlistMax);
+          renderSetlistUI();
+          showToast(`Auto-filled ${state.setlistMax} Coachella predictions!`);
+        });
+
+        clearBtn.addEventListener('click', () => {
+          state.setlistTracks = [];
+          renderSetlistUI();
+          showToast('Cleared setlist.');
+        });
+
+        downloadBtn.addEventListener('click', downloadSetlistPosterPng);
+
+        copyBtn.addEventListener('click', () => {
+          if (state.setlistTracks.length === 0) {
+            showToast('Pick at least 1 song before copying text.', true);
+            return;
+          }
+          const lines = state.setlistTracks.map((s, i) => `${String(i + 1).padStart(2, '0')}. ${s}`);
+          const handleClean = state.curatorHandle.trim();
+          const text = [
+            `BAECHELLA SET LIST (Prediction)`,
+            `April 11 & 18, 2027 • Indio, CA`,
+            ``,
+            ...lines,
+            ``,
+            handleClean ? `Curated by ${handleClean.startsWith('@') ? handleClean : '@' + handleClean}` : null,
+            `#BAECHELLA2027 #BABYMONSTER #Coachella2027`,
+          ].filter(v => v !== null).join('\n');
+
+          if (copyTextReliable(text)) {
+            showToast('Setlist copied to clipboard!');
+          } else {
+            showToast('Unable to copy automatically — please copy manually.', true);
+          }
+        });
+      }
+
+      /* =================================================================
+         INITIALIZE ON PAGE LOAD
+      ================================================================== */
+      window.addEventListener('DOMContentLoaded', () => {
+        initHeroStarfield();
+        initCountdown();
+        initStageFilters();
+        renderStages();
+        initLightbox();
+        renderMembers();
+        renderSnsAccounts();
+        initSetlistBuilder();
+        renderSetlistUI();
+      });
+    })();
+  </script>
+</body>
+</html>
