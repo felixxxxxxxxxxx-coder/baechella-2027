@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BAECHELLA 2027 — BABYMONSTER at Coachella</title>
-  <meta name="description" content="BAECHELLA 2027: Unofficial fan-made promotional microsite celebrating BABYMONSTER's April 11 & 18, 2027 Coachella stages. Live countdown, 31 curated stages & music videos, official SNS, and downloadable set list builder." />
+  <meta name="description" content="BAECHELLA 2027: Unofficial fan-made promotional microsite celebrating BABYMONSTER's April 11 & 18, 2027 Coachella stages. Live countdown with PNG card download, 32 curated stages & music videos, BAEMON STATS leaderboards, official SNS, and downloadable set list builder." />
 
   <!-- Google Fonts: Playfair Display (Editorial Logo), BBH Bogle (Native Weight 400 Only), Plus Jakarta Sans (UI & Copy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,6 +83,7 @@
   <!-- =====================================================================
        SEPARATE FLOATING TOP-RIGHT NAVIGATION DRAWER (z-50)
        Strictly pointer-events-none + invisible + opacity-0 when closed.
+       4 links in exact page order: STAGES -> BAEMON STATS -> SNS -> SET LIST
   ====================================================================== -->
   <nav
     id="navDrawer"
@@ -104,6 +105,16 @@
       >
         <span class="font-display uppercase text-xl text-[#BE2668] group-hover:text-[#FCF6EC] leading-none pt-0.5">
           BABYMONSTER STAGES
+        </span>
+        <span class="text-xs font-bold text-[#BE2668] group-hover:text-[#FCF6EC] group-hover:translate-x-0.5 transition-transform" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a
+        href="#stats"
+        class="nav-drawer-link group flex items-center justify-between rounded-2xl px-4 py-3 bg-[#F7EBF0] border border-[#F2DCE6] hover:bg-[#BE2668] hover:border-[#BE2668] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
+      >
+        <span class="font-display uppercase text-xl text-[#BE2668] group-hover:text-[#FCF6EC] leading-none pt-0.5">
+          BAEMON STATS
         </span>
         <span class="text-xs font-bold text-[#BE2668] group-hover:text-[#FCF6EC] group-hover:translate-x-0.5 transition-transform" aria-hidden="true">&rarr;</span>
       </a>
@@ -136,7 +147,7 @@
   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-9 sm:pt-14 pb-16 sm:pb-24">
 
     <!-- ===================================================================
-         HERO SECTION & DUAL-WEEKEND COACHELLA COUNTDOWN
+         HERO SECTION & DUAL-WEEKEND COACHELLA COUNTDOWN + PNG CARD EXPORT
     ==================================================================== -->
     <section aria-label="BAECHELLA 2027 Hero and Live Countdown" class="pb-14 sm:pb-20">
       <!-- Editorial Display Title (Right padding stays clear of fixed circular button) -->
@@ -160,7 +171,7 @@
 
         <!-- Foreground Interactive Layer (relative z-10) -->
         <div class="relative z-10">
-          <!-- Card Header: Pulsing Cream Dot + Label -->
+          <!-- Card Header: Pulsing Cream Dot + Label + Download Card (PNG) Pill -->
           <div class="flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-2.5">
               <span class="relative flex h-3 w-3 shrink-0" aria-hidden="true">
@@ -172,9 +183,16 @@
               </span>
             </div>
 
-            <span class="hidden sm:inline-block rounded-full bg-[#3D1325]/25 border border-[#FCF6EC]/20 px-3 py-1 text-[11px] font-semibold tracking-wider text-[#F7EBF0]">
-              BABYMONSTER AT COACHELLA
-            </span>
+            <button
+              id="downloadCountdownBtn"
+              type="button"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#FCF6EC] hover:bg-[#F7EBF0] text-[#BE2668] px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.09em] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#FCF6EC] focus:ring-offset-2 focus:ring-offset-[#BE2668]"
+            >
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span>DOWNLOAD CARD (PNG)</span>
+            </button>
           </div>
 
           <!-- Dual-Weekend Pill Switcher (Dedicated z-10 2-column grid with touch-action: manipulation) -->
@@ -241,7 +259,7 @@
     </section>
 
     <!-- ===================================================================
-         SECTION 1: BABYMONSTER STAGES (#stages)
+         SECTION 1: BABYMONSTER STAGES (#stages) — 32 CURATED VIDEOS
     ==================================================================== -->
     <section id="stages" class="py-12 sm:py-16 border-t border-[#F2DCE6] scroll-mt-6">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
@@ -263,7 +281,7 @@
           data-filter="all"
           class="stage-filter-btn rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.07em] bg-[#BE2668] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
         >
-          ALL (31)
+          ALL (32)
         </button>
         <button
           id="filter-live"
@@ -271,7 +289,7 @@
           data-filter="live"
           class="stage-filter-btn rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.07em] bg-[#F2DCE6] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
         >
-          LIVE PERFORMANCES (10)
+          LIVE PERFORMANCES (11)
         </button>
         <button
           id="filter-mv"
@@ -291,7 +309,7 @@
       <!-- Pagination Counter & Tactile SHOW MORE / SHOW LESS Controls -->
       <div id="stagesPaginationBar" class="mt-8 sm:mt-10 flex flex-col items-center gap-3.5">
         <p id="stagesCounterText" class="text-xs sm:text-sm font-semibold text-[#734459]">
-          Showing 6 of 31 videos
+          Showing 6 of 32 videos
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-3">
@@ -315,7 +333,102 @@
     </section>
 
     <!-- ===================================================================
-         SECTION 2: SNS (#sns)
+         SECTION 2 (NEW): BAEMON STATS (#stats) — DIRECTLY BEFORE SNS
+    ==================================================================== -->
+    <section id="stats" class="py-12 sm:py-16 border-t border-[#F2DCE6] scroll-mt-6">
+      <!-- Section Heading + Updated Badge -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <h2 class="font-display uppercase text-4xl sm:text-5xl leading-none text-[#BE2668]">
+            BAEMON STATS
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-[#734459]">
+            Career milestones, streaming records, album sales &amp; biggest concert stops.
+          </p>
+        </div>
+
+        <span
+          id="statsUpdatedBadge"
+          class="inline-flex self-start sm:self-auto items-center rounded-full bg-[#F2DCE6] border border-[#BE2668]/20 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-[#BE2668]"
+        >
+          Updated Nov 2026
+        </span>
+      </div>
+
+      <!-- PART A: 6 Career Milestone Summary Boxes + Download Overview PNG -->
+      <div class="mt-6 sm:mt-8">
+        <div class="flex flex-wrap items-center justify-between gap-2.5 mb-3.5">
+          <span class="text-xs font-bold uppercase tracking-[0.14em] text-[#734459]">
+            CAREER MILESTONES
+          </span>
+
+          <button
+            id="downloadSummaryStatsBtn"
+            type="button"
+            class="inline-flex items-center gap-1.5 rounded-full bg-[#FCF6EC] border border-[#BE2668]/45 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.09em] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+          >
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span>Download Overview (PNG)</span>
+          </button>
+        </div>
+
+        <!-- Responsive 2-Col Mobile / 3-Col Desktop Grid of 6 Career Summary Boxes -->
+        <div id="statsSummaryGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <!-- Rendered dynamically from BAEMON_STATS.summary -->
+        </div>
+      </div>
+
+      <!-- PART B: 6 Interactive Stat Category Tabs + Framed Leaderboard Card -->
+      <div class="mt-8 sm:mt-10">
+        <!-- Category Tab Pill Bar (Exact Order: M/Vs -> Spotify -> YT Music -> Shows -> Live Stages -> Album Sales) -->
+        <div
+          id="statsTabsBar"
+          class="flex flex-wrap items-center gap-2"
+          role="tablist"
+          aria-label="BAEMON STATS categories"
+        >
+          <!-- Rendered dynamically from BAEMON_STATS.categories -->
+        </div>
+
+        <!-- Framed Warm Cream & Berry Magenta Leaderboard Card -->
+        <div class="mt-5 rounded-3xl bg-[#FCF6EC] border-2 border-[#BE2668] p-3 sm:p-4 shadow-[0_20px_44px_-16px_rgba(190,38,104,0.24)]">
+          <div class="rounded-2xl border border-[#F2DCE6] bg-[#FCF6EC] p-4 sm:p-6">
+            <!-- Active Leaderboard Header + Download Stat Card PNG Button -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b-2 border-[#F2DCE6]">
+              <div>
+                <p id="statCardSubtitle" class="text-[11px] font-bold uppercase tracking-[0.16em] text-[#734459]">
+                  Official YouTube M/Vs
+                </p>
+                <h3 id="statCardTitle" class="mt-1 font-display uppercase text-3xl sm:text-4xl leading-none text-[#BE2668]">
+                  TOP 5 MOST VIEWED MUSIC VIDEOS
+                </h3>
+              </div>
+
+              <button
+                id="downloadActiveStatBtn"
+                type="button"
+                class="self-start sm:self-auto shrink-0 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] shadow-[0_12px_26px_-10px_rgba(190,38,104,0.55)] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+              >
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                <span>DOWNLOAD STAT CARD (PNG)</span>
+              </button>
+            </div>
+
+            <!-- Numbered Leaderboard Rows with Proportional Progress Bars -->
+            <div id="statLeaderboardRows" class="mt-5 space-y-3" role="tabpanel" aria-live="polite">
+              <!-- Rendered dynamically for active stat category -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 3: SNS (#sns) — 8 OFFICIAL BABYMONSTER CHANNELS
     ==================================================================== -->
     <section id="sns" class="py-12 sm:py-16 border-t border-[#F2DCE6] scroll-mt-6">
       <div>
@@ -334,7 +447,7 @@
     </section>
 
     <!-- ===================================================================
-         SECTION 3: CREATE SET LIST (#setlist)
+         SECTION 4: CREATE SET LIST (#setlist)
     ==================================================================== -->
     <section id="setlist" class="py-12 sm:py-16 border-t border-[#F2DCE6] scroll-mt-6">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -559,26 +672,165 @@
       'use strict';
 
       /* =================================================================
-         1. COACHELLA 2027 DUAL-WEEKEND COUNTDOWN TARGETS
+         1. BAEMON STATS DATA (EASY TO UPDATE ANYTIME!)
+         Edit values here to update both the live site & PNG downloads.
+      ================================================================== */
+      const BAEMON_STATS = {
+        updatedLabel: 'Updated Nov 2026',
+
+        // 6 Career Summary Milestone Boxes
+        summary: [
+          {
+            label: 'YOUTUBE VIEWS',
+            value: '10.8B+',
+            sub: 'Official Channel · 13.6M Subs',
+          },
+          {
+            label: 'SPOTIFY STREAMS',
+            value: '2.9B+',
+            sub: 'All Credits · 9M+ Followers',
+          },
+          {
+            label: 'MOST STREAMED (YT MUSIC)',
+            value: '969M+',
+            sub: 'DRIP · 97.8M Monthly Audience',
+          },
+          {
+            label: 'CIRCLE ALBUM SALES',
+            value: '3.59M+',
+            sub: '4 Albums · South Korea',
+          },
+          {
+            label: 'MOST SALES ALBUM',
+            value: '1.08M+',
+            sub: 'DRIP · 1st Full Album (Circle)',
+          },
+          {
+            label: 'CONCERT ATTENDANCE',
+            value: '780K+',
+            sub: 'World Tours & Fan Concerts',
+          },
+        ],
+
+        // 6 Tabbed Stat Leaderboards (Exact Order: M/Vs -> Spotify -> YT Music -> Shows -> Live Stages -> Album Sales)
+        categories: [
+          {
+            key: 'yt_mv',
+            tabLabel: 'TOP 5 M/Vs (YOUTUBE)',
+            title: 'TOP 5 MOST VIEWED MUSIC VIDEOS',
+            subtitle: 'Official YouTube M/Vs',
+            unit: 'views',
+            filename: 'baemon-stats-top5-youtube-mvs.png',
+            items: [
+              { title: 'SHEESH', value: '426.7M+', meta: 'Official M/V · Apr 2024', num: 426.7 },
+              { title: 'DRIP', value: '423.5M+', meta: 'Official M/V · Nov 2024', num: 423.5 },
+              { title: 'BATTER UP', value: '354.5M+', meta: 'Official M/V · Nov 2023', num: 354.5 },
+              { title: 'FOREVER', value: '272.8M+', meta: 'Official M/V · Jul 2024', num: 272.8 },
+              { title: 'PSYCHO', value: '236.3M+', meta: 'Official M/V · Nov 2025', num: 236.3 },
+            ],
+          },
+          {
+            key: 'spotify',
+            tabLabel: 'TOP 5 SPOTIFY',
+            title: 'TOP 5 MOST STREAMED SONGS',
+            subtitle: 'Spotify Global Streams',
+            unit: 'streams',
+            filename: 'baemon-stats-top5-spotify.png',
+            items: [
+              { title: 'SHEESH', value: '438.8M+', meta: 'BABYMONS7ER · 2024', num: 438.8 },
+              { title: 'DRIP', value: '328.2M+', meta: 'DRIP · 2024', num: 328.2 },
+              { title: 'BATTER UP', value: '299.8M+', meta: 'Digital Single · 2023', num: 299.8 },
+              { title: 'FOREVER', value: '242.7M+', meta: 'Digital Single · 2024', num: 242.7 },
+              { title: 'LIKE THAT', value: '230.4M+', meta: 'BABYMONS7ER · 2024', num: 230.4 },
+            ],
+          },
+          {
+            key: 'yt_music',
+            tabLabel: 'TOP 5 YT MUSIC',
+            title: 'TOP 5 MOST STREAMED SONGS',
+            subtitle: 'YouTube Music Plays',
+            unit: 'plays',
+            filename: 'baemon-stats-top5-youtube-music.png',
+            items: [
+              { title: 'DRIP', value: '969M+', meta: 'DRIP · 2024', num: 969 },
+              { title: 'SHEESH', value: '939M+', meta: 'BABYMONS7ER · 2024', num: 939 },
+              { title: 'BATTER UP', value: '720M+', meta: 'Digital Single · 2023', num: 720 },
+              { title: 'WE GO UP', value: '514M+', meta: 'WE GO UP · 2025', num: 514 },
+              { title: 'FOREVER', value: '484M+', meta: 'Digital Single · 2024', num: 484 },
+            ],
+          },
+          {
+            key: 'attendance',
+            tabLabel: 'TOP 5 SHOWS',
+            title: 'TOP 5 BIGGEST ATTENDANCE SHOWS',
+            subtitle: 'World Tours & Fan Concerts',
+            unit: 'fans',
+            filename: 'baemon-stats-top5-attendance.png',
+            items: [
+              { title: 'KYOCERA DOME OSAKA', value: '90,000', meta: 'CHOOM World Tour · 2 Nights · Sep 2026', num: 90000 },
+              { title: 'K-ARENA YOKOHAMA', value: '55,000', meta: 'HELLO MONSTERS · 3 Nights · Apr 2025', num: 55000 },
+              { title: 'PIA ARENA MM, YOKOHAMA', value: '30,000', meta: 'HELLO MONSTERS · 3 Nights · Mar 2025', num: 30000 },
+              { title: 'PORT MESSE NAGOYA', value: '24,000', meta: 'HELLO MONSTERS · 2 Nights · Mar 2025', num: 24000 },
+              { title: 'TAIPEI ARENA', value: '24,000', meta: 'LOVE MONSTERS · 2 Nights · Jan 2026', num: 24000 },
+            ],
+          },
+          {
+            key: 'live_stages',
+            tabLabel: 'TOP 5 LIVE STAGES',
+            title: 'TOP 5 MOST VIEWED LIVE STAGES',
+            subtitle: 'YouTube Live Performances',
+            unit: 'views',
+            filename: 'baemon-stats-top5-live-stages.png',
+            items: [
+              { title: 'DRIP / THE FIRST TAKE', value: '71.1M+', meta: 'THE FIRST TAKE · Dec 2024', num: 71.1 },
+              { title: 'MAMA 2025: HUNTR/X (FEAT. BABYMONSTER)', value: '49.3M+', meta: 'Mnet K-POP · Nov 2025', num: 49.3 },
+              { title: 'SHEESH BAND LIVE CONCERT', value: '20.6M+', meta: "it's Live · Apr 2024", num: 20.6 },
+              { title: 'SBS GAYO DAEJEON 2024: INTRO + DRIP', value: '18.5M+', meta: 'SBS Entertainment · Dec 2024', num: 18.5 },
+              { title: 'MAMA 2025: WE GO UP + DRIP', value: '16.7M+', meta: 'Mnet K-POP · Nov 2025', num: 16.7 },
+            ],
+          },
+          {
+            key: 'album_sales',
+            tabLabel: 'ALBUM SALES',
+            title: 'ALBUM SALES (CIRCLE CHART)',
+            subtitle: 'South Korea Physical Sales',
+            unit: 'copies',
+            filename: 'baemon-stats-album-sales.png',
+            items: [
+              { title: 'DRIP', value: '1,087,107', meta: '1st Full Album · Nov 2024', num: 1087107 },
+              { title: '춤 (CHOOM)', value: '868,390', meta: '3rd Mini Album · May 2026', num: 868390 },
+              { title: 'BABYMONS7ER', value: '858,811', meta: '1st Mini Album · Apr 2024', num: 858811 },
+              { title: 'WE GO UP', value: '781,610', meta: '2nd Mini Album · Oct 2025', num: 781610 },
+            ],
+          },
+        ],
+      };
+
+      /* =================================================================
+         2. COACHELLA 2027 DUAL-WEEKEND COUNTDOWN TARGETS
       ================================================================== */
       const COUNTDOWN_TARGETS = {
         wk1: {
           iso: '2027-04-11T19:00:00-07:00',
           label: 'Empire Polo Club, Indio, CA · Sun, Apr 11, 2027 · 7:00 PM PDT',
+          cardPill: 'WEEKEND 1 · APRIL 11, 2027 · INDIO, CA',
+          fileSuffix: 'wk1',
         },
         wk2: {
           iso: '2027-04-18T19:00:00-07:00',
           label: 'Empire Polo Club, Indio, CA · Sun, Apr 18, 2027 · 7:00 PM PDT',
+          cardPill: 'WEEKEND 2 · APRIL 18, 2027 · INDIO, CA',
+          fileSuffix: 'wk2',
         },
       };
 
       /* =================================================================
-         2. 31 CURATED VIDEOS (10 LIVE PERFORMANCES + 21 OFFICIAL M/Vs)
+         3. 32 CURATED VIDEOS (11 LIVE PERFORMANCES + 21 OFFICIAL M/Vs)
       ================================================================== */
       const PAGE_SIZE = 6;
 
       const VIDEOS = [
-        // --- LIVE PERFORMANCES (10) ---
+        // --- LIVE PERFORMANCES (11) ---
         {
           id: 'iIaw6HvS09Y',
           category: 'live',
@@ -872,7 +1124,7 @@
       ];
 
       /* =================================================================
-         3. OFFICIAL SNS CHANNELS (8 Platforms + Inline SVGs)
+         4. OFFICIAL SNS CHANNELS (8 Platforms + Preserved Custom Links)
       ================================================================== */
       const SNS_ACCOUNTS = [
         {
@@ -926,7 +1178,7 @@
       ];
 
       /* =================================================================
-         4. 26-SONG BABYMONSTER SET LIST CATALOG
+         5. 26-SONG BABYMONSTER SET LIST CATALOG
       ================================================================== */
       const SONG_CATALOG = [
         'DESERVE',
@@ -978,18 +1230,19 @@
       ================================================================== */
       const state = {
         menuOpen: false,
-        activeWeekend: 'wk1', // 'wk1' | 'wk2'
-        stageFilter: 'all',   // 'all' | 'live' | 'mv'
+        activeWeekend: 'wk1',  // 'wk1' | 'wk2'
+        stageFilter: 'all',    // 'all' | 'live' | 'mv'
         visibleCount: PAGE_SIZE,
         activeVideoId: null,
-        setlistMax: 10,       // 10 | 13
+        activeStatKey: 'yt_mv',
+        setlistMax: 10,        // 10 | 13
         selectedSongs: ['WE GO UP', 'DESERVE', '춤 (CHOOM)', 'SUGAR HONEY ICE TEA', 'DRIP', 'SHEESH'],
         searchQuery: '',
         curatorHandle: '',
       };
 
       /* =================================================================
-         SHARED UTILITIES (Toast, Clipboard via execCommand, Rounded Rect)
+         SHARED UTILITIES (Toast, Escaping, Clipboard, Canvas Helpers)
       ================================================================== */
       function showToast(message, isNotice = false) {
         const host = document.getElementById('toastHost');
@@ -1013,6 +1266,15 @@
             if (el.parentNode) el.parentNode.removeChild(el);
           }, 300);
         }, 2800);
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
       }
 
       // Reliable clipboard helper using document.execCommand('copy')
@@ -1044,6 +1306,42 @@
         ctx.arcTo(x, y + h, x, y, radius);
         ctx.arcTo(x, y, x + w, y, radius);
         ctx.closePath();
+      }
+
+      // Truncates canvas text cleanly with ellipsis if it exceeds maxWidth
+      function truncateCanvasText(ctx, text, maxWidth) {
+        if (ctx.measureText(text).width <= maxWidth) return text;
+        let out = text;
+        while (out.length > 2 && ctx.measureText(out + '…').width > maxWidth) {
+          out = out.slice(0, -1);
+        }
+        return out.trimEnd() + '…';
+      }
+
+      // Draws the shared Warm Cream (#FCF6EC) double-bordered editorial frame
+      function drawWarmCreamEditorialFrame(ctx, W, H) {
+        ctx.fillStyle = '#FCF6EC';
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.strokeStyle = '#BE2668';
+        ctx.lineWidth = 4;
+        drawRoundedRect(ctx, 44, 44, W - 88, H - 88, 36);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#F2DCE6';
+        ctx.lineWidth = 2;
+        drawRoundedRect(ctx, 62, 62, W - 124, H - 124, 26);
+        ctx.stroke();
+      }
+
+      // Triggers browser download for an HTML5 canvas PNG
+      function triggerCanvasPngDownload(canvas, filename) {
+        const a = document.createElement('a');
+        a.download = filename;
+        a.href = canvas.toDataURL('image/png');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
 
       /* =================================================================
@@ -1107,8 +1405,139 @@
       }
 
       /* =================================================================
-         HERO DUAL-WEEKEND COACHELLA COUNTDOWN & LOCAL TIMEZONE READOUT
+         HERO DUAL-WEEKEND COACHELLA COUNTDOWN + 1080x1080 WARM CREAM PNG
       ================================================================== */
+      function getRemainingDaysForActiveWeekend() {
+        const cfg = COUNTDOWN_TARGETS[state.activeWeekend] || COUNTDOWN_TARGETS.wk1;
+        const targetMs = new Date(cfg.iso).getTime();
+        const diff = Math.max(0, targetMs - Date.now());
+        return Math.floor(diff / 86400000);
+      }
+
+      async function downloadCountdownCardPng() {
+        try {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+
+          const cfg = COUNTDOWN_TARGETS[state.activeWeekend] || COUNTDOWN_TARGETS.wk1;
+          const days = getRemainingDaysForActiveWeekend();
+
+          const W = 1080;
+          const H = 1080;
+          const canvas = document.createElement('canvas');
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas 2D context unavailable');
+
+          // 1. Warm Cream Background & Double Editorial Rounded Frame
+          drawWarmCreamEditorialFrame(ctx, W, H);
+
+          // 2. Top Editorial Branding (Eyebrow + Playfair Display Italic BAE + CHELLA 2027)
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#734459';
+          ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('BABYMONSTER AT COACHELLA', W / 2, 146);
+
+          ctx.fillStyle = '#BE2668';
+          ctx.font = 'italic 800 84px "Playfair Display", Georgia, serif';
+          const baeWidth = ctx.measureText('BAE').width;
+          ctx.font = '700 84px "Playfair Display", Georgia, serif';
+          const chellaWidth = ctx.measureText('CHELLA 2027').width;
+          const brandTotalW = baeWidth + 5 + chellaWidth;
+          const brandStartX = (W - brandTotalW) / 2;
+
+          ctx.textAlign = 'left';
+          ctx.font = 'italic 800 84px "Playfair Display", Georgia, serif';
+          ctx.fillText('BAE', brandStartX, 238);
+          ctx.font = '700 84px "Playfair Display", Georgia, serif';
+          ctx.fillText('CHELLA 2027', brandStartX + baeWidth + 5, 238);
+
+          // 3. Soft Blush Centerpiece Card (Displays ONLY Days — NO hours/mins/secs)
+          const boxX = 112;
+          const boxY = 304;
+          const boxW = W - 224;
+          const boxH = 446;
+
+          ctx.fillStyle = '#F7EBF0';
+          drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 36);
+          ctx.fill();
+
+          ctx.strokeStyle = '#F2DCE6';
+          ctx.lineWidth = 3;
+          drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 36);
+          ctx.stroke();
+
+          // Huge Live Day Number (or D-DAY on Day 0)
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#BE2668';
+          const heroDisplay = days === 0 ? 'D-DAY' : String(days);
+          ctx.font = days === 0
+            ? '800 176px "Plus Jakarta Sans", sans-serif'
+            : '800 228px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText(heroDisplay, W / 2, boxY + 258);
+
+          // Subtle Divider Inside Blush Card
+          ctx.strokeStyle = '#BE2668';
+          ctx.globalAlpha = 0.22;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(boxX + 120, boxY + 308);
+          ctx.lineTo(boxX + boxW - 120, boxY + 308);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+
+          // Headline Line in BBH Bogle (Native Weight 400)
+          const headlineText = days === 0
+            ? 'TODAY IS #BAECHELLA2027'
+            : (days === 1
+              ? '1 DAY BEFORE #BAECHELLA2027'
+              : `${days} DAYS BEFORE #BAECHELLA2027`);
+
+          let headlineSize = 62;
+          ctx.font = `400 ${headlineSize}px "BBH Bogle", "Plus Jakarta Sans", sans-serif`;
+          while (ctx.measureText(headlineText).width > boxW - 72 && headlineSize > 36) {
+            headlineSize -= 2;
+            ctx.font = `400 ${headlineSize}px "BBH Bogle", "Plus Jakarta Sans", sans-serif`;
+          }
+          ctx.fillStyle = '#3D1325';
+          ctx.fillText(headlineText, W / 2, boxY + 388);
+
+          // 4. Berry-Magenta Active Weekend Date Pill
+          const pillText = cfg.cardPill;
+          ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+          const pillW = Math.min(W - 180, ctx.measureText(pillText).width + 88);
+          const pillX = (W - pillW) / 2;
+          const pillY = 804;
+
+          ctx.fillStyle = '#BE2668';
+          drawRoundedRect(ctx, pillX, pillY, pillW, 56, 28);
+          ctx.fill();
+
+          ctx.fillStyle = '#FCF6EC';
+          ctx.fillText(pillText, W / 2, pillY + 36);
+
+          // 5. Bottom Signature Divider & Site URL
+          ctx.strokeStyle = '#F2DCE6';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(140, 912);
+          ctx.lineTo(W - 140, 912);
+          ctx.stroke();
+
+          ctx.fillStyle = '#734459';
+          ctx.font = '700 24px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('baechella-2027.vercel.app', W / 2, 962);
+
+          const filename = `baechella-2027-countdown-${cfg.fileSuffix}.png`;
+          triggerCanvasPngDownload(canvas, filename);
+          showToast(`Downloaded ${filename} (1080×1080)!`);
+        } catch (err) {
+          showToast('Could not generate countdown card PNG. Please try again.', true);
+        }
+      }
+
       function initCoachellaCountdown() {
         const wkBtn1 = document.getElementById('wk-btn-1');
         const wkBtn2 = document.getElementById('wk-btn-2');
@@ -1118,6 +1547,7 @@
         const secsEl = document.getElementById('cd-secs');
         const venueLineEl = document.getElementById('cd-venue-line');
         const localTimeEl = document.getElementById('cd-local-time');
+        const downloadCardBtn = document.getElementById('downloadCountdownBtn');
 
         const activeBtnCls = 'w-full rounded-full px-3 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#FCF6EC] text-[#BE2668] shadow-sm transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#FCF6EC]';
         const inactiveBtnCls = 'w-full rounded-full px-3 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#3D1325]/25 text-[#FCF6EC] hover:bg-[#FCF6EC]/20 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#FCF6EC]';
@@ -1182,13 +1612,16 @@
 
         wkBtn1.addEventListener('click', () => selectWeekend('wk1'));
         wkBtn2.addEventListener('click', () => selectWeekend('wk2'));
+        if (downloadCardBtn) {
+          downloadCardBtn.addEventListener('click', downloadCountdownCardPng);
+        }
 
         selectWeekend('wk1');
         setInterval(updateTimerDigits, 1000);
       }
 
       /* =================================================================
-         SECTION 1: BABYMONSTER STAGES (31 VIDEOS + ZERO-BANDWIDTH FACADE
+         SECTION 1: BABYMONSTER STAGES (32 VIDEOS + ZERO-BANDWIDTH FACADE
          + SHOW MORE / SHOW LESS WITHOUT INTERRUPTING ACTIVE PLAYBACK)
       ================================================================== */
       function getFilteredVideos() {
@@ -1265,7 +1698,7 @@
             <iframe
               class="w-full h-full rounded-xl"
               src="https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0"
-              title="${video.title}"
+              title="${escapeHtml(video.title)}"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -1278,20 +1711,19 @@
         }
       }
 
-      // Builds a single minimal berry-magenta stage card
+      // Builds a single minimal berry-magenta stage card (NO view/like counts)
       function createStageCardElement(video) {
         const card = document.createElement('article');
         card.dataset.videoId = video.id;
         card.className = 'rounded-3xl bg-[#BE2668] text-[#FCF6EC] p-4 sm:p-5 flex flex-col justify-between shadow-[0_14px_32px_-16px_rgba(190,38,104,0.46)] hover:-translate-y-1 hover:shadow-[0_22px_40px_-14px_rgba(158,27,84,0.55)] transition-all duration-300';
 
-        // Top section: Pill tag + 16:9 facade + Title + Description
         const topWrap = document.createElement('div');
 
         const pillWrap = document.createElement('div');
         pillWrap.className = 'mb-3';
         pillWrap.innerHTML = `
           <span class="inline-block rounded-full bg-[#FCF6EC] text-[#BE2668] px-3.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em]">
-            ${video.tag}
+            ${escapeHtml(video.tag)}
           </span>
         `;
 
@@ -1317,12 +1749,11 @@
         topWrap.appendChild(titleEl);
         topWrap.appendChild(descEl);
 
-        // Card footer: Month/Year + Credit left, Watch on YouTube ↗ right
         const footerRow = document.createElement('div');
         footerRow.className = 'mt-4 pt-3 border-t border-[#FCF6EC]/20 flex items-center justify-between gap-2 text-[11px] sm:text-xs';
         footerRow.innerHTML = `
           <span class="font-medium text-[#F7EBF0]/85 truncate">
-            ${video.date} &middot; ${video.credit}
+            ${escapeHtml(video.date)} &middot; ${escapeHtml(video.credit)}
           </span>
           <a
             href="https://www.youtube.com/watch?v=${video.id}"
@@ -1340,7 +1771,6 @@
         return card;
       }
 
-      // Updates the "Showing X of Y videos" counter and SHOW MORE / SHOW LESS buttons
       function updatePaginationControls() {
         const filtered = getFilteredVideos();
         const total = filtered.length;
@@ -1367,7 +1797,6 @@
         }
       }
 
-      // Full render when initializing or switching filter tabs
       function renderStagesFresh() {
         const grid = document.getElementById('stagesGrid');
         if (!grid) return;
@@ -1384,7 +1813,6 @@
         updatePaginationControls();
       }
 
-      // Appends the next batch of 6 cards WITHOUT touching already mounted cards / active iframe
       function handleShowMore() {
         const grid = document.getElementById('stagesGrid');
         if (!grid) return;
@@ -1404,7 +1832,6 @@
         updatePaginationControls();
       }
 
-      // Collapses smoothly back to 6 cards, preserving an active video if it's in the first 6
       function handleShowLess() {
         const grid = document.getElementById('stagesGrid');
         if (!grid) return;
@@ -1427,7 +1854,6 @@
       }
 
       function initStagesSection() {
-        // Populate live counts on filter pills
         const liveCount = VIDEOS.filter((v) => v.category === 'live').length;
         const mvCount = VIDEOS.filter((v) => v.category === 'mv').length;
         document.getElementById('filter-all').textContent = `ALL (${VIDEOS.length})`;
@@ -1456,7 +1882,392 @@
       }
 
       /* =================================================================
-         SECTION 2: OFFICIAL SNS GRID (8 INTERACTIVE TILES)
+         SECTION 2 (NEW): BAEMON STATS + 1080x1080 WARM CREAM PNG EXPORTS
+         (STRICTLY NO FOOTER / BOTTOM TEXT ON ANY STAT PNG CARD!)
+      ================================================================== */
+      function getActiveStatCategory() {
+        return (
+          BAEMON_STATS.categories.find((cat) => cat.key === state.activeStatKey) ||
+          BAEMON_STATS.categories[0]
+        );
+      }
+
+      function renderStatsSummaryGrid() {
+        const badgeEl = document.getElementById('statsUpdatedBadge');
+        if (badgeEl) badgeEl.textContent = BAEMON_STATS.updatedLabel;
+
+        const grid = document.getElementById('statsSummaryGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        BAEMON_STATS.summary.forEach((box) => {
+          const card = document.createElement('div');
+          card.className = 'rounded-2xl bg-[#F7EBF0] border-2 border-[#BE2668]/20 hover:border-[#BE2668] p-4 sm:p-5 flex flex-col justify-between gap-2 shadow-[0_8px_22px_-16px_rgba(190,38,104,0.24)] hover:-translate-y-0.5 transition-all duration-200';
+          card.innerHTML = `
+            <p class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-[#734459] leading-snug">
+              ${escapeHtml(box.label)}
+            </p>
+            <p class="font-display text-3xl sm:text-4xl leading-none text-[#BE2668] pt-1">
+              ${escapeHtml(box.value)}
+            </p>
+            <p class="text-[11px] sm:text-xs font-medium text-[#3D1325]/80 leading-snug">
+              ${escapeHtml(box.sub)}
+            </p>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      function renderStatsTabsAndLeaderboard() {
+        const tabsBar = document.getElementById('statsTabsBar');
+        const titleEl = document.getElementById('statCardTitle');
+        const subtitleEl = document.getElementById('statCardSubtitle');
+        const rowsHost = document.getElementById('statLeaderboardRows');
+
+        if (!tabsBar || !rowsHost) return;
+
+        const activeTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#BE2668] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+        const inactiveTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#F2DCE6] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+
+        // Render Category Tabs
+        tabsBar.innerHTML = '';
+        BAEMON_STATS.categories.forEach((cat) => {
+          const isActive = cat.key === state.activeStatKey;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.role = 'tab';
+          btn.setAttribute('aria-selected', String(isActive));
+          btn.className = isActive ? activeTabCls : inactiveTabCls;
+          btn.textContent = cat.tabLabel;
+          btn.addEventListener('click', () => {
+            state.activeStatKey = cat.key;
+            renderStatsTabsAndLeaderboard();
+          });
+          tabsBar.appendChild(btn);
+        });
+
+        // Render Active Category Leaderboard
+        const activeCat = getActiveStatCategory();
+        titleEl.textContent = activeCat.title;
+        subtitleEl.textContent = activeCat.subtitle;
+
+        const maxNum = Math.max(...activeCat.items.map((item) => item.num), 1);
+
+        rowsHost.innerHTML = '';
+        activeCat.items.forEach((item, index) => {
+          const rankStr = String(index + 1).padStart(2, '0');
+          const pct = Math.max(8, Math.min(100, Math.round((item.num / maxNum) * 100)));
+
+          const row = document.createElement('div');
+          row.className = 'rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] hover:border-[#BE2668]/45 px-4 py-3.5 sm:px-5 sm:py-4 transition-colors duration-200';
+          row.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${
+                  index === 0
+                    ? 'bg-[#BE2668] text-[#FCF6EC]'
+                    : 'bg-[#FCF6EC] border border-[#F2DCE6] text-[#BE2668]'
+                } font-display text-xl sm:text-2xl leading-none flex items-center justify-center shrink-0 pt-0.5">
+                  ${rankStr}
+                </span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm sm:text-base font-bold text-[#3D1325] leading-snug truncate">
+                    ${escapeHtml(item.title)}
+                  </p>
+                  <p class="mt-0.5 text-[11px] sm:text-xs font-medium text-[#734459] truncate">
+                    ${escapeHtml(item.meta)}
+                  </p>
+                </div>
+              </div>
+
+              <div class="text-right shrink-0">
+                <p class="text-base sm:text-xl font-extrabold text-[#BE2668] leading-none tabular-nums">
+                  ${escapeHtml(item.value)}
+                </p>
+                <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#734459]">
+                  ${escapeHtml(activeCat.unit)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Subtle Proportional Progress Bar -->
+            <div class="mt-3 h-2 w-full rounded-full bg-[#F2DCE6] overflow-hidden" aria-hidden="true">
+              <div
+                class="h-full rounded-full bg-[#BE2668] transition-all duration-500"
+                style="width: ${pct}%;"
+              ></div>
+            </div>
+          `;
+          rowsHost.appendChild(row);
+        });
+      }
+
+      // Exports the currently active stat tab as a 1080x1080 Warm Cream PNG (STRICTLY NO BOTTOM TEXT)
+      async function downloadActiveStatCardPng() {
+        try {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+
+          const cat = getActiveStatCategory();
+          const W = 1080;
+          const H = 1080;
+          const canvas = document.createElement('canvas');
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas 2D context unavailable');
+
+          // 1. Warm Cream Background + Editorial Double Border
+          drawWarmCreamEditorialFrame(ctx, W, H);
+
+          // 2. Centered Header: Eyebrow + Category Title (BBH Bogle 400) + Subtitle Pill
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#734459';
+          ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('BABYMONSTER', W / 2, 134);
+
+          let titleSize = 68;
+          ctx.font = `400 ${titleSize}px "BBH Bogle", "Plus Jakarta Sans", sans-serif`;
+          while (ctx.measureText(cat.title).width > W - 180 && titleSize > 42) {
+            titleSize -= 2;
+            ctx.font = `400 ${titleSize}px "BBH Bogle", "Plus Jakarta Sans", sans-serif`;
+          }
+          ctx.fillStyle = '#BE2668';
+          ctx.fillText(cat.title, W / 2, 206);
+
+          ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
+          const pillW = Math.min(W - 220, ctx.measureText(cat.subtitle.toUpperCase()).width + 72);
+          const pillX = (W - pillW) / 2;
+          const pillY = 232;
+
+          ctx.fillStyle = '#BE2668';
+          drawRoundedRect(ctx, pillX, pillY, pillW, 44, 22);
+          ctx.fill();
+
+          ctx.fillStyle = '#FCF6EC';
+          ctx.fillText(cat.subtitle.toUpperCase(), W / 2, pillY + 29);
+
+          // 3. Ranked Stat Rows (Centered vertically in remaining area; NO bottom text)
+          const items = cat.items;
+          const count = items.length;
+          const maxNum = Math.max(...items.map((it) => it.num), 1);
+
+          const areaTop = 312;
+          const areaBottom = 992;
+          const availH = areaBottom - areaTop;
+          const rowGap = count <= 4 ? 22 : 18;
+          const rowH = count <= 4 ? 136 : 116;
+          const totalRowsH = count * rowH + (count - 1) * rowGap;
+          const startY = areaTop + Math.max(0, (availH - totalRowsH) / 2);
+
+          const cardX = 96;
+          const cardW = W - 192;
+
+          items.forEach((item, i) => {
+            const y = startY + i * (rowH + rowGap);
+
+            // Soft Blush Row Card
+            ctx.fillStyle = '#F7EBF0';
+            drawRoundedRect(ctx, cardX, y, cardW, rowH, 24);
+            ctx.fill();
+
+            ctx.strokeStyle = '#F2DCE6';
+            ctx.lineWidth = 2;
+            drawRoundedRect(ctx, cardX, y, cardW, rowH, 24);
+            ctx.stroke();
+
+            // Rank Badge (01..05 in BBH Bogle)
+            const badgeSize = count <= 4 ? 62 : 54;
+            const badgeX = cardX + 24;
+            const badgeY = y + (count <= 4 ? 24 : 20);
+
+            ctx.fillStyle = i === 0 ? '#BE2668' : '#FCF6EC';
+            drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, 16);
+            ctx.fill();
+
+            if (i !== 0) {
+              ctx.strokeStyle = '#F2DCE6';
+              ctx.lineWidth = 2;
+              drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, 16);
+              ctx.stroke();
+            }
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = i === 0 ? '#FCF6EC' : '#BE2668';
+            ctx.font = `400 ${count <= 4 ? 36 : 32}px "BBH Bogle", "Plus Jakarta Sans", sans-serif`;
+            ctx.fillText(String(i + 1).padStart(2, '0'), badgeX + badgeSize / 2, badgeY + badgeSize * 0.72);
+
+            // Stat Value + Unit (Right-Aligned)
+            const rightEdgeX = cardX + cardW - 26;
+            ctx.textAlign = 'right';
+            ctx.fillStyle = '#BE2668';
+            ctx.font = `800 ${count <= 4 ? 34 : 31}px "Plus Jakarta Sans", sans-serif`;
+            const valWidth = ctx.measureText(item.value).width;
+            ctx.fillText(item.value, rightEdgeX, badgeY + (count <= 4 ? 31 : 28));
+
+            ctx.fillStyle = '#734459';
+            ctx.font = '700 15px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(cat.unit.toUpperCase(), rightEdgeX, badgeY + (count <= 4 ? 54 : 49));
+
+            // Track/Show Title + Meta (Left-Aligned, Safe Width)
+            const textX = badgeX + badgeSize + 22;
+            const maxTitleW = rightEdgeX - valWidth - 28 - textX;
+
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#3D1325';
+            let itemTitlePx = count <= 4 ? 28 : 26;
+            ctx.font = `700 ${itemTitlePx}px "Plus Jakarta Sans", sans-serif`;
+            if (ctx.measureText(item.title).width > maxTitleW) {
+              itemTitlePx = 22;
+              ctx.font = `700 ${itemTitlePx}px "Plus Jakarta Sans", sans-serif`;
+            }
+            const safeTitle = truncateCanvasText(ctx, item.title, maxTitleW);
+            ctx.fillText(safeTitle, textX, badgeY + (count <= 4 ? 29 : 26));
+
+            ctx.fillStyle = '#734459';
+            ctx.font = '500 18px "Plus Jakarta Sans", sans-serif';
+            const safeMeta = truncateCanvasText(ctx, item.meta, maxTitleW);
+            ctx.fillText(safeMeta, textX, badgeY + (count <= 4 ? 56 : 51));
+
+            // Proportional Progress Bar
+            const barX = cardX + 24;
+            const barY = y + rowH - 22;
+            const barW = cardW - 48;
+            const barH = 10;
+            const ratio = Math.max(0.08, Math.min(1, item.num / maxNum));
+
+            ctx.fillStyle = '#F2DCE6';
+            drawRoundedRect(ctx, barX, barY, barW, barH, 5);
+            ctx.fill();
+
+            ctx.fillStyle = '#BE2668';
+            drawRoundedRect(ctx, barX, barY, Math.max(20, barW * ratio), barH, 5);
+            ctx.fill();
+          });
+
+          // Strictly NO footer text, NO URL, NO watermark on bottom!
+          triggerCanvasPngDownload(canvas, cat.filename);
+          showToast(`Downloaded ${cat.filename} (1080×1080)!`);
+        } catch (err) {
+          showToast('Could not generate stat card PNG. Please try again.', true);
+        }
+      }
+
+      // Exports the 6-box Career Milestones overview as a 1080x1080 Warm Cream PNG (STRICTLY NO BOTTOM TEXT)
+      async function downloadSummaryStatsPng() {
+        try {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+
+          const W = 1080;
+          const H = 1080;
+          const canvas = document.createElement('canvas');
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas 2D context unavailable');
+
+          // 1. Warm Cream Background + Editorial Double Border
+          drawWarmCreamEditorialFrame(ctx, W, H);
+
+          // 2. Centered Header: Eyebrow + BAEMON STATS + Pill
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#734459';
+          ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('BABYMONSTER', W / 2, 136);
+
+          ctx.fillStyle = '#BE2668';
+          ctx.font = '400 78px "BBH Bogle", "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('BAEMON STATS', W / 2, 214);
+
+          const pillText = 'CAREER MILESTONES';
+          ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
+          const pillW = ctx.measureText(pillText).width + 76;
+          const pillX = (W - pillW) / 2;
+          const pillY = 238;
+
+          ctx.fillStyle = '#BE2668';
+          drawRoundedRect(ctx, pillX, pillY, pillW, 44, 22);
+          ctx.fill();
+
+          ctx.fillStyle = '#FCF6EC';
+          ctx.fillText(pillText, W / 2, pillY + 29);
+
+          // 3. 2-Column x 3-Row Grid of 6 Career Milestone Boxes (Centered cleanly, NO bottom text)
+          const cols = 2;
+          const rows = 3;
+          const gapX = 24;
+          const gapY = 24;
+          const gridX = 96;
+          const gridW = W - 192;
+          const boxW = (gridW - gapX) / cols;
+          const boxH = 196;
+          const totalGridH = rows * boxH + (rows - 1) * gapY;
+          const areaTop = 318;
+          const areaBottom = 992;
+          const gridStartY = areaTop + Math.max(0, (areaBottom - areaTop - totalGridH) / 2);
+
+          BAEMON_STATS.summary.forEach((box, idx) => {
+            const c = idx % cols;
+            const r = Math.floor(idx / cols);
+            const x = gridX + c * (boxW + gapX);
+            const y = gridStartY + r * (boxH + gapY);
+
+            // Soft Blush Milestone Box
+            ctx.fillStyle = '#F7EBF0';
+            drawRoundedRect(ctx, x, y, boxW, boxH, 26);
+            ctx.fill();
+
+            ctx.strokeStyle = '#F2DCE6';
+            ctx.lineWidth = 2;
+            drawRoundedRect(ctx, x, y, boxW, boxH, 26);
+            ctx.stroke();
+
+            // Top Berry Accent Bar
+            ctx.fillStyle = '#BE2668';
+            drawRoundedRect(ctx, x + 28, y + 22, 48, 6, 3);
+            ctx.fill();
+
+            // Label
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#734459';
+            ctx.font = '700 17px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(truncateCanvasText(ctx, box.label, boxW - 56), x + 28, y + 58);
+
+            // Huge Stat Value (BBH Bogle Weight 400)
+            ctx.fillStyle = '#BE2668';
+            ctx.font = '400 72px "BBH Bogle", "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(box.value, x + 28, y + 132);
+
+            // Sub-label
+            ctx.fillStyle = '#3D1325';
+            ctx.font = '600 18px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(truncateCanvasText(ctx, box.sub, boxW - 56), x + 28, y + 168);
+          });
+
+          // Strictly NO footer text, NO URL, NO watermark on bottom!
+          const filename = 'baemon-stats-overview.png';
+          triggerCanvasPngDownload(canvas, filename);
+          showToast(`Downloaded ${filename} (1080×1080)!`);
+        } catch (err) {
+          showToast('Could not generate overview PNG. Please try again.', true);
+        }
+      }
+
+      function initStatsSection() {
+        renderStatsSummaryGrid();
+        renderStatsTabsAndLeaderboard();
+
+        const activeBtn = document.getElementById('downloadActiveStatBtn');
+        const summaryBtn = document.getElementById('downloadSummaryStatsBtn');
+        if (activeBtn) activeBtn.addEventListener('click', downloadActiveStatCardPng);
+        if (summaryBtn) summaryBtn.addEventListener('click', downloadSummaryStatsPng);
+      }
+
+      /* =================================================================
+         SECTION 3: OFFICIAL SNS GRID (8 INTERACTIVE TILES)
       ================================================================== */
       function renderSnsGrid() {
         const grid = document.getElementById('snsGrid');
@@ -1479,10 +2290,10 @@
             </div>
             <div class="min-w-0">
               <p class="font-display uppercase text-2xl leading-none text-[#BE2668] group-hover:text-[#FCF6EC] transition-colors duration-300">
-                ${acc.name}
+                ${escapeHtml(acc.name)}
               </p>
               <p class="mt-1 text-[11px] font-medium text-[#734459] group-hover:text-[#F7EBF0] truncate transition-colors duration-300">
-                ${acc.handle}
+                ${escapeHtml(acc.handle)}
               </p>
             </div>
           `;
@@ -1492,7 +2303,7 @@
       }
 
       /* =================================================================
-         SECTION 3: CREATE SET LIST (10 / 13 SONGS + 1080x1350 PNG EXPORT)
+         SECTION 4: CREATE SET LIST (10 / 13 SONGS + 1080x1350 PNG EXPORT)
       ================================================================== */
       function toggleCatalogSong(songTitle) {
         const idx = state.selectedSongs.indexOf(songTitle);
@@ -1526,7 +2337,7 @@
 
       function getCuratorLine() {
         const clean = state.curatorHandle.trim();
-        return clean ? `CURATED BY ${clean.toUpperCase()}` : 'CURATED BY MONSTIEZ';
+        return clean ? `CURATED BY ${clean.toUpperCase()}` : 'CREATED BY MONSTIEZ';
       }
 
       function renderSetlistUI() {
@@ -1574,6 +2385,7 @@
           const row = document.createElement('div');
 
           if (song) {
+            const safeSong = escapeHtml(song);
             const isOpener = i === 0;
             const isEncore = i === state.selectedSongs.length - 1 && state.selectedSongs.length > 1;
             const badgeHtml = isOpener
@@ -1586,28 +2398,28 @@
             row.innerHTML = `
               <div class="flex items-center gap-2.5 min-w-0 flex-1">
                 <span class="font-display text-lg leading-none text-[#BE2668] w-5 shrink-0 pt-0.5">${numStr}</span>
-                <span class="text-sm font-semibold text-[#3D1325] truncate">${song}</span>
+                <span class="text-sm font-semibold text-[#3D1325] truncate">${safeSong}</span>
                 ${badgeHtml}
               </div>
               <div class="flex items-center gap-1 shrink-0">
                 <button
                   type="button"
                   data-up="${i}"
-                  aria-label="Move ${song} up"
+                  aria-label="Move ${safeSong} up"
                   ${i === 0 ? 'disabled' : ''}
                   class="w-7 h-7 rounded-lg bg-[#FCF6EC] border border-[#F2DCE6] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:border-[#BE2668] disabled:opacity-30 disabled:pointer-events-none text-xs font-bold text-[#BE2668] flex items-center justify-center cursor-pointer touch-manipulation transition-colors"
                 >&uarr;</button>
                 <button
                   type="button"
                   data-down="${i}"
-                  aria-label="Move ${song} down"
+                  aria-label="Move ${safeSong} down"
                   ${i === state.selectedSongs.length - 1 ? 'disabled' : ''}
                   class="w-7 h-7 rounded-lg bg-[#FCF6EC] border border-[#F2DCE6] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:border-[#BE2668] disabled:opacity-30 disabled:pointer-events-none text-xs font-bold text-[#BE2668] flex items-center justify-center cursor-pointer touch-manipulation transition-colors"
                 >&darr;</button>
                 <button
                   type="button"
                   data-del="${i}"
-                  aria-label="Remove ${song}"
+                  aria-label="Remove ${safeSong}"
                   class="w-7 h-7 rounded-lg bg-[#FCF6EC] border border-[#F2DCE6] hover:bg-[#3D1325] hover:text-[#FCF6EC] hover:border-[#3D1325] text-xs font-bold text-[#734459] flex items-center justify-center cursor-pointer touch-manipulation transition-colors"
                 >&times;</button>
               </div>
@@ -1635,7 +2447,7 @@
       }
 
       /* =================================================================
-         1080x1350 CREAM & BERRY-MAGENTA HTML5 CANVAS POSTER GENERATOR
+         1080x1350 CREAM & BERRY-MAGENTA HTML5 CANVAS SET LIST POSTER
       ================================================================== */
       async function downloadPosterPng() {
         if (state.selectedSongs.length === 0) {
@@ -1656,28 +2468,16 @@
           const ctx = canvas.getContext('2d');
           if (!ctx) throw new Error('Canvas 2D context unavailable');
 
-          // 1. Warm Cream Background
-          ctx.fillStyle = '#FCF6EC';
-          ctx.fillRect(0, 0, W, H);
+          // 1. Warm Cream Background + Editorial Double Rounded Frame
+          drawWarmCreamEditorialFrame(ctx, W, H);
 
-          // 2. Editorial Double Rounded Frame
-          ctx.strokeStyle = '#BE2668';
-          ctx.lineWidth = 4;
-          drawRoundedRect(ctx, 44, 44, W - 88, H - 88, 32);
-          ctx.stroke();
-
-          ctx.strokeStyle = '#F2DCE6';
-          ctx.lineWidth = 2;
-          drawRoundedRect(ctx, 62, 62, W - 124, H - 124, 24);
-          ctx.stroke();
-
-          // 3. Eyebrow Label
+          // 2. Eyebrow Label
           ctx.textAlign = 'center';
           ctx.fillStyle = '#734459';
           ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
           ctx.fillText('BABYMONSTER  ·  COACHELLA 2027', W / 2, 124);
 
-          // 4. Poster Title in BBH Bogle (Native Weight 400)
+          // 3. Poster Title in BBH Bogle (Native Weight 400)
           ctx.fillStyle = '#BE2668';
           ctx.font = '400 78px "BBH Bogle", "Plus Jakarta Sans", sans-serif';
           ctx.fillText('BAECHELLA 2027 SET LIST', W / 2, 208);
@@ -1687,7 +2487,7 @@
           ctx.font = 'italic 700 32px "Playfair Display", Georgia, serif';
           ctx.fillText('· PREDICTION ·', W / 2, 254);
 
-          // 5. Berry-Magenta Date & Count Pill
+          // 4. Berry-Magenta Date & Count Pill
           const pillText = `APRIL 11 & 18, 2027  ·  INDIO, CA  ·  ${state.selectedSongs.length} SONGS`;
           ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
           const pillW = Math.min(W - 180, ctx.measureText(pillText).width + 76);
@@ -1701,7 +2501,7 @@
           ctx.fillStyle = '#FCF6EC';
           ctx.fillText(pillText, W / 2, pillY + 31);
 
-          // 6. Tracklist Rows (Adapts smoothly for 10 or 13 tracks)
+          // 5. Tracklist Rows (Adapts smoothly for 10 or 13 tracks)
           const listTop = 364;
           const listBottom = 1192;
           const availH = listBottom - listTop;
@@ -1728,11 +2528,8 @@
             ctx.fillStyle = '#3D1325';
             ctx.font = `600 ${songPx}px "Plus Jakarta Sans", sans-serif`;
             const maxTitleW = rightX - (leftX + 68) - 134;
-            let titleText = song;
-            while (ctx.measureText(titleText).width > maxTitleW && titleText.length > 3) {
-              titleText = titleText.slice(0, -2) + '…';
-            }
-            ctx.fillText(titleText, leftX + 68, y);
+            const safeTitle = truncateCanvasText(ctx, song, maxTitleW);
+            ctx.fillText(safeTitle, leftX + 68, y);
 
             // Opener / Encore Pill Badge
             if (i === 0 || (i === count - 1 && count > 1)) {
@@ -1762,7 +2559,7 @@
             }
           });
 
-          // 7. Footer Signature Line
+          // 6. Footer Signature Line
           ctx.strokeStyle = '#BE2668';
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -1780,14 +2577,8 @@
           ctx.font = '600 21px "Plus Jakarta Sans", sans-serif';
           ctx.fillText('#BAECHELLA2027  ·  BABYMONSTER', W - 104, 1264);
 
-          // 8. Export & Trigger PNG Download
-          const a = document.createElement('a');
-          a.download = 'baechella-2027-setlist.png';
-          a.href = canvas.toDataURL('image/png');
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-
+          // 7. Export & Trigger PNG Download
+          triggerCanvasPngDownload(canvas, 'baechella-2027-setlist.png');
           showToast('Downloaded baechella-2027-setlist.png (1080×1350)!');
         } catch (err) {
           showToast('Could not generate poster PNG. Please try again.', true);
@@ -1927,6 +2718,7 @@
         initNavigationMenu();
         initCoachellaCountdown();
         initStagesSection();
+        initStatsSection();
         renderSnsGrid();
         initSetlistBuilder();
         renderSetlistUI();
