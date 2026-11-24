@@ -208,4 +208,4 @@ export default async function handler(req, res) {
       error: 'Failed to load concert attendance from Google Sheets.',
     });
   }
-                                              }
+}
