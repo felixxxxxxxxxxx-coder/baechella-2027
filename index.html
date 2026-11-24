@@ -25,20 +25,7 @@
             sans: ['"Plus Jakarta Sans"', '"Noto Sans KR"', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            cream: '#FCF6EC',
-            berry: '#BE2668',
-            berryhover: '#9E1B54',
-            blush: '#F2DCE6',
-            blushsoft: '#F7EBF0',
-            plum: '#3D1325',
-            mutedplum: '#734459',
-          },
-        },
-      },
-    };
-  </script>
-
-  <!-- Minimal utility lock: smooth font rendering & strict BBH Bogle weight 400 (no browser faux-bolding) -->
+  <!-- Minimal utility lock: smooth font rendering, panel animations & strict BBH Bogle weight 400 -->
   <style>
     html,
     body {
@@ -51,6 +38,19 @@
       font-weight: 400 !important;
       font-style: normal !important;
       letter-spacing: 0.02em;
+    }
+    @keyframes panelReveal {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-panel-reveal {
+      animation: panelReveal 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
   </style>
 </head>
@@ -275,6 +275,205 @@
                   <!-- Year Filter Pills (2026 | 2025 | 2024) -->
                   <div
                     id="albumYearTabs"
+      <!-- PART B: 8 Interactive Stat Category Tabs (Including ALL CONCERTS & ALBUM UPDATES) + Unified Framed Card -->
+      <div class="mt-8 sm:mt-10">
+        <div id="statsTabsBar" class="flex flex-wrap items-center gap-2" role="tablist" aria-label="BAEMON STATS categories"></div>
+
+        <div class="mt-5 rounded-3xl bg-[#FCF6EC] border-2 border-[#BE2668] p-3 sm:p-4 shadow-[0_20px_44px_-16px_rgba(190,38,104,0.24)] transition-all duration-300 ease-out">
+          <div class="rounded-2xl border border-[#F2DCE6] bg-[#FCF6EC] p-4 sm:p-6">
+            <!-- Unified Card Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b-2 border-[#F2DCE6]">
+              <div>
+                <p id="statCardSubtitle" class="text-[11px] font-bold uppercase tracking-[0.16em] text-[#734459]">Official YouTube M/Vs</p>
+                <h3 id="statCardTitle" class="mt-1 font-display uppercase text-3xl sm:text-4xl leading-none text-[#BE2668]">TOP 5 MOST VIEWED MUSIC VIDEOS</h3>
+              </div>
+              <!-- Shown for the 6 Leaderboard Tabs; Hidden when ALL CONCERTS or ALBUM UPDATES is active -->
+              <button
+                id="downloadActiveStatBtn"
+                type="button"
+                class="self-start sm:self-auto shrink-0 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] shadow-[0_12px_26px_-10px_rgba(190,38,104,0.55)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+              >
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                <span>DOWNLOAD STAT CARD (PNG)</span>
+              </button>
+            </div>
+
+            <!-- View 1: Standard 6 Stat Leaderboards -->
+            <div id="statLeaderboardRows" class="mt-5 space-y-3" role="tabpanel" aria-live="polite"></div>
+
+            <!-- View 2: 5th Tab — ALL CONCERTS ATTENDEES (Live Google Sheets via /api/concerts) -->
+            <div id="allConcertsPanel" class="hidden mt-5" role="tabpanel" aria-live="polite">
+              <!-- Dynamic Tour Filter Pills + Circular Manual Refresh Button -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div
+                  id="concertTourTabsBar"
+                  class="flex flex-wrap items-center gap-2"
+                  role="tablist"
+                  aria-label="Filter concert attendance by tour"
+                ></div>
+
+                <button
+                  id="refreshConcertsBtn"
+                  type="button"
+                  aria-label="Refresh live concert attendance data"
+                  title="Refresh live concert data"
+                  class="self-start sm:self-auto shrink-0 w-10 h-10 rounded-full bg-[#F7EBF0] border border-[#BE2668]/35 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+                >
+                  <svg id="refreshConcertsIcon" class="w-4 h-4 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Berry Magenta Summary Banner -->
+              <div class="relative mt-5 rounded-2xl bg-[#BE2668] text-[#FCF6EC] p-4 sm:p-5 md:p-6 overflow-hidden shadow-[0_14px_32px_-14px_rgba(190,38,104,0.48)] transition-all duration-300 ease-out">
+                <div aria-hidden="true" class="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#E14588]/35 blur-2xl"></div>
+                <div aria-hidden="true" class="pointer-events-none absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#3D1325]/30 blur-2xl"></div>
+
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <p id="concertsSummaryEyebrow" class="text-[11px] font-bold uppercase tracking-[0.13em] text-[#F7EBF0]">
+                      TOTAL ATTENDANCE (ALL TOURS)
+                    </p>
+                    <p id="concertsSummaryTotalAttendance" class="mt-1.5 text-3xl sm:text-4xl font-extrabold text-white leading-none tabular-nums">
+                      0
+                    </p>
+                    <div class="mt-2.5 flex flex-wrap items-center gap-2">
+                      <span
+                        id="concertsSummaryReportedBadge"
+                        class="rounded-full bg-[#3D1325]/30 border border-[#FCF6EC]/35 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.09em] text-[#FCF6EC] tabular-nums"
+                      >
+                        0 / 0 Reported Stops
+                      </span>
+                      <span
+                        id="concertsSummaryShowsBadge"
+                        class="rounded-full bg-[#3D1325]/30 border border-[#FCF6EC]/35 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.09em] text-[#FCF6EC] tabular-nums"
+                      >
+                        0 Scheduled Shows
+                      </span>
+                      <span
+                        id="concertsSummaryCitiesBadge"
+                        class="rounded-full bg-[#3D1325]/30 border border-[#FCF6EC]/35 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.09em] text-[#FCF6EC] tabular-nums"
+                      >
+                        0 Cities
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="shrink-0 self-start sm:self-auto">
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-[#FCF6EC] text-[#BE2668] px-3.5 py-1.5 text-[11px] font-extrabold tracking-wide shadow-sm">
+                      ~ = Approx. / Estimate
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search, Region Filter & Sort Controls Row -->
+              <div class="mt-5 grid grid-cols-1 md:grid-cols-12 gap-2.5 sm:gap-3">
+                <div class="md:col-span-6 relative">
+                  <label for="concertSearchInput" class="sr-only">Search city, venue, or country</label>
+                  <span class="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-[#734459]" aria-hidden="true">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                  </span>
+                  <input
+                    id="concertSearchInput"
+                    type="text"
+                    placeholder="Search city, venue, or country..."
+                    class="w-full h-11 rounded-xl bg-[#F7EBF0] border border-[#BE2668]/25 pl-10 pr-4 text-xs sm:text-sm font-medium text-[#3D1325] placeholder-[#734459]/75 focus:outline-none focus:bg-[#FCF6EC] focus:border-[#BE2668] focus:ring-2 focus:ring-[#BE2668]/20 transition-all duration-300 ease-out"
+                  />
+                </div>
+
+                <div class="md:col-span-3 relative">
+                  <label for="concertRegionSelect" class="sr-only">Filter by region</label>
+                  <select
+                    id="concertRegionSelect"
+                    aria-label="Filter by region"
+                    class="w-full h-11 appearance-none rounded-xl bg-[#F7EBF0] border border-[#BE2668]/25 pl-3.5 pr-9 text-xs sm:text-sm font-bold text-[#3D1325] focus:outline-none focus:bg-[#FCF6EC] focus:border-[#BE2668] focus:ring-2 focus:ring-[#BE2668]/20 transition-all duration-300 ease-out cursor-pointer touch-manipulation"
+                  >
+                    <option value="all">All Regions</option>
+                  </select>
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#BE2668]" aria-hidden="true">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </div>
+
+                <div class="md:col-span-3 relative">
+                  <label for="concertSortSelect" class="sr-only">Sort concert stops</label>
+                  <select
+                    id="concertSortSelect"
+                    aria-label="Sort concert stops"
+                    class="w-full h-11 appearance-none rounded-xl bg-[#F7EBF0] border border-[#BE2668]/25 pl-3.5 pr-9 text-xs sm:text-sm font-bold text-[#3D1325] focus:outline-none focus:bg-[#FCF6EC] focus:border-[#BE2668] focus:ring-2 focus:ring-[#BE2668]/20 transition-all duration-300 ease-out cursor-pointer touch-manipulation"
+                  >
+                    <option value="chrono">Chronological</option>
+                    <option value="newest">Newest First</option>
+                    <option value="highest">Highest Attendance</option>
+                    <option value="lowest">Lowest Attendance</option>
+                  </select>
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#BE2668]" aria-hidden="true">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Concert Stop Cards Host -->
+              <div id="concertStopsRowsHost" class="mt-5 space-y-3"></div>
+
+              <!-- Pagination Controls (CONCERTS_PAGE_SIZE = 10) -->
+              <div id="concertsPaginationBar" class="mt-6 sm:mt-7 flex flex-col items-center gap-3">
+                <p id="concertsCounterText" class="text-xs sm:text-sm font-semibold text-[#734459]">
+                  Loading concert stops...
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-2.5">
+                  <button
+                    id="concertsShowMoreBtn"
+                    type="button"
+                    class="hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] text-xs font-bold uppercase tracking-[0.1em] shadow-[0_10px_22px_-8px_rgba(190,38,104,0.5)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+                  >
+                    SHOW MORE (+10)
+                  </button>
+
+                  <button
+                    id="concertsShowLessBtn"
+                    type="button"
+                    class="hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-[#FCF6EC] border-2 border-[#BE2668] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] text-xs font-bold uppercase tracking-[0.1em] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+                  >
+                    SHOW LESS &uarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- Clean Minimal Bottom Bar (No Source Tag) -->
+              <div class="border-t border-[#F2DCE6] pt-4 mt-6 flex items-center justify-end">
+                <button
+                  id="downloadConcertsCardBtn"
+                  type="button"
+                  class="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.09em] bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+                >
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                  <span>Download Card (PNG)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- View 3: 8th Tab — ALBUM UPDATES (BY MONTH) Circle Chart Tracker Inside the Same Framed Card -->
+            <div id="albumUpdatesPanel" class="hidden mt-5" role="tabpanel" aria-live="polite">
+              <!-- Year Switcher Pills + Grouped Dropdown + Prev/Next Month Navigation -->
+              <div class="space-y-3.5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                  <!-- Year Filter Pills (2026 | 2025 | 2024) -->
+                  <div
+                    id="albumYearTabs"
                     class="inline-flex self-start rounded-full p-1 bg-[#F7EBF0] border border-[#F2DCE6]"
                     role="tablist"
                     aria-label="Filter album updates by year"
@@ -287,7 +486,7 @@
                       type="button"
                       aria-label="Previous month (older)"
                       title="Previous month"
-                      class="shrink-0 w-10 h-10 rounded-full bg-[#F7EBF0] border border-[#BE2668]/35 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] disabled:opacity-35 disabled:pointer-events-none font-bold text-sm flex items-center justify-center transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
+                      class="shrink-0 w-10 h-10 rounded-full bg-[#F7EBF0] border border-[#BE2668]/35 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] disabled:opacity-35 disabled:pointer-events-none font-bold text-sm flex items-center justify-center transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
                     >
                       &larr;
                     </button>
@@ -297,7 +496,7 @@
                       <select
                         id="albumMonthSelect"
                         aria-label="Choose Circle Chart month"
-                        class="w-full h-10 appearance-none rounded-full bg-[#FCF6EC] border-2 border-[#BE2668] pl-4 pr-10 text-xs sm:text-sm font-bold text-[#3D1325] focus:outline-none focus:ring-2 focus:ring-[#BE2668]/25 cursor-pointer touch-manipulation"
+                        class="w-full h-10 appearance-none rounded-full bg-[#FCF6EC] border-2 border-[#BE2668] pl-4 pr-10 text-xs sm:text-sm font-bold text-[#3D1325] focus:outline-none focus:ring-2 focus:ring-[#BE2668]/25 transition-all duration-300 ease-out cursor-pointer touch-manipulation"
                       ></select>
                       <span class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-[#BE2668]" aria-hidden="true">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -311,7 +510,7 @@
                       type="button"
                       aria-label="Next month (newer)"
                       title="Next month"
-                      class="shrink-0 w-10 h-10 rounded-full bg-[#F7EBF0] border border-[#BE2668]/35 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] disabled:opacity-35 disabled:pointer-events-none font-bold text-sm flex items-center justify-center transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
+                      class="shrink-0 w-10 h-10 rounded-full bg-[#F7EBF0] border border-[#BE2668]/35 hover:bg-[#BE2668] text-[#BE2668] hover:text-[#FCF6EC] disabled:opacity-35 disabled:pointer-events-none font-bold text-sm flex items-center justify-center transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
                     >
                       &rarr;
                     </button>
@@ -340,7 +539,7 @@
               </div>
 
               <!-- Combined Monthly Summary Banner -->
-              <div class="relative mt-5 rounded-2xl bg-[#BE2668] text-[#FCF6EC] p-4 sm:p-5 md:p-6 overflow-hidden shadow-[0_14px_32px_-14px_rgba(190,38,104,0.48)]">
+              <div class="relative mt-5 rounded-2xl bg-[#BE2668] text-[#FCF6EC] p-4 sm:p-5 md:p-6 overflow-hidden shadow-[0_14px_32px_-14px_rgba(190,38,104,0.48)] transition-all duration-300 ease-out">
                 <div aria-hidden="true" class="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#E14588]/35 blur-2xl"></div>
                 <div aria-hidden="true" class="pointer-events-none absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#3D1325]/30 blur-2xl"></div>
 
@@ -383,16 +582,12 @@
               <!-- Per-Album Monthly Breakdown Cards (Zero Truncation on Titles & Subtitles) -->
               <div id="albumUpdatesRowsHost" class="mt-5 space-y-3.5"></div>
 
-              <!-- Compact Bottom Footer Bar Inside Framed Card -->
-              <div class="border-t border-[#F2DCE6] pt-4 mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p class="text-xs font-semibold text-[#734459] text-center sm:text-left">
-                  Source: Circle Chart &middot; South Korea
-                </p>
-
+              <!-- Clean Minimal Bottom Bar (No Source Tag) -->
+              <div class="border-t border-[#F2DCE6] pt-4 mt-6 flex items-center justify-end">
                 <button
                   id="downloadAlbumMonthBtn"
                   type="button"
-                  class="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.09em] bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
+                  class="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.09em] bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]"
                 >
                   <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -530,7 +725,7 @@
           { label: 'SPOTIFY STREAMS', value: '2.9B+', sub: 'All Credits · 9.5M+ Followers' },
           { label: 'YT MUSIC STREAMS', value: '7.44B+', sub: '95.9M Monthly Audience' },
           { label: 'CIRCLE ALBUM SALES', value: '3.59M+', sub: '4 Albums · South Korea' },
-          { label: 'CONCERT ATTENDANCE', value: '780K+', sub: 'World Tours & Fan Concerts' },
+          { label: 'CONCERT ATTENDANCE', value: '858K+', sub: 'World Tours & Fan Concerts' },
           { label: 'BILLBOARD GLOBAL 200', value: '#30', sub: 'DRIP · Peak' },
         ],
         categories: [
@@ -557,11 +752,11 @@
             unit: 'streams',
             filename: 'baemon-stats-top5-spotify.png',
             items: [
-              { title: 'SHEESH', value: '439M+', meta: 'BABYMONS7ER · 2024', num: 439 },
-              { title: 'DRIP', value: '329M+', meta: 'DRIP · 2024', num: 329 },
-              { title: 'BATTER UP', value: '279M+', meta: 'Digital Single · 2023', num: 279 },
-              { title: 'FOREVER', value: '243M+', meta: 'Digital Single · 2024', num: 243 },
-              { title: 'LIKE THAT', value: '231M+', meta: 'BABYMONS7ER · 2024', num: 231 },
+              { title: 'SHEESH', value: '439.6M+', meta: 'BABYMONS7ER · 2024', num: 439.6 },
+              { title: 'DRIP', value: '299.8M+', meta: 'DRIP · 2024', num: 299.8 },
+              { title: 'BATTER UP', value: '279.5M+', meta: 'Digital Single · 2023', num: 279.5 },
+              { title: 'FOREVER', value: '243.2M+', meta: 'Digital Single · 2024', num: 243.2 },
+              { title: 'LIKE THAT', value: '230.9M+', meta: 'BABYMONS7ER · 2024', num: 230.9 },
             ],
           },
           {
@@ -575,7 +770,7 @@
               { title: 'DRIP', value: '970M+', meta: 'DRIP · 2024', num: 970 },
               { title: 'SHEESH', value: '939M+', meta: 'BABYMONS7ER · 2024', num: 939 },
               { title: 'BATTER UP', value: '720M+', meta: 'Digital Single · 2023', num: 720 },
-              { title: 'WE GO UP', value: '515M+', meta: 'WE GO UP · 2025', num: 515 },
+              { title: 'WE GO UP', value: '514M+', meta: 'WE GO UP · 2025', num: 514 },
               { title: 'FOREVER', value: '485M+', meta: 'Digital Single · 2024', num: 485 },
             ],
           },
@@ -594,6 +789,14 @@
               { title: 'PIA ARENA MM, YOKOHAMA', value: '30,000', meta: 'HELLO MONSTERS · 3 Nights · Mar 2025', num: 30000 },
             ],
           },
+          // 5th Tab — ALL CONCERTS ATTENDEES (Right after TOP 5 SHOWS inside the same framed card)
+          {
+            key: 'all_concerts',
+            tabLabel: 'ALL CONCERTS',
+            title: 'ALL CONCERTS ATTENDEES',
+            subtitle: 'World Tours & Fan Concerts',
+            isAllConcertsTab: true,
+          },
           {
             key: 'live_stages',
             tabLabel: 'TOP 5 LIVE STAGES',
@@ -609,7 +812,6 @@
               { title: 'MAMA 2025: WE GO UP + DRIP', value: '16.7M+', meta: 'Mnet K-POP · Nov 2025', num: 16.7 },
             ],
           },
-        
           {
             key: 'certifications',
             tabLabel: 'CERTIFICATIONS',
@@ -789,6 +991,7 @@
       };
 
       const PAGE_SIZE = 6;
+      const CONCERTS_PAGE_SIZE = 10;
 
       const VIDEOS = [
         { id: 'iIaw6HvS09Y', category: 'live', tag: 'LIVE PERFORMANCE', title: 'MAMA 2026: INTRO + DESERVE + CHOOM', date: 'Nov 2026', credit: 'Mnet K-POP', desc: "Commanding the 2026 MAMA Awards with an explosive 'A Music Interstellar' medley featuring DESERVE and a grand MAMA remix of CHOOM." },
@@ -857,6 +1060,14 @@
         activeVideoId: null,
         activeStatKey: 'yt_mv',
         selectedAlbumMonth: '2026-10',
+        concertsLoading: true,
+        concertsError: '',
+        concertStops: [],
+        activeConcertTourKey: 'all',
+        concertSearchQuery: '',
+        concertRegionFilter: 'all',
+        concertSortBy: 'chrono',
+        concertVisibleCount: CONCERTS_PAGE_SIZE,
         setlistMax: 10,
         selectedSongs: ['WE GO UP', 'DESERVE', '춤 (CHOOM)', 'SUGAR HONEY ICE TEA', 'DRIP', 'SHEESH'],
         searchQuery: '',
@@ -1374,46 +1585,27 @@
         document.getElementById('showLessBtn').addEventListener('click', handleShowLess);
         renderStagesFresh();
       }
-
-      /* =================================================================
-         SECTION 2: BAEMON STATS (6 MILESTONES + 8 TABS INCLUDING ALBUM UPDATES)
-         WITH #BAECHELLA2027 AT THE BOTTOM OF EVERY 1080x1080 STAT PNG
-      ================================================================== */
-      function getActiveStatCategory() {
-        return BAEMON_STATS.categories.find((cat) => cat.key === state.activeStatKey) || BAEMON_STATS.categories[0];
+      // Helper to smoothly re-trigger panelReveal animation on content changes
+      function triggerPanelReveal(el) {
+        if (!el) return;
+        el.classList.remove('animate-panel-reveal');
+        void el.offsetWidth;
+        el.classList.add('animate-panel-reveal');
       }
 
-      function renderStatsSummaryGrid() {
-        const badgeEl = document.getElementById('statsUpdatedBadge');
-        if (badgeEl) badgeEl.textContent = BAEMON_STATS.updatedLabel;
-        const grid = document.getElementById('statsSummaryGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
-
-        BAEMON_STATS.summary.forEach((box) => {
-          const card = document.createElement('div');
-          card.className = 'rounded-2xl bg-[#F7EBF0] border-2 border-[#BE2668]/20 hover:border-[#BE2668] p-4 sm:p-5 flex flex-col justify-between gap-2 shadow-[0_8px_22px_-16px_rgba(190,38,104,0.24)] hover:-translate-y-0.5 transition-all duration-200';
-          card.innerHTML = `
-            <p class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-[#734459] leading-snug">${escapeHtml(box.label)}</p>
-            <p class="font-display text-3xl sm:text-4xl leading-none text-[#BE2668] pt-1">${escapeHtml(box.value)}</p>
-            <p class="text-[11px] sm:text-xs font-medium text-[#3D1325]/80 leading-snug">${escapeHtml(box.sub)}</p>
-          `;
-          grid.appendChild(card);
-        });
-      }
-
-      // Renders all 8 pill tabs and switches cleanly between standard leaderboards and the 8th ALBUM UPDATES tab
+      // Renders all 8 pill tabs and switches smoothly between leaderboards, ALL CONCERTS, and ALBUM UPDATES
       function renderStatsTabsAndLeaderboard() {
         const tabsBar = document.getElementById('statsTabsBar');
         const titleEl = document.getElementById('statCardTitle');
         const subtitleEl = document.getElementById('statCardSubtitle');
         const topDownloadBtn = document.getElementById('downloadActiveStatBtn');
         const rowsHost = document.getElementById('statLeaderboardRows');
+        const concertsPanel = document.getElementById('allConcertsPanel');
         const albumPanel = document.getElementById('albumUpdatesPanel');
-        if (!tabsBar || !rowsHost || !albumPanel) return;
+        if (!tabsBar || !rowsHost || !concertsPanel || !albumPanel) return;
 
-        const activeTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#BE2668] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
-        const inactiveTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#F2DCE6] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+        const activeTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#BE2668] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+        const inactiveTabCls = 'rounded-full px-4 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#F2DCE6] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
 
         tabsBar.innerHTML = '';
         BAEMON_STATS.categories.forEach((cat) => {
@@ -1425,6 +1617,7 @@
           btn.className = isActive ? activeTabCls : inactiveTabCls;
           btn.textContent = cat.tabLabel;
           btn.addEventListener('click', () => {
+            if (state.activeStatKey === cat.key) return;
             state.activeStatKey = cat.key;
             renderStatsTabsAndLeaderboard();
           });
@@ -1435,20 +1628,35 @@
         titleEl.textContent = activeCat.title;
         subtitleEl.textContent = activeCat.subtitle;
 
-        // 8th Tab: ALBUM UPDATES (BY MONTH) inside the same framed card
+        // 5th Tab: ALL CONCERTS ATTENDEES inside the unified framed card
+        if (activeCat.isAllConcertsTab) {
+          if (topDownloadBtn) topDownloadBtn.classList.add('hidden');
+          rowsHost.classList.add('hidden');
+          albumPanel.classList.add('hidden');
+          concertsPanel.classList.remove('hidden');
+          triggerPanelReveal(concertsPanel);
+          renderConcertsUI();
+          return;
+        }
+
+        // 8th Tab: ALBUM UPDATES (BY MONTH) inside the unified framed card
         if (activeCat.isAlbumUpdatesTab) {
           if (topDownloadBtn) topDownloadBtn.classList.add('hidden');
           rowsHost.classList.add('hidden');
+          concertsPanel.classList.add('hidden');
           albumPanel.classList.remove('hidden');
+          triggerPanelReveal(albumPanel);
           renderAlbumMonthControls();
           renderAlbumMonthSnapshot();
           return;
         }
 
-        // Standard 7 Leaderboard Tabs
+        // Standard 6 Leaderboard Tabs
         if (topDownloadBtn) topDownloadBtn.classList.remove('hidden');
+        concertsPanel.classList.add('hidden');
         albumPanel.classList.add('hidden');
         rowsHost.classList.remove('hidden');
+        triggerPanelReveal(rowsHost);
 
         const maxNum = Math.max(...activeCat.items.map((item) => item.num), 1);
         rowsHost.innerHTML = '';
@@ -1456,7 +1664,7 @@
           const rankStr = String(index + 1).padStart(2, '0');
           const pct = Math.max(8, Math.min(100, Math.round((item.num / maxNum) * 100)));
           const row = document.createElement('div');
-          row.className = 'rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] hover:border-[#BE2668]/45 px-4 py-3.5 sm:px-5 sm:py-4 transition-colors duration-200';
+          row.className = 'rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] hover:border-[#BE2668]/45 px-4 py-3.5 sm:px-5 sm:py-4 transition-all duration-300 ease-out';
           row.innerHTML = `
             <div class="flex items-start sm:items-center justify-between gap-3">
               <div class="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0 flex-1">
@@ -1472,19 +1680,22 @@
               </div>
             </div>
             <div class="mt-3 h-2 w-full rounded-full bg-[#F2DCE6] overflow-hidden" aria-hidden="true">
-              <div class="h-full rounded-full bg-[#BE2668] transition-all duration-500" style="width: ${pct}%;"></div>
+              <div class="h-full rounded-full bg-[#BE2668] transition-[width] duration-500 ease-out" style="width: ${pct}%;"></div>
             </div>
           `;
           rowsHost.appendChild(row);
         });
       }
 
-      // Exports the active leaderboard tab (1..7) as a 1080x1080 Warm Cream PNG with #BAECHELLA2027 footer
+      // Exports the active leaderboard tab as a 1080x1080 Warm Cream PNG with #BAECHELLA2027 footer
       async function downloadActiveStatCardPng() {
         try {
           if (document.fonts && document.fonts.ready) await document.fonts.ready;
 
           const cat = getActiveStatCategory();
+          if (cat.isAllConcertsTab) {
+            return downloadConcertsCardPng();
+          }
           if (cat.isAlbumUpdatesTab) {
             return downloadAlbumMonthCardPng();
           }
@@ -1987,6 +2198,7 @@
         state.selectedAlbumMonth = monthKey;
         renderAlbumMonthControls();
         renderAlbumMonthSnapshot();
+        triggerPanelReveal(document.getElementById('albumUpdatesRowsHost'));
       }
 
       function selectAlbumYear(yearStr) {
@@ -2222,6 +2434,877 @@
         if (downloadAlbumBtn) {
           downloadAlbumBtn.addEventListener('click', downloadAlbumMonthCardPng);
         }
+      }
+
+      /* =================================================================
+         5TH TAB: ALL CONCERTS ATTENDEES — LIVE GOOGLE SHEETS SYNC (/api/concerts)
+         Zero hardcoded fallback numbers: clearing a cell in Google Sheets
+         displays "None" on that stop card and updates all totals live.
+      ================================================================== */
+      function slugifyTourKey(tourName) {
+        const s = String(tourName || '').toLowerCase();
+        if (s.includes('choom') || s.includes('춤')) return 'choom';
+        if (s.includes('love')) return 'love_monsters';
+        if (s.includes('hello')) return 'hello_monsters';
+        if (s.includes('see you')) return 'see_you_there';
+        return s.replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'tour';
+      }
+
+      // Normalizes any ISO YYYY-MM-DD date string into "Mon D, YYYY" in UTC
+      function formatConcertDateLabel(rawDate, fallbackStartDate) {
+        const candidate = String(rawDate || '').trim() || String(fallbackStartDate || '').trim();
+        if (!candidate) return 'TBA';
+
+        const isoMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(candidate);
+        if (isoMatch) {
+          const y = Number(isoMatch[1]);
+          const m = Number(isoMatch[2]) - 1;
+          const d = Number(isoMatch[3]);
+          const utcDate = new Date(Date.UTC(y, m, d));
+          if (!Number.isNaN(utcDate.getTime())) {
+            return utcDate.toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+              timeZone: 'UTC',
+            });
+          }
+        }
+        return candidate;
+      }
+
+      // Parses status & notes into clean badges (SOLD OUT, APPROX., UPCOMING, plus extra detail)
+      function parseConcertNotesAndStatus(status, notes) {
+        const statusStr = String(status || '').trim();
+        const notesStr = String(notes || '').trim();
+
+        const isUpcoming = /upcoming/i.test(statusStr);
+        const isSoldOut = /sold\s*out/i.test(notesStr);
+        const isApprox = /approx|estimate/i.test(notesStr);
+
+        const extraTokens = notesStr
+          .split(/[·|/;,]+/)
+          .map((part) => part.trim())
+          .filter((part) => {
+            if (!part) return false;
+            if (/^sold\s*out$/i.test(part)) return false;
+            if (/^(approx\.?|approximate|estimate[d]?)$/i.test(part)) return false;
+            return true;
+          });
+
+        return {
+          isUpcoming,
+          isSoldOut,
+          isApprox,
+          extraDetail: extraTokens.join(' · '),
+        };
+      }
+
+      // Formats total career concert attendance for the BAEMON STATS milestone card
+      function formatMilestoneAttendanceValue(totalAttendance) {
+        const total = Number(totalAttendance) || 0;
+        if (total <= 0) return '0';
+        if (total >= 1000000) return `${(total / 1000000).toFixed(2)}M+`;
+        if (total >= 1000) return `${Math.floor(total / 1000)}K+`;
+        return formatCommaNumber(total);
+      }
+
+      function syncCareerMilestoneAttendanceBox() {
+        const milestoneBox = BAEMON_STATS.summary.find((box) => box.label === 'CONCERT ATTENDANCE');
+        if (!milestoneBox) return;
+
+        const totalAttendance = state.concertStops.reduce(
+          (sum, stop) => sum + (stop.attendance !== null ? stop.attendance : 0),
+          0
+        );
+        const uniqueTours = new Set(state.concertStops.map((s) => s.tourKey)).size;
+
+        milestoneBox.value = formatMilestoneAttendanceValue(totalAttendance);
+        milestoneBox.sub = totalAttendance > 0
+          ? `${formatCommaNumber(totalAttendance)} Across ${uniqueTours} ${uniqueTours === 1 ? 'Tour' : 'Tours'}`
+          : '0 Reported · World Tours';
+
+        renderStatsSummaryGrid();
+      }
+
+      function normalizeApiConcertsPayload(payload) {
+        const rawList = Array.isArray(payload)
+          ? payload
+          : (Array.isArray(payload && payload.stops)
+              ? payload.stops
+              : (Array.isArray(payload && payload.concerts) ? payload.concerts : []));
+
+        return rawList
+          .filter((row) => row && (row.venue || row.city))
+          .map((row, idx) => {
+            const tour = String(row.tour || 'TOUR').trim();
+            const rawKey = String(row.tourKey || row.tour_key || '').trim();
+            const tourKey = rawKey || slugifyTourKey(tour);
+            const rawAtt = row.attendance;
+            const parsedAtt = (rawAtt !== null && rawAtt !== undefined && String(rawAtt).trim() !== '')
+              ? Number(String(rawAtt).replace(/[,_\s+~]/g, ''))
+              : NaN;
+            const attendance = Number.isFinite(parsedAtt) && parsedAtt > 0
+              ? Math.round(parsedAtt)
+              : null;
+
+            const nightsNum = Number(row.nights);
+            const nights = Number.isFinite(nightsNum) && nightsNum > 0 ? Math.round(nightsNum) : 1;
+
+            return {
+              _rowIndex: idx,
+              tour,
+              tourKey,
+              region: String(row.region || 'Other').trim(),
+              startDate: String(row.startDate || row.start_date || '').trim(),
+              dates: String(row.dates || '').trim(),
+              city: String(row.city || '').trim(),
+              country: String(row.country || '').trim(),
+              venue: String(row.venue || '').trim(),
+              nights,
+              attendance,
+              status: String(row.status || 'Completed').trim(),
+              notes: String(row.notes || '').trim(),
+            };
+          });
+      }
+
+      function getDynamicConcertTours() {
+        const seen = new Map();
+        state.concertStops.forEach((stop) => {
+          if (!seen.has(stop.tourKey)) {
+            seen.set(stop.tourKey, {
+              key: stop.tourKey,
+              title: stop.tour,
+              count: 0,
+            });
+          }
+          seen.get(stop.tourKey).count += 1;
+        });
+        return Array.from(seen.values());
+      }
+
+      function getScopedConcertsForTour(tourKey) {
+        if (tourKey === 'all') return state.concertStops;
+        return state.concertStops.filter((stop) => stop.tourKey === tourKey);
+      }
+
+      function computeConcertsSummary(stops) {
+        let totalAttendance = 0;
+        let reportedStops = 0;
+        let scheduledShows = 0;
+        const citiesSet = new Set();
+
+        stops.forEach((stop) => {
+          scheduledShows += stop.nights;
+          if (stop.attendance !== null) {
+            totalAttendance += stop.attendance;
+            reportedStops += 1;
+          }
+          if (stop.city) {
+            citiesSet.add(`${stop.city.toLowerCase()}|${stop.country.toLowerCase()}`);
+          }
+        });
+
+        return {
+          totalAttendance,
+          reportedStops,
+          totalStops: stops.length,
+          scheduledShows,
+          uniqueCities: citiesSet.size,
+        };
+      }
+
+      function refreshConcertsRegionDropdown() {
+        const selectEl = document.getElementById('concertRegionSelect');
+        if (!selectEl) return;
+
+        const regions = [];
+        const seen = new Set();
+        state.concertStops.forEach((stop) => {
+          if (stop.region && !seen.has(stop.region)) {
+            seen.add(stop.region);
+            regions.push(stop.region);
+          }
+        });
+
+        const prevVal = state.concertRegionFilter;
+        selectEl.innerHTML = '<option value="all">All Regions</option>';
+        regions.forEach((reg) => {
+          const opt = document.createElement('option');
+          opt.value = reg;
+          opt.textContent = reg;
+          selectEl.appendChild(opt);
+        });
+
+        state.concertRegionFilter = regions.includes(prevVal) ? prevVal : 'all';
+        selectEl.value = state.concertRegionFilter;
+      }
+
+      function getFilteredAndSortedConcerts() {
+        let list = getScopedConcertsForTour(state.activeConcertTourKey);
+
+        if (state.concertRegionFilter !== 'all') {
+          list = list.filter((stop) => stop.region === state.concertRegionFilter);
+        }
+
+        const q = state.concertSearchQuery.trim().toLowerCase();
+        if (q) {
+          list = list.filter((stop) => {
+            const hay = `${stop.city} ${stop.venue} ${stop.country} ${stop.tour} ${stop.dates} ${stop.region} ${stop.notes}`.toLowerCase();
+            return hay.includes(q);
+          });
+        }
+
+        const sorted = list.slice();
+        if (state.concertSortBy === 'chrono') {
+          sorted.sort((a, b) => {
+            const cmp = a.startDate.localeCompare(b.startDate);
+            return cmp !== 0 ? cmp : a._rowIndex - b._rowIndex;
+          });
+        } else if (state.concertSortBy === 'newest') {
+          sorted.sort((a, b) => {
+            const cmp = b.startDate.localeCompare(a.startDate);
+            return cmp !== 0 ? cmp : b._rowIndex - a._rowIndex;
+          });
+        } else if (state.concertSortBy === 'highest') {
+          sorted.sort((a, b) => {
+            const attA = a.attendance !== null ? a.attendance : -1;
+            const attB = b.attendance !== null ? b.attendance : -1;
+            if (attB !== attA) return attB - attA;
+            const cmp = a.startDate.localeCompare(b.startDate);
+            return cmp !== 0 ? cmp : a._rowIndex - b._rowIndex;
+          });
+        } else if (state.concertSortBy === 'lowest') {
+          sorted.sort((a, b) => {
+            const hasA = a.attendance !== null;
+            const hasB = b.attendance !== null;
+            if (hasA && hasB && a.attendance !== b.attendance) return a.attendance - b.attendance;
+            if (hasA !== hasB) return hasA ? -1 : 1;
+            const cmp = a.startDate.localeCompare(b.startDate);
+            return cmp !== 0 ? cmp : a._rowIndex - b._rowIndex;
+          });
+        }
+
+        return sorted;
+      }
+
+      function renderConcertTourTabs() {
+        const tabsBar = document.getElementById('concertTourTabsBar');
+        if (!tabsBar) return;
+
+        const dynamicTours = getDynamicConcertTours();
+        if (state.activeConcertTourKey !== 'all' && !dynamicTours.some((t) => t.key === state.activeConcertTourKey)) {
+          state.activeConcertTourKey = 'all';
+        }
+
+        const allTabs = [
+          { key: 'all', title: 'ALL TOURS', count: state.concertStops.length },
+          ...dynamicTours,
+        ];
+
+        const activeTabCls = 'rounded-full px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#BE2668] text-[#FCF6EC] shadow-sm hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+        const inactiveTabCls = 'rounded-full px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.07em] bg-[#F2DCE6] text-[#BE2668] hover:bg-[#BE2668] hover:text-[#FCF6EC] hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668] focus:ring-offset-2 focus:ring-offset-[#FCF6EC]';
+
+        tabsBar.innerHTML = '';
+        allTabs.forEach((tab) => {
+          const isActive = tab.key === state.activeConcertTourKey;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.role = 'tab';
+          btn.setAttribute('aria-selected', String(isActive));
+          btn.className = isActive ? activeTabCls : inactiveTabCls;
+          btn.textContent = `${tab.title} (${tab.count})`;
+          btn.addEventListener('click', () => {
+            if (state.activeConcertTourKey === tab.key) return;
+            state.activeConcertTourKey = tab.key;
+            state.concertVisibleCount = CONCERTS_PAGE_SIZE;
+            renderConcertsUI(true);
+          });
+          tabsBar.appendChild(btn);
+        });
+      }
+
+      function renderConcertsSummaryBanner() {
+        const dynamicTours = getDynamicConcertTours();
+        const activeTourObj = dynamicTours.find((t) => t.key === state.activeConcertTourKey);
+        const activeTourLabel = activeTourObj ? activeTourObj.title : 'ALL TOURS';
+
+        const scopedStops = getScopedConcertsForTour(state.activeConcertTourKey);
+        const summary = computeConcertsSummary(scopedStops);
+
+        document.getElementById('concertsSummaryEyebrow').textContent = `TOTAL ATTENDANCE (${activeTourLabel.toUpperCase()})`;
+        document.getElementById('concertsSummaryTotalAttendance').textContent = formatCommaNumber(summary.totalAttendance);
+        document.getElementById('concertsSummaryReportedBadge').textContent = `${summary.reportedStops} / ${summary.totalStops} Reported Stops`;
+        document.getElementById('concertsSummaryShowsBadge').textContent = `${formatCommaNumber(summary.scheduledShows)} Scheduled ${summary.scheduledShows === 1 ? 'Show' : 'Shows'}`;
+        document.getElementById('concertsSummaryCitiesBadge').textContent = `${summary.uniqueCities} ${summary.uniqueCities === 1 ? 'City' : 'Cities'}`;
+      }
+
+      function renderConcertsLoadingSkeleton(host) {
+        host.innerHTML = '';
+        for (let i = 0; i < 4; i++) {
+          const skel = document.createElement('div');
+          skel.className = 'rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] p-4 sm:p-5 animate-pulse';
+          skel.innerHTML = `
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3.5 flex-1">
+                <div class="w-10 h-10 rounded-xl bg-[#F2DCE6] shrink-0"></div>
+                <div class="space-y-2 flex-1 max-w-md">
+                  <div class="h-3 w-40 rounded-full bg-[#F2DCE6]"></div>
+                  <div class="h-4 w-64 max-w-full rounded-full bg-[#BE2668]/15"></div>
+                  <div class="h-3 w-32 rounded-full bg-[#F2DCE6]"></div>
+                </div>
+              </div>
+              <div class="hidden sm:flex flex-col items-end gap-1.5">
+                <div class="h-6 w-24 rounded-full bg-[#BE2668]/15"></div>
+                <div class="h-2.5 w-16 rounded-full bg-[#F2DCE6]"></div>
+              </div>
+            </div>
+            <div class="mt-3.5 h-2 w-full rounded-full bg-[#F2DCE6]"></div>
+          `;
+          host.appendChild(skel);
+        }
+      }
+
+      function createConcertStopCardElement(stop, displayIndex, maxAttendance) {
+        const rankStr = String(displayIndex + 1).padStart(2, '0');
+        const hasAttendance = stop.attendance !== null;
+        const parsedMeta = parseConcertNotesAndStatus(stop.status, stop.notes);
+        const dateLabel = formatConcertDateLabel(stop.dates, stop.startDate);
+        const showsLabel = `${stop.nights} ${stop.nights === 1 ? 'Show' : 'Shows'}`;
+        const locationLabel = `${stop.city}${stop.country ? `, ${stop.country}` : ''}`;
+
+        const pct = hasAttendance && maxAttendance > 0
+          ? Math.max(8, Math.min(100, Math.round((stop.attendance / maxAttendance) * 100)))
+          : 0;
+
+        const rankCls = displayIndex === 0 && hasAttendance
+          ? 'bg-[#BE2668] text-[#FCF6EC]'
+          : 'bg-[#FCF6EC] border border-[#BE2668]/25 text-[#BE2668]';
+
+        // Status & Note Pills
+        const soldOutBadge = parsedMeta.isSoldOut
+          ? '<span class="inline-flex items-center rounded-full bg-[#BE2668] text-[#FCF6EC] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.09em]">SOLD OUT</span>'
+          : '';
+
+        const approxBadge = parsedMeta.isApprox
+          ? '<span class="inline-flex items-center rounded-full bg-[#FCF6EC] border border-[#BE2668]/45 text-[#BE2668] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.09em]">APPROX.</span>'
+          : '';
+
+        const upcomingBadge = parsedMeta.isUpcoming
+          ? '<span class="inline-flex items-center rounded-full bg-[#3D1325] text-[#FCF6EC] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.09em]">UPCOMING</span>'
+          : '';
+
+        const extraNoteHtml = parsedMeta.extraDetail
+          ? `<span class="inline-flex items-center rounded-full bg-[#FCF6EC] border border-[#F2DCE6] text-[#734459] px-2.5 py-0.5 text-[10px] font-semibold leading-snug break-words">${escapeHtml(parsedMeta.extraDetail)}</span>`
+          : '';
+
+        const statusNotesRow = (soldOutBadge || approxBadge || upcomingBadge || extraNoteHtml)
+          ? `<div class="mt-2 flex flex-wrap items-center gap-1.5">${soldOutBadge}${approxBadge}${upcomingBadge}${extraNoteHtml}</div>`
+          : '';
+
+        // Right-Aligned (Desktop) / Bottom Strip (Mobile) Attendance Readout
+        const attendanceHtml = hasAttendance
+          ? `
+            <div class="mt-3 pt-3 border-t border-[#F2DCE6] flex items-baseline justify-between gap-2 sm:mt-0 sm:pt-0 sm:border-t-0 sm:flex-col sm:items-end sm:justify-center sm:text-right sm:shrink-0">
+              <p class="text-xl sm:text-2xl font-extrabold text-[#BE2668] leading-none tabular-nums">
+                ${parsedMeta.isApprox ? '~' : ''}${formatCommaNumber(stop.attendance)}
+              </p>
+              <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#734459] sm:mt-1 leading-none">
+                ATTENDEES
+              </p>
+            </div>
+          `
+          : `
+            <div class="mt-3 pt-3 border-t border-[#F2DCE6] flex items-baseline justify-between gap-2 sm:mt-0 sm:pt-0 sm:border-t-0 sm:flex-col sm:items-end sm:justify-center sm:text-right sm:shrink-0">
+              <p class="text-xl sm:text-2xl font-extrabold text-[#734459] leading-none">
+                None
+              </p>
+              <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#734459]/80 sm:mt-1 leading-none">
+                NO DATA
+              </p>
+            </div>
+          `;
+
+        const card = document.createElement('article');
+        card.className = 'rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] hover:border-[#BE2668]/55 p-4 sm:p-5 transition-all duration-300 ease-out';
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0 sm:gap-5">
+            <div class="flex items-start gap-3.5 flex-1">
+              <span class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${rankCls} font-display text-xl sm:text-2xl leading-none flex items-center justify-center shrink-0 pt-0.5">
+                ${rankStr}
+              </span>
+
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span class="inline-flex items-center rounded-full bg-[#BE2668] text-[#FCF6EC] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]">
+                    ${escapeHtml(stop.tour)}
+                  </span>
+                  <span class="inline-flex items-center rounded-full bg-[#FCF6EC] border border-[#F2DCE6] text-[#734459] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.07em]">
+                    ${escapeHtml(dateLabel)}
+                  </span>
+                  <span class="inline-flex items-center rounded-full bg-[#F2DCE6] text-[#BE2668] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]">
+                    ${escapeHtml(showsLabel)}
+                  </span>
+                </div>
+
+                <h4 class="mt-2 text-base sm:text-lg font-extrabold text-[#3D1325] leading-snug tracking-tight break-words">
+                  ${escapeHtml(stop.venue)}
+                </h4>
+                <p class="mt-0.5 text-xs sm:text-sm font-semibold text-[#734459] leading-snug break-words">
+                  ${escapeHtml(locationLabel)}
+                </p>
+
+                ${statusNotesRow}
+              </div>
+            </div>
+
+            ${attendanceHtml}
+          </div>
+
+          <div class="mt-3.5 h-2 w-full rounded-full bg-[#F2DCE6] overflow-hidden" aria-hidden="true">
+            <div class="h-full rounded-full bg-[#BE2668] transition-[width] duration-500 ease-out" style="width: ${pct}%;"></div>
+          </div>
+        `;
+
+        return card;
+      }
+
+      function renderConcertStopsList(animateList = false) {
+        const host = document.getElementById('concertStopsRowsHost');
+        const counterEl = document.getElementById('concertsCounterText');
+        const showMoreBtn = document.getElementById('concertsShowMoreBtn');
+        const showLessBtn = document.getElementById('concertsShowLessBtn');
+        if (!host) return;
+
+        if (animateList) {
+          triggerPanelReveal(host);
+        }
+
+        if (state.concertsLoading && state.concertStops.length === 0) {
+          renderConcertsLoadingSkeleton(host);
+          counterEl.textContent = 'Syncing concert database...';
+          showMoreBtn.classList.add('hidden');
+          showLessBtn.classList.add('hidden');
+          return;
+        }
+
+        if (state.concertsError && state.concertStops.length === 0) {
+          host.innerHTML = `
+            <div class="rounded-2xl bg-[#F7EBF0] border-2 border-[#BE2668]/35 p-6 sm:p-8 text-center">
+              <p class="font-display uppercase text-2xl sm:text-3xl text-[#BE2668]">UNABLE TO REACH LIVE CONCERT DATABASE</p>
+              <p class="mt-2 text-xs sm:text-sm font-medium text-[#734459] max-w-md mx-auto leading-relaxed">
+                ${escapeHtml(state.concertsError)}
+              </p>
+              <button
+                id="retryConcertsFetchBtn"
+                type="button"
+                class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#BE2668] hover:bg-[#9E1B54] text-[#FCF6EC] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.09em] shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#BE2668]"
+              >
+                Retry Live Sync
+              </button>
+            </div>
+          `;
+          counterEl.textContent = '0 stops loaded';
+          showMoreBtn.classList.add('hidden');
+          showLessBtn.classList.add('hidden');
+
+          const retryBtn = document.getElementById('retryConcertsFetchBtn');
+          if (retryBtn) retryBtn.addEventListener('click', () => fetchLiveConcertsData(true));
+          return;
+        }
+
+        const filtered = getFilteredAndSortedConcerts();
+        const total = filtered.length;
+        const shown = Math.min(state.concertVisibleCount, total);
+        const remaining = total - shown;
+
+        const maxAttendance = filtered.reduce(
+          (max, stop) => (stop.attendance !== null && stop.attendance > max ? stop.attendance : max),
+          0
+        );
+
+        host.innerHTML = '';
+
+        if (total === 0) {
+          host.innerHTML = `
+            <div class="rounded-2xl bg-[#F7EBF0] border border-[#F2DCE6] p-7 text-center">
+              <p class="font-display uppercase text-2xl text-[#BE2668]">NO MATCHING CONCERT STOPS</p>
+              <p class="mt-1.5 text-xs sm:text-sm text-[#734459]">Try clearing your search or switching back to All Regions.</p>
+            </div>
+          `;
+        } else {
+          filtered.slice(0, shown).forEach((stop, idx) => {
+            host.appendChild(createConcertStopCardElement(stop, idx, maxAttendance));
+          });
+        }
+
+        counterEl.textContent = `Showing ${shown} of ${total} ${total === 1 ? 'stop' : 'stops'}`;
+
+        if (remaining > 0) {
+          const nextStep = Math.min(CONCERTS_PAGE_SIZE, remaining);
+          showMoreBtn.textContent = `SHOW MORE (+${nextStep})`;
+          showMoreBtn.classList.remove('hidden');
+          showLessBtn.classList.add('hidden');
+        } else if (total > CONCERTS_PAGE_SIZE) {
+          showMoreBtn.classList.add('hidden');
+          showLessBtn.classList.remove('hidden');
+        } else {
+          showMoreBtn.classList.add('hidden');
+          showLessBtn.classList.add('hidden');
+        }
+      }
+
+      function renderConcertsUI(animateList = false) {
+        renderConcertTourTabs();
+        renderConcertsSummaryBanner();
+        renderConcertStopsList(animateList);
+      }
+
+      // Fetches live concert attendance from /api/concerts with { cache: 'no-store' }
+      async function fetchLiveConcertsData(isManualRefresh = false) {
+        const refreshBtn = document.getElementById('refreshConcertsBtn');
+        const refreshIcon = document.getElementById('refreshConcertsIcon');
+
+        state.concertsLoading = true;
+        state.concertsError = '';
+        if (refreshBtn) refreshBtn.disabled = true;
+        if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+        renderConcertsUI(false);
+
+        try {
+          const response = await fetch('/api/concerts', {
+            method: 'GET',
+            cache: 'no-store',
+            headers: { Accept: 'application/json' },
+          });
+
+          if (!response.ok) {
+            throw new Error(`Server returned HTTP ${response.status}. Check that CONCERTS_SHEET_URL is configured in Vercel.`);
+          }
+
+          const payload = await response.json();
+          if (payload && payload.error) {
+            throw new Error(String(payload.error));
+          }
+
+          state.concertStops = normalizeApiConcertsPayload(payload);
+          state.concertsLoading = false;
+          state.concertsError = '';
+
+          refreshConcertsRegionDropdown();
+          syncCareerMilestoneAttendanceBox();
+          renderConcertsUI(true);
+
+          if (isManualRefresh) {
+            showToast('Updated latest concert attendance!');
+          }
+        } catch (err) {
+          state.concertsLoading = false;
+          state.concertsError = err && err.message
+            ? err.message
+            : 'Could not load live concert attendance right now.';
+          renderConcertsUI(false);
+
+          if (isManualRefresh) {
+            showToast('Could not refresh concert data. Please try again.', true);
+          }
+        } finally {
+          if (refreshBtn) refreshBtn.disabled = false;
+          if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        }
+      }
+
+      // Exports the active tour filter as a 1080x1080 Warm Cream & Berry Magenta PNG
+      async function downloadConcertsCardPng() {
+        try {
+          if (state.concertStops.length === 0) {
+            showToast('Wait for live concert data to load before downloading PNG.', true);
+            return;
+          }
+
+          if (document.fonts && document.fonts.ready) await document.fonts.ready;
+
+          const dynamicTours = getDynamicConcertTours();
+          const activeTourObj = dynamicTours.find((t) => t.key === state.activeConcertTourKey);
+          const activeTourTitle = activeTourObj ? activeTourObj.title : 'ALL TOURS';
+          const scopedStops = getScopedConcertsForTour(state.activeConcertTourKey);
+          const summary = computeConcertsSummary(scopedStops);
+
+          // Top 5 biggest stops in the active tour (attendance desc, then chronological)
+          const topStops = scopedStops
+            .slice()
+            .sort((a, b) => {
+              const attA = a.attendance !== null ? a.attendance : -1;
+              const attB = b.attendance !== null ? b.attendance : -1;
+              if (attB !== attA) return attB - attA;
+              const cmp = a.startDate.localeCompare(b.startDate);
+              return cmp !== 0 ? cmp : a._rowIndex - b._rowIndex;
+            })
+            .slice(0, 5);
+
+          const maxStopAtt = topStops.reduce(
+            (max, s) => (s.attendance !== null && s.attendance > max ? s.attendance : max),
+            0
+          );
+
+          const W = 1080;
+          const H = 1080;
+          const canvas = document.createElement('canvas');
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas 2D context unavailable');
+
+          const SANS = '"Plus Jakarta Sans", "Noto Sans KR", sans-serif';
+          const DISPLAY = '"BBH Bogle", "Plus Jakarta Sans", "Noto Sans KR", sans-serif';
+
+          drawWarmCreamEditorialFrame(ctx, W, H);
+
+          // Header
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#734459';
+          ctx.font = `700 22px ${SANS}`;
+          ctx.fillText('BABYMONSTER', W / 2, 122);
+
+          ctx.fillStyle = '#BE2668';
+          ctx.font = `400 72px ${DISPLAY}`;
+          ctx.fillText('ALL CONCERTS ATTENDEES', W / 2, 192);
+
+          const pillText = activeTourTitle.toUpperCase();
+          ctx.font = `700 20px ${SANS}`;
+          const pillW = Math.min(W - 180, ctx.measureText(pillText).width + 76);
+          const pillX = (W - pillW) / 2;
+          const pillY = 214;
+
+          ctx.fillStyle = '#BE2668';
+          drawRoundedRect(ctx, pillX, pillY, pillW, 44, 22);
+          ctx.fill();
+
+          ctx.fillStyle = '#FCF6EC';
+          ctx.fillText(pillText, W / 2, pillY + 29);
+
+          // Summary Strip (Total Attendance + Reported Stops / Scheduled Shows / Cities)
+          const cardX = 96;
+          const cardW = W - 192;
+          const heroY = 278;
+          const heroH = 122;
+
+          ctx.fillStyle = '#BE2668';
+          drawRoundedRect(ctx, cardX, heroY, cardW, heroH, 24);
+          ctx.fill();
+
+          const heroCols = [
+            { label: 'TOTAL ATTENDANCE', value: formatCommaNumber(summary.totalAttendance) },
+            { label: 'REPORTED STOPS', value: `${summary.reportedStops} / ${summary.totalStops}` },
+            { label: 'SCHEDULED SHOWS', value: formatCommaNumber(summary.scheduledShows) },
+            { label: 'CITIES', value: formatCommaNumber(summary.uniqueCities) },
+          ];
+
+          const colW = cardW / 4;
+          heroCols.forEach((col, idx) => {
+            const cx = cardX + colW * idx + colW / 2;
+            if (idx > 0) {
+              ctx.strokeStyle = 'rgba(252, 246, 236, 0.25)';
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.moveTo(cardX + colW * idx, heroY + 22);
+              ctx.lineTo(cardX + colW * idx, heroY + heroH - 22);
+              ctx.stroke();
+            }
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#F7EBF0';
+            ctx.font = `700 13px ${SANS}`;
+            ctx.fillText(col.label, cx, heroY + 40);
+
+            let valPx = 38;
+            ctx.font = `800 ${valPx}px ${SANS}`;
+            while (ctx.measureText(col.value).width > colW - 22 && valPx > 24) {
+              valPx -= 2;
+              ctx.font = `800 ${valPx}px ${SANS}`;
+            }
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText(col.value, cx, heroY + 90);
+          });
+
+          // Top 5 Biggest Stops in Active Tour (Full Venue & City Names, Never Truncated)
+          const areaTop = 422;
+          const areaBottom = 938;
+          const availH = areaBottom - areaTop;
+          const count = topStops.length;
+          const rowGap = 14;
+          const rowH = Math.min(104, Math.floor((availH - rowGap * Math.max(count - 1, 0)) / Math.max(count, 1)));
+          const totalRowsH = count * rowH + Math.max(count - 1, 0) * rowGap;
+          const startY = areaTop + Math.max(0, (availH - totalRowsH) / 2);
+
+          topStops.forEach((stop, i) => {
+            const y = startY + i * (rowH + rowGap);
+            const hasAtt = stop.attendance !== null;
+            const parsedMeta = parseConcertNotesAndStatus(stop.status, stop.notes);
+            const dateLabel = formatConcertDateLabel(stop.dates, stop.startDate);
+
+            ctx.fillStyle = '#F7EBF0';
+            drawRoundedRect(ctx, cardX, y, cardW, rowH, 20);
+            ctx.fill();
+
+            ctx.strokeStyle = '#F2DCE6';
+            ctx.lineWidth = 2;
+            drawRoundedRect(ctx, cardX, y, cardW, rowH, 20);
+            ctx.stroke();
+
+            // Rank Badge
+            const badgeSize = 48;
+            const badgeX = cardX + 20;
+            const badgeY = y + 14;
+
+            ctx.fillStyle = i === 0 && hasAtt ? '#BE2668' : '#FCF6EC';
+            drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, 13);
+            ctx.fill();
+
+            if (!(i === 0 && hasAtt)) {
+              ctx.strokeStyle = '#F2DCE6';
+              ctx.lineWidth = 2;
+              drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, 13);
+              ctx.stroke();
+            }
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = i === 0 && hasAtt ? '#FCF6EC' : '#BE2668';
+            ctx.font = `400 29px ${DISPLAY}`;
+            ctx.fillText(String(i + 1).padStart(2, '0'), badgeX + badgeSize / 2, badgeY + badgeSize * 0.72);
+
+            // Right Readout
+            const rightX = cardX + cardW - 22;
+            const valStr = hasAtt
+              ? `${parsedMeta.isApprox ? '~' : ''}${formatCommaNumber(stop.attendance)}`
+              : 'None';
+
+            ctx.textAlign = 'right';
+            ctx.fillStyle = hasAtt ? '#BE2668' : '#734459';
+            ctx.font = `800 ${hasAtt ? 28 : 24}px ${SANS}`;
+            const valW = ctx.measureText(valStr).width;
+            ctx.fillText(valStr, rightX, badgeY + 23);
+
+            ctx.fillStyle = '#734459';
+            ctx.font = `700 12px ${SANS}`;
+            ctx.fillText(hasAtt ? 'ATTENDEES' : 'NO DATA', rightX, badgeY + 42);
+
+            // Left Full Venue & City Name (Auto-fitted so it never truncates)
+            const textX = badgeX + badgeSize + 18;
+            const maxTextW = rightX - valW - 22 - textX;
+
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#3D1325';
+            let venuePx = 23;
+            ctx.font = `800 ${venuePx}px ${SANS}`;
+            while (ctx.measureText(stop.venue).width > maxTextW && venuePx > 14) {
+              venuePx -= 1;
+              ctx.font = `800 ${venuePx}px ${SANS}`;
+            }
+            ctx.fillText(stop.venue, textX, badgeY + 21);
+
+            const subStr = `${stop.city}${stop.country ? `, ${stop.country}` : ''} · ${dateLabel} (${stop.nights} ${stop.nights === 1 ? 'Show' : 'Shows'})`;
+            let subPx = 15;
+            ctx.font = `600 ${subPx}px ${SANS}`;
+            while (ctx.measureText(subStr).width > maxTextW && subPx > 11) {
+              subPx -= 1;
+              ctx.font = `600 ${subPx}px ${SANS}`;
+            }
+            ctx.fillStyle = '#734459';
+            ctx.fillText(subStr, textX, badgeY + 44);
+
+            // Proportional Bar
+            const barX = cardX + 20;
+            const barY = y + rowH - 16;
+            const barW = cardW - 40;
+            const barH = 8;
+
+            ctx.fillStyle = '#F2DCE6';
+            drawRoundedRect(ctx, barX, barY, barW, barH, 4);
+            ctx.fill();
+
+            if (hasAtt && maxStopAtt > 0) {
+              const ratio = Math.max(0.08, Math.min(1, stop.attendance / maxStopAtt));
+              ctx.fillStyle = '#BE2668';
+              drawRoundedRect(ctx, barX, barY, Math.max(20, barW * ratio), barH, 4);
+              ctx.fill();
+            }
+          });
+
+          // Bottom #BAECHELLA2027 Footer
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#BE2668';
+          ctx.font = `700 24px ${SANS}`;
+          ctx.fillText('#BAECHELLA2027', W / 2, 984);
+
+          const filename = `baemon-concerts-${state.activeConcertTourKey}.png`;
+          triggerCanvasPngDownload(canvas, filename);
+          showToast(`Downloaded ${filename} (1080×1080)!`);
+        } catch (err) {
+          showToast('Could not generate concert attendance PNG. Please try again.', true);
+        }
+      }
+
+      function initConcertsAttendeesSection() {
+        const refreshBtn = document.getElementById('refreshConcertsBtn');
+        const searchInput = document.getElementById('concertSearchInput');
+        const regionSelect = document.getElementById('concertRegionSelect');
+        const sortSelect = document.getElementById('concertSortSelect');
+        const showMoreBtn = document.getElementById('concertsShowMoreBtn');
+        const showLessBtn = document.getElementById('concertsShowLessBtn');
+        const downloadBtn = document.getElementById('downloadConcertsCardBtn');
+
+        if (refreshBtn) {
+          refreshBtn.addEventListener('click', () => fetchLiveConcertsData(true));
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            state.concertSearchQuery = e.target.value;
+            state.concertVisibleCount = CONCERTS_PAGE_SIZE;
+            renderConcertStopsList(true);
+          });
+        }
+
+        if (regionSelect) {
+          regionSelect.addEventListener('change', (e) => {
+            state.concertRegionFilter = e.target.value;
+            state.concertVisibleCount = CONCERTS_PAGE_SIZE;
+            renderConcertStopsList(true);
+          });
+        }
+
+        if (sortSelect) {
+          sortSelect.addEventListener('change', (e) => {
+            state.concertSortBy = e.target.value;
+            state.concertVisibleCount = CONCERTS_PAGE_SIZE;
+            renderConcertStopsList(true);
+          });
+        }
+
+        if (showMoreBtn) {
+          showMoreBtn.addEventListener('click', () => {
+            state.concertVisibleCount += CONCERTS_PAGE_SIZE;
+            renderConcertStopsList(true);
+          });
+        }
+
+        if (showLessBtn) {
+          showLessBtn.addEventListener('click', () => {
+            state.concertVisibleCount = CONCERTS_PAGE_SIZE;
+            renderConcertStopsList(true);
+            const tabsBar = document.getElementById('statsTabsBar');
+            if (tabsBar) tabsBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+
+        if (downloadBtn) {
+          downloadBtn.addEventListener('click', downloadConcertsCardPng);
+        }
+
+        fetchLiveConcertsData(false);
       }
 
       /* =================================================================
@@ -2563,6 +3646,7 @@
         initCoachellaCountdown();
         initStagesSection();
         initStatsSection();
+        initConcertsAttendeesSection();
         renderSnsGrid();
         initSetlistBuilder();
         renderSetlistUI();
